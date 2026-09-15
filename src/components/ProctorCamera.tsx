@@ -37,8 +37,8 @@ export default function ProctorCamera({
   const logViolation = useCallback(
     async (eventType: string, severity: 'INFO' | 'WARNING' | 'CRITICAL' | 'TERMINATION', metadata: any = {}) => {
       try {
-        const { LocalMonitoringRepository } = await import('@/lib/repositories');
-        await LocalMonitoringRepository.persistLog(attemptId, eventType, JSON.stringify(metadata));
+        const { ApiMonitoringRepository } = await import('@/lib/repositories');
+        await ApiMonitoringRepository.persistLog(attemptId, eventType, JSON.stringify(metadata));
         
         setViolationsCount(prev => {
           const vCount = prev + 1;

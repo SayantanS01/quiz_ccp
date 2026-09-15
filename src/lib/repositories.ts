@@ -247,6 +247,166 @@ export class LocalMonitoringRepository {
   }
 }
 
+export class ApiAttemptRepository {
+  static async startExam(username: string, candidateName: string, mode: string): Promise<LocalAttempt | null> {
+    const res = await fetch('/api/exam/start', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ userId: username, mode })
+    });
+    const data = await res.json();
+    if (!data.success) return null;
+    
+    // Convert API format to LocalAttempt format for the UI
+    const attempt = data.attempt;
+    const questions = attempt.questions.map((q: any, i: number) => {
+      let options = q.question.options;
+      if (q.optionsOrder) {
+        try {
+          const order = JSON.parse(q.optionsOrder);
+          options = order.map((id: string) => options.find((o: any) => o.id === id));
+        } catch (e) {}
+      }
+
+      return {
+        questionId: q.questionId,
+        displayNumber: q.position,
+        isScored: q.isScored,
+        selectedAnswers: q.selectedOptions ? JSON.parse(q.selectedOptions) : [],
+        flagged: q.isFlagged,
+        displayedOptions: options.map((o: any, idx: number) => ({
+          id: o.id,
+          label: String.fromCharCode(65 + idx),
+          text: o.text,
+          isCorrect: o.isCorrect
+        })),
+        correctAnswers: options.filter((o: any) => o.isCorrect).map((o: any) => o.id)
+      };
+    });
+
+    return {
+      attemptId: attempt.id,
+      username,
+      candidateName,
+      mode: attempt.mode,
+      startedAt: attempt.startedAt,
+      submittedAt: attempt.submittedAt,
+      status: attempt.status === 'READY' || attempt.status === 'IN_PROGRESS' ? 'in_progress' : 'completed',
+      durationSeconds: 5400,
+      questionCount: attempt.totalQuestions,
+      scoredQuestionCount: attempt.scoredQuestions,
+      unscoredQuestionCount: attempt.unscoredQuestions,
+      questions,
+      incidents: attempt.proctorEvents?.map((e: any) => ({
+        timestamp: e.timestamp,
+        type: e.eventType,
+        details: e.metadata
+      })) || [],
+      score: attempt.scoredCorrect,
+      totalScored: attempt.scoredQuestions,
+      percentage: attempt.scorePercentage,
+      passed: attempt.passed,
+      expiresAt: attempt.expiresAt
+    };
+  }
+
+  static async getAttempt(attemptId: string): Promise<LocalAttempt | undefined> {
+    const res = await fetch(`/api/exam/${attemptId}`);
+    const data = await res.json();
+    if (!data.success) return undefined;
+    
+    const attempt = data.attempt;
+    const questions = attempt.questions.map((q: any) => {
+      let options = q.question.options;
+      if (q.optionsOrder) {
+        try {
+          const order = JSON.parse(q.optionsOrder);
+          options = order.map((id: string) => options.find((o: any) => o.id === id));
+        } catch (e) {}
+      }
+
+      return {
+        questionId: q.questionId,
+        displayNumber: q.position,
+        isScored: q.isScored,
+        selectedAnswers: q.selectedOptions ? JSON.parse(q.selectedOptions) : [],
+        flagged: q.isFlagged,
+        displayedOptions: options.map((o: any, idx: number) => ({
+          id: o.id,
+          label: String.fromCharCode(65 + idx),
+          text: o.text,
+          isCorrect: o.isCorrect
+        })),
+        correctAnswers: options.filter((o: any) => o.isCorrect).map((o: any) => o.id)
+      };
+    });
+
+    return {
+      attemptId: attempt.id,
+      username: attempt.userId,
+      candidateName: attempt.userId, // We used username=userId
+      mode: attempt.mode,
+      startedAt: attempt.startedAt,
+      submittedAt: attempt.submittedAt,
+      status: attempt.status === 'IN_PROGRESS' ? 'in_progress' : 'completed',
+      durationSeconds: 5400,
+      questionCount: attempt.totalQuestions,
+      scoredQuestionCount: attempt.scoredQuestions,
+      unscoredQuestionCount: attempt.unscoredQuestions,
+      questions,
+      incidents: attempt.proctorEvents?.map((e: any) => ({
+        timestamp: e.timestamp,
+        type: e.eventType,
+        details: e.metadata
+      })) || [],
+      score: attempt.scoredCorrect,
+      totalScored: attempt.scoredQuestions,
+      percentage: attempt.scorePercentage,
+      passed: attempt.passed,
+      expiresAt: attempt.expiresAt
+    };
+  }
+
+  static async updateQuestionResponse(attemptId: string, qIndex: number, selectedIds: string[], isFlagged: boolean) {
+    await fetch('/api/exam/answer', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        attemptId,
+        position: qIndex + 1,
+        selectedOptions: selectedIds,
+        isFlagged
+      })
+    });
+  }
+
+  static async submitExam(attemptId: string, autoSubmitted: boolean = false): Promise<LocalAttempt | null> {
+    const res = await fetch('/api/exam/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ attemptId, autoSubmitted })
+    });
+    const data = await res.json();
+    if (!data.success) return null;
+    return this.getAttempt(attemptId) || null;
+  }
+}
+
+export class ApiMonitoringRepository {
+  static async persistLog(attemptId: string, eventType: string, metadata?: string) {
+    await fetch('/api/exam/proctor', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        attemptId,
+        eventType,
+        severity: 'INFO',
+        metadata
+      })
+    });
+  }
+}
+
 export class LocalReportRepository {
   static async generateAttemptJSON(attemptId: string): Promise<Blob | null> {
     const db = await getDB();

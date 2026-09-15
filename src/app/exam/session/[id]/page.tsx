@@ -61,11 +61,11 @@ export default function ExamSessionPage() {
     async function loadExam() {
       try {
         setLoading(true);
-        const { LocalAttemptRepository } = await import('@/lib/repositories');
-        const data = await LocalAttemptRepository.getAttempt(attemptId);
+        const { ApiAttemptRepository } = await import('@/lib/repositories');
+        const data = await ApiAttemptRepository.getAttempt(attemptId);
         
         if (!data) {
-          throw new Error('Failed to load local exam attempt');
+          throw new Error('Failed to load exam attempt');
         }
 
         if (data.status === 'completed') {
@@ -122,9 +122,9 @@ export default function ExamSessionPage() {
   const saveAnswerToBackend = useCallback(
     async (pos: number, answers: string[], isFlagged: boolean) => {
       try {
-        const { LocalAttemptRepository } = await import('@/lib/repositories');
-        // pos is 1-indexed, we need 0-indexed for the array
-        await LocalAttemptRepository.updateQuestionResponse(attemptId, pos - 1, answers, isFlagged);
+        const { ApiAttemptRepository } = await import('@/lib/repositories');
+        // Fire & forget update
+        await ApiAttemptRepository.updateQuestionResponse(attemptId, pos - 1, answers, isFlagged);
       } catch (err) {
         console.error('Failed to sync answer locally:', err);
       }
@@ -189,8 +189,8 @@ export default function ExamSessionPage() {
   const handleSubmitExam = async () => {
     try {
       setIsSubmitting(true);
-      const { LocalAttemptRepository } = await import('@/lib/repositories');
-      const attempt = await LocalAttemptRepository.submitExam(attemptId, false);
+      const { ApiAttemptRepository } = await import('@/lib/repositories');
+      const attempt = await ApiAttemptRepository.submitExam(attemptId, false);
       if (!attempt) {
         throw new Error('Failed to submit local exam');
       }

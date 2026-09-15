@@ -113,9 +113,17 @@ export default function ExamSetupPage() {
         } catch (_) {}
       }
 
-      // Bypass API and use the local repository for 100% offline exam generation
-      const { LocalAttemptRepository } = await import('@/lib/repositories');
-      const attempt = await LocalAttemptRepository.startExam(candidateId || 'candidate_default', mode);
+      const { ApiAttemptRepository } = await import('@/lib/repositories');
+      
+      // Use candidate name or default username
+      const activeName = session?.candidateName || session?.username || 'Test User';
+      const activeUsername = session?.username || 'testuser';
+
+      const attempt = await ApiAttemptRepository.startExam(
+        activeUsername,
+        activeName,
+        mode
+      );
 
       if (!attempt) {
         throw new Error('Failed to generate local attempt.');

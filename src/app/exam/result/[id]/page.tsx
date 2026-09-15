@@ -69,83 +69,20 @@ export default function ExamResultPage() {
     async function loadResult() {
       try {
         setLoading(true);
-        const { LocalAttemptRepository } = await import('@/lib/repositories');
-        const { getDB } = await import('@/lib/idb');
-        
-        const attempt = await LocalAttemptRepository.getAttempt(attemptId);
-        if (!attempt) throw new Error('Result not found locally');
+        const res = await fetch(`/api/exam/result/${attemptId}`);
+        const resultData = await res.json();
+        if (resultData.success) {
+          setData(resultData);
 
-        const db = await getDB();
-        if (!db) throw new Error('IDB not available');
-
-        let totalCorrect = 0;
-        let unscoredCorrect = 0;
-
-        const questionsReview = await Promise.all(attempt.questions.map(async (q) => {
-          const bankQ = await db.get('questionBank', q.questionId);
-          
-          const selected = new Set(q.selectedAnswers);
-          const correct = new Set(q.correctAnswers);
-          const isMatch = selected.size === correct.size && [...selected].every(val => correct.has(val));
-          
-          if (isMatch) {
-            totalCorrect++;
-            if (!q.isScored) unscoredCorrect++;
+          if (resultData.summary?.passed) {
+            confetti({
+              particleCount: 80,
+              spread: 70,
+              origin: { y: 0.6 },
+            });
           }
-
-          return {
-            aqId: q.questionId,
-            position: q.displayNumber,
-            questionCode: bankQ?.questionCode || '',
-            questionText: bankQ?.questionText || 'Question text unavailable',
-            type: bankQ?.type || 'SINGLE_SELECT',
-            domain: bankQ?.domain || '',
-            topic: bankQ?.topic || '',
-            difficulty: bankQ?.difficulty || '',
-            explanation: bankQ?.explanation || 'Explanation unavailable',
-            sourceModule: bankQ?.sourceModule,
-            isScored: q.isScored,
-            options: q.displayedOptions.map(o => ({
-              id: o.id,
-              label: o.label,
-              text: o.text,
-              isCorrect: o.isCorrect
-            })),
-            correctAnswers: q.correctAnswers,
-            selectedOptions: q.selectedAnswers,
-            isCorrect: isMatch
-          };
-        }));
-
-        const resultData = {
-          attempt: {
-            attemptId: attempt.attemptId,
-            candidateName: attempt.candidateName,
-            startedAt: attempt.startedAt,
-            submittedAt: attempt.submittedAt,
-            expiresAt: attempt.expiresAt,
-            status: attempt.status,
-          },
-          summary: {
-            totalQuestions: attempt.questionCount,
-            totalScored: attempt.scoredQuestionCount,
-            totalCorrect,
-            scoredScore: attempt.score,
-            unscoredScore: unscoredCorrect,
-            percentage: attempt.percentage,
-            passed: attempt.passed,
-          },
-          questions: questionsReview
-        };
-
-        setData(resultData);
-
-        if (attempt.passed) {
-          confetti({
-            particleCount: 80,
-            spread: 70,
-            origin: { y: 0.6 },
-          });
+        } else {
+          throw new Error('Result not found');
         }
       } catch (err) {
         console.error('Failed to load result:', err);
