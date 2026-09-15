@@ -26,15 +26,37 @@ export default function LoginPage() {
 
     setLoading(true);
     try {
-      const res = await loginUser(name, passcode);
-      if (res.success) {
-        await refreshSession();
-        // AuthProvider will automatically redirect based on role
-      } else {
-        setError(res.error || 'Login failed.');
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          username: name,
+          passcode
+        })
+      });
+
+      const data = await res.json();
+      if (!data.success) {
+        throw new Error(data.error || 'Invalid credentials');
       }
-    } catch (err) {
-      setError('An unexpected error occurred.');
+
+      // Save session locally so the rest of the app knows who is logged in
+      const { getDB } = await import('@/lib/idb');
+      const db = await getDB();
+      if (db) {
+        await db.put('session', {
+          id: 'current_session',
+          username: data.user.username,
+          candidateName: data.user.name,
+          role: data.user.role,
+          loggedInAt: new Date().toISOString()
+        });
+      }
+
+      await refreshSession();
+      // AuthProvider will automatically redirect based on role
+    } catch (err: any) {
+      setError(err.message || 'An unexpected error occurred.');
     } finally {
       setLoading(false);
     }

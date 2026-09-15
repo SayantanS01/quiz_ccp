@@ -15,8 +15,9 @@ async function main() {
 
   const rawData = fs.readFileSync(bankPath, 'utf8');
   const bank = JSON.parse(rawData);
+  const questions = Array.isArray(bank) ? bank : bank.questions;
 
-  console.log(`Loaded ${bank.questions.length} questions from question_bank.json`);
+  console.log(`Loaded ${questions.length} questions from question_bank.json`);
   console.log('Clearing existing data...');
   
   // Clean up existing
@@ -29,7 +30,7 @@ async function main() {
   console.log('Seeding Questions...');
   
   let count = 0;
-  for (const q of bank.questions) {
+  for (const q of questions) {
     await prisma.question.create({
       data: {
         id: q.id,
@@ -60,7 +61,7 @@ async function main() {
       }
     });
     count++;
-    if (count % 50 === 0) console.log(`Seeded ${count}/${bank.questions.length}...`);
+    if (count % 50 === 0) console.log(`Seeded ${count}/${questions.length}...`);
   }
 
   console.log(`\nSuccessfully seeded ${count} questions to Postgres!`);

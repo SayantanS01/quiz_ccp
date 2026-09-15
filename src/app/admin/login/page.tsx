@@ -25,14 +25,36 @@ export default function AdminLoginPage() {
 
     setLoading(true);
     try {
-      const res = await loginUser('admin', passcode);
-      if (res.success) {
-        await refreshSession();
-      } else {
-        setError(res.error || 'Admin login failed.');
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          username: 'admin',
+          passcode
+        })
+      });
+
+      const data = await res.json();
+      if (!data.success) {
+        throw new Error(data.error || 'Admin login failed');
       }
-    } catch (err) {
-      setError('An unexpected error occurred.');
+
+      // Save session locally
+      const { getDB } = await import('@/lib/idb');
+      const db = await getDB();
+      if (db) {
+        await db.put('session', {
+          id: 'current_session',
+          username: data.user.username,
+          candidateName: data.user.name,
+          role: data.user.role,
+          loggedInAt: new Date().toISOString()
+        });
+      }
+
+      await refreshSession();
+    } catch (err: any) {
+      setError(err.message || 'An unexpected error occurred.');
     } finally {
       setLoading(false);
     }

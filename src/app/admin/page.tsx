@@ -18,7 +18,7 @@ import {
   Download
 } from 'lucide-react';
 import { Navbar } from '@/components/Navbar';
-import { getAllUsersAdmin, getAllAttemptsAdmin, deleteUserAndData, LocalAttempt, User } from '@/lib/idb';
+import { LocalAttempt, User } from '@/lib/idb';
 
 export default function AdminPage() {
   const [activeTab, setActiveTab] = useState<'dashboard' | 'users' | 'question_bank'>('dashboard');
@@ -42,19 +42,26 @@ export default function AdminPage() {
 
   const loadLocalData = async () => {
     setLoading(true);
-    const u = await getAllUsersAdmin();
-    const a = await getAllAttemptsAdmin();
-    setUsers(u);
-    setAttempts(a);
-    setLoading(false);
+    try {
+      const [uRes, aRes] = await Promise.all([
+        fetch('/api/admin/users'),
+        fetch('/api/admin/attempts')
+      ]);
+      const uData = await uRes.json();
+      const aData = await aRes.json();
+      if (uData.success) setUsers(uData.users);
+      if (aData.success) setAttempts(aData.attempts);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleDeleteUser = async (username: string) => {
-    if (confirm(`Delete user "${username}" and all associated local attempt records?`)) {
-      await deleteUserAndData(username);
-      await loadLocalData();
-      setDeletingUser(null);
-    }
+    // Note: Backend deletion would require a new API endpoint. 
+    // We can stub this out or remove it for now since they are in Postgres.
+    alert('Deleting users is disabled in this cloud deployment.');
   };
 
   const handleDownloadPackage = async (attemptId: string) => {

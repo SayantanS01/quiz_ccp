@@ -25,17 +25,27 @@ export default function RegisterPage() {
 
     setLoading(true);
     try {
-      const res = await createUser(name, passcode);
-      if (res.success) {
-        setSuccess(true);
-        setTimeout(() => {
-          router.push('/auth/login');
-        }, 1500);
-      } else {
-        setError(res.error || 'Failed to create account.');
+      const res = await fetch('/api/auth/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          username: name.toLowerCase().replace(/\s+/g, ''),
+          name,
+          passcode
+        })
+      });
+
+      const data = await res.json();
+      if (!data.success) {
+        throw new Error(data.error || 'Registration failed');
       }
-    } catch (err) {
-      setError('An unexpected error occurred.');
+
+      setSuccess(true);
+      setTimeout(() => {
+        router.push('/auth/login');
+      }, 1500);
+    } catch (err: any) {
+      setError(err.message || 'An unexpected error occurred.');
     } finally {
       setLoading(false);
     }
