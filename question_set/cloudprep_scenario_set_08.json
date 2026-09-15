@@ -1,0 +1,3351 @@
+{
+  "metadata": {
+    "product": "CloudPrep",
+    "exam": "AWS Certified Cloud Practitioner practice",
+    "set_number": 8,
+    "question_count": 100,
+    "question_style": "scenario_based",
+    "note": "Original practice questions adapted into scenario/application format; not official AWS exam questions."
+  },
+  "questions": [
+    {
+      "id": "SCN-0185",
+      "type": "single_select",
+      "question": "A startup is designing a new AWS environment. It needs to identify the statement that is accurate about Network ACL rules while following AWS best practices.. Which option is the BEST choice?",
+      "options": [
+        {
+          "id": "B",
+          "text": "connects a VPC to the internet"
+        },
+        {
+          "id": "A",
+          "text": "apply at the subnet level"
+        },
+        {
+          "id": "D",
+          "text": "is a VPC component used with protected connectivity such as a VPN"
+        },
+        {
+          "id": "C",
+          "text": "translates human-readable domain names into information used to reach network resources"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "Network security",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0302",
+      "type": "multi_select",
+      "question": "A global business is expanding its AWS workload. Its architects need to determine the correct AWS approach for this requirement: Which TWO statements correctly describe Go global in minutes while keeping operational effort low.. Which option should they select?",
+      "options": [
+        {
+          "id": "B",
+          "text": "can help provide low latency to customers in different parts of the world"
+        },
+        {
+          "id": "A",
+          "text": "uses the global footprint of AWS to deploy applications to customers around the world quickly"
+        },
+        {
+          "id": "D",
+          "text": "can make new resources available within minutes rather than waiting weeks for data-center resources"
+        },
+        {
+          "id": "C",
+          "text": "can lower variable costs because cloud providers aggregate usage from many customers"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Cloud Concepts",
+      "topic": "Cloud benefits",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0048",
+      "type": "single_select",
+      "question": "A finance and technology team is evaluating several AWS solutions. They need to determine the correct AWS approach for this requirement: A team needs a capability that are useful when workloads have uncertain usage or need flexible capacity. Which option is the most appropriate choice while meeting the stated business requirement.. Which option is MOST suitable?",
+      "options": [
+        {
+          "id": "C",
+          "text": "Spot Instances"
+        },
+        {
+          "id": "A",
+          "text": "On-Demand Instances"
+        },
+        {
+          "id": "D",
+          "text": "Containers"
+        },
+        {
+          "id": "B",
+          "text": "Amazon EC2 Auto Scaling"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "EC2 pricing",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0520",
+      "type": "single_select",
+      "question": "A finance and technology team is evaluating several AWS solutions. They need to identify the statement that is accurate about AWS Free Tier while keeping the solution cost-conscious.. Which option is MOST suitable?",
+      "options": [
+        {
+          "id": "B",
+          "text": "are short-term free offers that start when a particular service is activated"
+        },
+        {
+          "id": "C",
+          "text": "provides AWS expertise across the range of AWS services"
+        },
+        {
+          "id": "A",
+          "text": "includes categories such as Always Free, 12 Months Free, and Trials"
+        },
+        {
+          "id": "D",
+          "text": "includes best-practice guidance"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Billing and Pricing",
+      "topic": "Free Tier",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0400",
+      "type": "single_select",
+      "question": "A finance and technology team is evaluating several AWS solutions. They need to determine the correct AWS approach for this requirement: A team needs a capability that can be used to group or analyze costs in Cost Explorer. Which option is the most appropriate choice without introducing unnecessary complexity.. Which option is MOST suitable?",
+      "options": [
+        {
+          "id": "C",
+          "text": "Volume-based discounts"
+        },
+        {
+          "id": "D",
+          "text": "Consolidated billing"
+        },
+        {
+          "id": "B",
+          "text": "Reservation-based savings"
+        },
+        {
+          "id": "A",
+          "text": "AWS resource tags"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Billing and Pricing",
+      "topic": "Cost allocation",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0067",
+      "type": "single_select",
+      "question": "An e-commerce company is reviewing its AWS architecture. During planning, it determines that it must identify the statement that is accurate about Spot Instances while keeping the solution cost-conscious.. Which option is MOST appropriate?",
+      "options": [
+        {
+          "id": "A",
+          "text": "can be interrupted when AWS needs the capacity back"
+        },
+        {
+          "id": "C",
+          "text": "are designed for workloads that benefit from high compute capability"
+        },
+        {
+          "id": "B",
+          "text": "provides virtual servers in the AWS Cloud"
+        },
+        {
+          "id": "D",
+          "text": "provides a managed message queue for sending, storing, and receiving messages"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "EC2 pricing",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0188",
+      "type": "single_select",
+      "question": "A cloud administrator has been asked to improve an organization's AWS environment. The organization needs to determine the correct AWS approach for this requirement: A team needs a capability that allows users to perform AWS management tasks through a graphical interface. Which option is the most appropriate choice while avoiding unnecessary infrastructure management.. What should the administrator recommend?",
+      "options": [
+        {
+          "id": "D",
+          "text": "Data sovereignty"
+        },
+        {
+          "id": "A",
+          "text": "AWS Management Console"
+        },
+        {
+          "id": "C",
+          "text": "AWS Region"
+        },
+        {
+          "id": "B",
+          "text": "AWS Elastic Beanstalk"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "AWS Management Console",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0019",
+      "type": "single_select",
+      "question": "An e-commerce company is reviewing its AWS architecture. During planning, it determines that it must determine the correct AWS approach for this requirement: A team needs a capability that provides a connection point for traffic entering a VPC through a VPN. Which option is the most appropriate choice while maintaining appropriate security.. Which option is MOST appropriate?",
+      "options": [
+        {
+          "id": "D",
+          "text": "Internet gateway"
+        },
+        {
+          "id": "B",
+          "text": "Amazon Route 53"
+        },
+        {
+          "id": "C",
+          "text": "Domain Name System"
+        },
+        {
+          "id": "A",
+          "text": "Virtual private gateway"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "Private connectivity",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0458",
+      "type": "single_select",
+      "question": "A company is migrating an existing workload to AWS. The team needs to determine the correct AWS approach for this requirement: A team needs a capability that can be used by applications to make AWS API calls. Which option is the most appropriate choice while keeping the solution cost-conscious.. Which AWS service or approach should it choose?",
+      "options": [
+        {
+          "id": "D",
+          "text": "Availability Zone"
+        },
+        {
+          "id": "B",
+          "text": "AWS Region"
+        },
+        {
+          "id": "C",
+          "text": "AWS CloudFormation"
+        },
+        {
+          "id": "A",
+          "text": "AWS SDKs"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "AWS SDKs",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0253",
+      "type": "single_select",
+      "question": "A development team is preparing an application for production. The team needs to determine the correct AWS approach for this requirement: Which AWS concept or service is best described as one that focuses on running and monitoring systems to deliver business value and continually improve processes while keeping operational effort low.. Which AWS option best meets the requirement?",
+      "options": [
+        {
+          "id": "B",
+          "text": "Variable cost model"
+        },
+        {
+          "id": "C",
+          "text": "Global reach"
+        },
+        {
+          "id": "A",
+          "text": "Operational excellence"
+        },
+        {
+          "id": "D",
+          "text": "Three-tier architecture"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Cloud Concepts",
+      "topic": "Well-Architected pillars",
+      "difficulty": "easy",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0712",
+      "type": "multi_select",
+      "question": "A finance and technology team is evaluating several AWS solutions. They need to determine the correct AWS approach for this requirement: Select TWO characteristics that apply to Stateful packet filtering while keeping operational effort low.. Which option is MOST suitable?",
+      "options": [
+        {
+          "id": "B",
+          "text": "is the filtering behavior associated with security groups in the module"
+        },
+        {
+          "id": "A",
+          "text": "remembers previous traffic decisions for the connection"
+        },
+        {
+          "id": "C",
+          "text": "uses stateless packet filtering"
+        },
+        {
+          "id": "D",
+          "text": "is a VPC component used with protected connectivity such as a VPN"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Technology",
+      "topic": "Traffic control",
+      "difficulty": "hard",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0647",
+      "type": "multi_select",
+      "question": "A security and operations team is reviewing a workload running on AWS. The team needs to determine the correct AWS approach for this requirement: Which TWO statements correctly describe AWS global footprint while following AWS best practices.. Which AWS service or practice is the BEST fit?",
+      "options": [
+        {
+          "id": "B",
+          "text": "can help organizations serve customers around the world with lower latency"
+        },
+        {
+          "id": "D",
+          "text": "helps deliver content closer to customers around the world"
+        },
+        {
+          "id": "C",
+          "text": "is a single data center or a group of data centers within an AWS Region"
+        },
+        {
+          "id": "A",
+          "text": "enables applications to be deployed in multiple geographic areas"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Cloud Concepts",
+      "topic": "Global infrastructure",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0595",
+      "type": "multi_select",
+      "question": "An e-commerce company is reviewing its AWS architecture. During planning, it determines that it must determine the correct AWS approach for this requirement: Select TWO characteristics that apply to Compute optimized instances while keeping operational effort low.. Which option is MOST appropriate?",
+      "options": [
+        {
+          "id": "D",
+          "text": "provides serverless compute for containers"
+        },
+        {
+          "id": "C",
+          "text": "provide an alternative application deployment model to running workloads directly on virtual machines"
+        },
+        {
+          "id": "B",
+          "text": "are associated with compute-intensive workloads"
+        },
+        {
+          "id": "A",
+          "text": "are designed for workloads that benefit from high compute capability"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Technology",
+      "topic": "EC2 instance types",
+      "difficulty": "hard",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0757",
+      "type": "single_select",
+      "question": "A development team is preparing an application for production. The team needs to determine the correct AWS approach for this requirement: A team needs a capability that EFS is a regional file system designed for access across multiple Availability Zones. Which option is the most appropriate choice while following AWS best practices.. Which AWS option best meets the requirement?",
+      "options": [
+        {
+          "id": "D",
+          "text": "Relational database"
+        },
+        {
+          "id": "C",
+          "text": "AWS Database Migration Service"
+        },
+        {
+          "id": "A",
+          "text": "EBS versus EFS"
+        },
+        {
+          "id": "B",
+          "text": "Instance store"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "Storage comparison",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0749",
+      "type": "multi_select",
+      "question": "A development team is preparing an application for production. The team needs to determine the correct AWS approach for this requirement: Which TWO statements correctly describe AWS Snowball while meeting the stated business requirement.. Which AWS option best meets the requirement?",
+      "options": [
+        {
+          "id": "D",
+          "text": "focuses on people, skills, and organizational change during cloud adoption"
+        },
+        {
+          "id": "A",
+          "text": "is a Snow Family device used to physically transfer data"
+        },
+        {
+          "id": "C",
+          "text": "moves from a traditional license to a software-as-a-service model"
+        },
+        {
+          "id": "B",
+          "text": "is designed for secure data transport into or out of AWS"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Technology",
+      "topic": "Snow Family",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0380",
+      "type": "single_select",
+      "question": "A cloud administrator has been asked to improve an organization's AWS environment. The organization needs to identify the statement that is accurate about Serverless applications while keeping operational effort low.. What should the administrator recommend?",
+      "options": [
+        {
+          "id": "D",
+          "text": "includes principles and patterns for implementing new cloud solutions"
+        },
+        {
+          "id": "B",
+          "text": "moves from a traditional license to a software-as-a-service model"
+        },
+        {
+          "id": "A",
+          "text": "allow developers to focus more on application functionality"
+        },
+        {
+          "id": "C",
+          "text": "provides technologies for connecting devices and applications"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "Innovation",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0103",
+      "type": "single_select",
+      "question": "A security and operations team is reviewing a workload running on AWS. The team needs to identify the statement that is accurate about Amazon Aurora while keeping the solution cost-conscious.. Which AWS service or practice is the BEST fit?",
+      "options": [
+        {
+          "id": "C",
+          "text": "is designed for frequently accessed data"
+        },
+        {
+          "id": "A",
+          "text": "is designed to provide high availability and can replicate multiple copies of data"
+        },
+        {
+          "id": "B",
+          "text": "is a scalable file system for AWS workloads"
+        },
+        {
+          "id": "D",
+          "text": "provides temporary block-level storage for an EC2 instance"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "Relational databases",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0345",
+      "type": "multi_select",
+      "question": "A startup is designing a new AWS environment. It needs to determine the correct AWS approach for this requirement: Which TWO statements correctly describe AWS IAM while maintaining appropriate security.. Which option is the BEST choice?",
+      "options": [
+        {
+          "id": "D",
+          "text": "can be accessed through AWS Artifact"
+        },
+        {
+          "id": "A",
+          "text": "controls access to AWS resources"
+        },
+        {
+          "id": "B",
+          "text": "supports identities and permissions for users, groups, and roles"
+        },
+        {
+          "id": "C",
+          "text": "is an identity that can be assumed to obtain temporary permissions"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Security and Compliance",
+      "topic": "IAM",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0557",
+      "type": "multi_select",
+      "question": "A development team is preparing an application for production. The team needs to determine the correct AWS approach for this requirement: Select TWO characteristics that apply to Amazon CloudFront without introducing unnecessary complexity.. Which AWS option best meets the requirement?",
+      "options": [
+        {
+          "id": "D",
+          "text": "is a geographic area where AWS operates cloud infrastructure"
+        },
+        {
+          "id": "C",
+          "text": "reduces the amount of infrastructure management needed to deploy supported applications"
+        },
+        {
+          "id": "B",
+          "text": "can reduce latency by serving content from locations closer to users"
+        },
+        {
+          "id": "A",
+          "text": "is a content delivery network that uses edge locations to cache and deliver content"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Technology",
+      "topic": "CDN",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0404",
+      "type": "multi_select",
+      "question": "A cloud administrator has been asked to improve an organization's AWS environment. The organization needs to determine the correct AWS approach for this requirement: Select TWO characteristics that apply to Amazon Aurora while following AWS best practices.. What should the administrator recommend?",
+      "options": [
+        {
+          "id": "C",
+          "text": "is not intended as persistent storage for data that must survive the instance lifecycle"
+        },
+        {
+          "id": "B",
+          "text": "is designed to provide high availability and can replicate multiple copies of data"
+        },
+        {
+          "id": "D",
+          "text": "provides object-level storage"
+        },
+        {
+          "id": "A",
+          "text": "is an enterprise-class relational database compatible with MySQL and PostgreSQL"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Technology",
+      "topic": "Relational databases",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0395",
+      "type": "single_select",
+      "question": "An e-commerce company is reviewing its AWS architecture. During planning, it determines that it must determine the correct AWS approach for this requirement: Which AWS concept or service is best described as one that inspects an AWS environment and provides recommendations while avoiding unnecessary infrastructure management.. Which option is MOST appropriate?",
+      "options": [
+        {
+          "id": "A",
+          "text": "AWS Trusted Advisor"
+        },
+        {
+          "id": "C",
+          "text": "Amazon CloudWatch"
+        },
+        {
+          "id": "B",
+          "text": "CloudWatch dashboard"
+        },
+        {
+          "id": "D",
+          "text": "CloudTrail event"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Security and Compliance",
+      "topic": "Optimization",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0414",
+      "type": "multi_select",
+      "question": "A global business is expanding its AWS workload. Its architects need to determine the correct AWS approach for this requirement: Which TWO statements correctly describe Amazon CloudWatch while avoiding unnecessary infrastructure management.. Which option should they select?",
+      "options": [
+        {
+          "id": "A",
+          "text": "monitors AWS resources and applications using metrics"
+        },
+        {
+          "id": "D",
+          "text": "can be viewed over time to understand resource behavior"
+        },
+        {
+          "id": "B",
+          "text": "helps observe resource utilization and performance over time"
+        },
+        {
+          "id": "C",
+          "text": "inspects an AWS environment and provides recommendations"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Technology",
+      "topic": "Monitoring",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0449",
+      "type": "multi_select",
+      "question": "A startup is designing a new AWS environment. It needs to determine the correct AWS approach for this requirement: Which TWO statements correctly describe Amazon Redshift while keeping the solution cost-conscious.. Which option is the BEST choice?",
+      "options": [
+        {
+          "id": "D",
+          "text": "helps automate storage-class transitions based on defined rules"
+        },
+        {
+          "id": "A",
+          "text": "is a data warehousing service"
+        },
+        {
+          "id": "C",
+          "text": "is the lowest-cost S3 object storage class for long-term archiving"
+        },
+        {
+          "id": "B",
+          "text": "is designed to bring together data from many sources for analytics"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Technology",
+      "topic": "Data warehousing",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0336",
+      "type": "single_select",
+      "question": "A finance and technology team is evaluating several AWS solutions. They need to identify the statement that is accurate about Automation through APIs with the least administrative overhead.. Which option is MOST suitable?",
+      "options": [
+        {
+          "id": "B",
+          "text": "is a managed service for deploying applications"
+        },
+        {
+          "id": "C",
+          "text": "places resources across multiple Availability Zones"
+        },
+        {
+          "id": "D",
+          "text": "is an infrastructure-as-code service for defining AWS resources in templates"
+        },
+        {
+          "id": "A",
+          "text": "can improve the consistency and predictability of repeatable cloud deployments"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "Automation",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0766",
+      "type": "single_select",
+      "question": "A global business is expanding its AWS workload. Its architects need to determine the correct AWS approach for this requirement: Which AWS concept or service is best described as one that grants only the permissions required to perform necessary tasks while avoiding unnecessary infrastructure management.. Which option should they select?",
+      "options": [
+        {
+          "id": "B",
+          "text": "Service control policy"
+        },
+        {
+          "id": "C",
+          "text": "AWS IAM"
+        },
+        {
+          "id": "A",
+          "text": "Principle of least privilege"
+        },
+        {
+          "id": "D",
+          "text": "Amazon Inspector"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Security and Compliance",
+      "topic": "Least privilege",
+      "difficulty": "easy",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0472",
+      "type": "single_select",
+      "question": "A finance and technology team is evaluating several AWS solutions. They need to determine the correct AWS approach for this requirement: A team needs a capability that are suitable for a wide variety of workloads. Which option is the most appropriate choice while avoiding unnecessary infrastructure management.. Which option is MOST suitable?",
+      "options": [
+        {
+          "id": "A",
+          "text": "General purpose instances"
+        },
+        {
+          "id": "D",
+          "text": "Accelerated computing instances"
+        },
+        {
+          "id": "C",
+          "text": "AWS Fargate"
+        },
+        {
+          "id": "B",
+          "text": "AWS Lambda"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "EC2 instance types",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0451",
+      "type": "multi_select",
+      "question": "An e-commerce company is reviewing its AWS architecture. During planning, it determines that it must determine the correct AWS approach for this requirement: Which TWO statements correctly describe IAM policy while avoiding unnecessary infrastructure management.. Which option is MOST appropriate?",
+      "options": [
+        {
+          "id": "D",
+          "text": "allows accounts with similar business or security requirements to inherit policies applied to the OU"
+        },
+        {
+          "id": "B",
+          "text": "should follow least-privilege principles when permissions are granted"
+        },
+        {
+          "id": "C",
+          "text": "is a deliberate attempt to make a website or application unavailable"
+        },
+        {
+          "id": "A",
+          "text": "is a JSON document that allows or denies permissions to AWS services and resources"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Security and Compliance",
+      "topic": "IAM policies",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0411",
+      "type": "multi_select",
+      "question": "An e-commerce company is reviewing its AWS architecture. During planning, it determines that it must determine the correct AWS approach for this requirement: Which TWO statements correctly describe Multi-AZ architecture while meeting the stated business requirement.. Which option is MOST appropriate?",
+      "options": [
+        {
+          "id": "B",
+          "text": "can improve resilience if an Availability Zone becomes unavailable"
+        },
+        {
+          "id": "A",
+          "text": "places resources across multiple Availability Zones"
+        },
+        {
+          "id": "C",
+          "text": "is a content delivery network that uses edge locations to cache and deliver content"
+        },
+        {
+          "id": "D",
+          "text": "can be selected based on factors such as data governance, customer proximity, available services, and pricing"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Technology",
+      "topic": "High availability",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0682",
+      "type": "multi_select",
+      "question": "A company is migrating an existing workload to AWS. The team needs to determine the correct AWS approach for this requirement: Select TWO characteristics that apply to Route 53 DNS records while following AWS best practices.. Which AWS service or approach should it choose?",
+      "options": [
+        {
+          "id": "B",
+          "text": "can be managed using Amazon Route 53"
+        },
+        {
+          "id": "A",
+          "text": "store information used to map domain names to destinations"
+        },
+        {
+          "id": "D",
+          "text": "help isolate AWS resources within a virtual network"
+        },
+        {
+          "id": "C",
+          "text": "can use a virtual private gateway as the AWS-side connection component"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Technology",
+      "topic": "DNS records",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0310",
+      "type": "multi_select",
+      "question": "A global business is expanding its AWS workload. Its architects need to determine the correct AWS approach for this requirement: Select TWO characteristics that apply to AWS Shield Advanced with the least administrative overhead.. Which option should they select?",
+      "options": [
+        {
+          "id": "B",
+          "text": "provides detailed attack diagnostics and additional protection capabilities"
+        },
+        {
+          "id": "D",
+          "text": "controls access to AWS resources"
+        },
+        {
+          "id": "C",
+          "text": "has broad account-level privileges and should not be used for routine tasks"
+        },
+        {
+          "id": "A",
+          "text": "is a paid DDoS protection service"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Security and Compliance",
+      "topic": "DDoS protection",
+      "difficulty": "hard",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0006",
+      "type": "multi_select",
+      "question": "A global business is expanding its AWS workload. Its architects need to determine the correct AWS approach for this requirement: Which TWO statements correctly describe IAM user while maintaining appropriate security.. Which option should they select?",
+      "options": [
+        {
+          "id": "B",
+          "text": "can be given permissions through IAM policies"
+        },
+        {
+          "id": "D",
+          "text": "can make permission management easier by applying policies at the group level"
+        },
+        {
+          "id": "C",
+          "text": "requires more than one authentication factor"
+        },
+        {
+          "id": "A",
+          "text": "is an identity created in AWS to represent a person or application"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Security and Compliance",
+      "topic": "IAM users",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0524",
+      "type": "multi_select",
+      "question": "A cloud administrator has been asked to improve an organization's AWS environment. The organization needs to determine the correct AWS approach for this requirement: Select TWO characteristics that apply to AWS CloudFormation while keeping the solution cost-conscious.. What should the administrator recommend?",
+      "options": [
+        {
+          "id": "C",
+          "text": "can help organizations serve customers around the world with lower latency"
+        },
+        {
+          "id": "A",
+          "text": "is an infrastructure-as-code service for defining AWS resources in templates"
+        },
+        {
+          "id": "B",
+          "text": "helps automate consistent provisioning of infrastructure"
+        },
+        {
+          "id": "D",
+          "text": "is a content delivery network that uses edge locations to cache and deliver content"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Technology",
+      "topic": "Infrastructure as code",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0020",
+      "type": "multi_select",
+      "question": "A cloud administrator has been asked to improve an organization's AWS environment. The organization needs to determine the correct AWS approach for this requirement: Which TWO statements correctly describe Amazon EBS while keeping the solution cost-conscious.. What should the administrator recommend?",
+      "options": [
+        {
+          "id": "A",
+          "text": "provides block-level storage for EC2 instances"
+        },
+        {
+          "id": "D",
+          "text": "allows multiple EC2 instances to access the same file system concurrently"
+        },
+        {
+          "id": "C",
+          "text": "stores structured data in tables and commonly uses SQL"
+        },
+        {
+          "id": "B",
+          "text": "is an Availability Zone-level storage resource"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Technology",
+      "topic": "Block storage",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0126",
+      "type": "single_select",
+      "question": "A global business is expanding its AWS workload. Its architects need to determine the correct AWS approach for this requirement: Which AWS concept or service is best described as one that are designed for workloads that benefit from high compute capability while avoiding unnecessary infrastructure management.. Which option should they select?",
+      "options": [
+        {
+          "id": "C",
+          "text": "General purpose instances"
+        },
+        {
+          "id": "B",
+          "text": "Amazon EKS"
+        },
+        {
+          "id": "A",
+          "text": "Compute optimized instances"
+        },
+        {
+          "id": "D",
+          "text": "Containers"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "EC2 instance types",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0575",
+      "type": "single_select",
+      "question": "A security and operations team is reviewing a workload running on AWS. The team needs to identify the statement that is accurate about Operational excellence while avoiding unnecessary infrastructure management.. Which AWS service or practice is the BEST fit?",
+      "options": [
+        {
+          "id": "A",
+          "text": "includes practices such as operations as code and making small reversible changes"
+        },
+        {
+          "id": "B",
+          "text": "lets organizations pay for consumed resources rather than large upfront infrastructure investments"
+        },
+        {
+          "id": "D",
+          "text": "can separate an application into presentation, application, and database layers"
+        },
+        {
+          "id": "C",
+          "text": "allows applications to be deployed around the world"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Cloud Concepts",
+      "topic": "Well-Architected pillars",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0743",
+      "type": "single_select",
+      "question": "A security and operations team is reviewing a workload running on AWS. The team needs to determine the correct AWS approach for this requirement: A team needs a capability that is associated with subnets to control routing decisions. Which option is the most appropriate choice while keeping operational effort low.. Which AWS service or practice is the BEST fit?",
+      "options": [
+        {
+          "id": "D",
+          "text": "Internet gateway"
+        },
+        {
+          "id": "B",
+          "text": "Route 53 DNS records"
+        },
+        {
+          "id": "A",
+          "text": "Route table"
+        },
+        {
+          "id": "C",
+          "text": "Private subnet"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "Routing",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0166",
+      "type": "single_select",
+      "question": "A global business is expanding its AWS workload. Its architects need to determine the correct AWS approach for this requirement: A team needs a capability that uses user-defined key-value tags as a cost-analysis dimension. Which option is the most appropriate choice while keeping the solution cost-conscious.. Which option should they select?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Cost Explorer grouping by tag"
+        },
+        {
+          "id": "C",
+          "text": "AWS Business Support"
+        },
+        {
+          "id": "B",
+          "text": "AWS Free Tier"
+        },
+        {
+          "id": "D",
+          "text": "Pay-as-you-go pricing"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Billing and Pricing",
+      "topic": "Cost analysis",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0558",
+      "type": "single_select",
+      "question": "A global business is expanding its AWS workload. Its architects need to determine the correct AWS approach for this requirement: Which AWS concept or service is best described as one that provide agreements related to an organization's use of AWS while maintaining appropriate security.. Which option should they select?",
+      "options": [
+        {
+          "id": "B",
+          "text": "Service control policy"
+        },
+        {
+          "id": "A",
+          "text": "AWS Artifact Agreements"
+        },
+        {
+          "id": "C",
+          "text": "IAM user"
+        },
+        {
+          "id": "D",
+          "text": "Amazon GuardDuty"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Security and Compliance",
+      "topic": "Compliance",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0015",
+      "type": "single_select",
+      "question": "A security and operations team is reviewing a workload running on AWS. The team needs to identify the statement that is accurate about Variable cost model while meeting the stated business requirement.. Which AWS service or practice is the BEST fit?",
+      "options": [
+        {
+          "id": "C",
+          "text": "focuses on recovering from disruptions and dynamically acquiring resources to meet demand"
+        },
+        {
+          "id": "B",
+          "text": "allows resources to change as demand changes"
+        },
+        {
+          "id": "D",
+          "text": "should both be protected as part of the Security pillar"
+        },
+        {
+          "id": "A",
+          "text": "supports consumption-based cloud economics"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Cloud Concepts",
+      "topic": "Cloud benefits",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0685",
+      "type": "single_select",
+      "question": "A development team is preparing an application for production. The team needs to identify the statement that is accurate about AWS Shield Standard while keeping operational effort low.. Which AWS option best meets the requirement?",
+      "options": [
+        {
+          "id": "C",
+          "text": "is a threat detection service"
+        },
+        {
+          "id": "B",
+          "text": "provide agreements related to an organization's use of AWS"
+        },
+        {
+          "id": "A",
+          "text": "is provided at no additional charge"
+        },
+        {
+          "id": "D",
+          "text": "uses multiple machines to attack a target"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Security and Compliance",
+      "topic": "DDoS protection",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0723",
+      "type": "single_select",
+      "question": "An e-commerce company is reviewing its AWS architecture. During planning, it determines that it must determine the correct AWS approach for this requirement: A team needs a capability that can help provide lower latency to geographically distributed customers. Which option is the most appropriate choice without introducing unnecessary complexity.. Which option is MOST appropriate?",
+      "options": [
+        {
+          "id": "C",
+          "text": "Security at all layers"
+        },
+        {
+          "id": "B",
+          "text": "Three-tier architecture"
+        },
+        {
+          "id": "D",
+          "text": "Elasticity"
+        },
+        {
+          "id": "A",
+          "text": "Global reach"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Cloud Concepts",
+      "topic": "Cloud benefits",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0574",
+      "type": "single_select",
+      "question": "A global business is expanding its AWS workload. Its architects need to determine the correct AWS approach for this requirement: A team needs a capability that apply at the subnet level. Which option is the most appropriate choice while avoiding unnecessary infrastructure management.. Which option should they select?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Network ACL rules"
+        },
+        {
+          "id": "B",
+          "text": "Domain Name System"
+        },
+        {
+          "id": "D",
+          "text": "Stateless packet filtering"
+        },
+        {
+          "id": "C",
+          "text": "Virtual private gateway"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "Network security",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0259",
+      "type": "multi_select",
+      "question": "An e-commerce company is reviewing its AWS architecture. During planning, it determines that it must determine the correct AWS approach for this requirement: Which TWO statements correctly describe AWS Artifact Agreements while keeping the solution cost-conscious.. Which option is MOST appropriate?",
+      "options": [
+        {
+          "id": "A",
+          "text": "provide agreements related to an organization's use of AWS"
+        },
+        {
+          "id": "B",
+          "text": "can be accessed through AWS Artifact"
+        },
+        {
+          "id": "D",
+          "text": "can be given permissions through IAM policies"
+        },
+        {
+          "id": "C",
+          "text": "can restrict AWS services, resources, or API actions available to accounts in an organization"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Security and Compliance",
+      "topic": "Compliance",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0053",
+      "type": "single_select",
+      "question": "A development team is preparing an application for production. The team needs to determine the correct AWS approach for this requirement: Which AWS concept or service is best described as one that is a threat detection service with the least administrative overhead.. Which AWS option best meets the requirement?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Amazon GuardDuty"
+        },
+        {
+          "id": "D",
+          "text": "Amazon Inspector"
+        },
+        {
+          "id": "C",
+          "text": "AWS WAF"
+        },
+        {
+          "id": "B",
+          "text": "IAM user"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Security and Compliance",
+      "topic": "Threat detection",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0378",
+      "type": "single_select",
+      "question": "A company is migrating an existing workload to AWS. The team needs to determine the correct AWS approach for this requirement: Which AWS concept or service is best described as one that RDS is relational while DynamoDB is a nonrelational key-value database while following AWS best practices.. Which AWS service or approach should it choose?",
+      "options": [
+        {
+          "id": "B",
+          "text": "Amazon DynamoDB"
+        },
+        {
+          "id": "A",
+          "text": "RDS versus DynamoDB"
+        },
+        {
+          "id": "D",
+          "text": "Amazon S3"
+        },
+        {
+          "id": "C",
+          "text": "EBS snapshot"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "Database selection",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0351",
+      "type": "multi_select",
+      "question": "A security and operations team is reviewing a workload running on AWS. The team needs to determine the correct AWS approach for this requirement: Which TWO statements correctly describe Amazon EC2 while meeting the stated business requirement.. Which AWS service or practice is the BEST fit?",
+      "options": [
+        {
+          "id": "C",
+          "text": "can provide discounted pricing in exchange for a commitment compared with On-Demand pricing"
+        },
+        {
+          "id": "D",
+          "text": "are suitable for a wide variety of workloads"
+        },
+        {
+          "id": "A",
+          "text": "provides virtual servers in the AWS Cloud"
+        },
+        {
+          "id": "B",
+          "text": "requires customers to manage the instances they provision, including ongoing maintenance responsibilities"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Technology",
+      "topic": "EC2",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0415",
+      "type": "single_select",
+      "question": "A security and operations team is reviewing a workload running on AWS. The team needs to determine the correct AWS approach for this requirement: Which AWS concept or service is best described as one that is a site used by Amazon CloudFront to cache copies of content while meeting the stated business requirement.. Which AWS service or practice is the BEST fit?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Edge location"
+        },
+        {
+          "id": "B",
+          "text": "AWS Elastic Beanstalk"
+        },
+        {
+          "id": "D",
+          "text": "Amazon CloudFront"
+        },
+        {
+          "id": "C",
+          "text": "Multi-AZ architecture"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "Edge locations",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0233",
+      "type": "multi_select",
+      "question": "A startup is designing a new AWS environment. It needs to determine the correct AWS approach for this requirement: Which TWO statements correctly describe AWS Business Support while keeping the solution cost-conscious.. Which option is the BEST choice?",
+      "options": [
+        {
+          "id": "C",
+          "text": "can reduce the unit price when usage increases for eligible services"
+        },
+        {
+          "id": "A",
+          "text": "includes all AWS Trusted Advisor checks"
+        },
+        {
+          "id": "B",
+          "text": "provides faster access to technical support than Basic or Developer support"
+        },
+        {
+          "id": "D",
+          "text": "includes categories such as Always Free, 12 Months Free, and Trials"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Billing and Pricing",
+      "topic": "Support",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0368",
+      "type": "single_select",
+      "question": "A finance and technology team is evaluating several AWS solutions. They need to determine the correct AWS approach for this requirement: Which AWS concept or service is best described as one that use hardware accelerators for workloads such as graphics or specialized computation while meeting the stated business requirement.. Which option is MOST suitable?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Accelerated computing instances"
+        },
+        {
+          "id": "D",
+          "text": "AWS Lambda"
+        },
+        {
+          "id": "C",
+          "text": "Reserved Instances"
+        },
+        {
+          "id": "B",
+          "text": "Amazon EKS"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "EC2 instance types",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0117",
+      "type": "multi_select",
+      "question": "A development team is preparing an application for production. The team needs to determine the correct AWS approach for this requirement: Which TWO statements correctly describe Multi-AZ resilience while avoiding unnecessary infrastructure management.. Which AWS option best meets the requirement?",
+      "options": [
+        {
+          "id": "A",
+          "text": "replicates workloads across Availability Zones"
+        },
+        {
+          "id": "D",
+          "text": "is a security best practice in the Well-Architected Framework"
+        },
+        {
+          "id": "B",
+          "text": "reduces the impact of an Availability Zone failure"
+        },
+        {
+          "id": "C",
+          "text": "helps evaluate AWS architectures against best practices"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Technology",
+      "topic": "Resilience",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0668",
+      "type": "single_select",
+      "question": "A cloud administrator has been asked to improve an organization's AWS environment. The organization needs to determine the correct AWS approach for this requirement: Which AWS concept or service is best described as one that means applying security controls throughout the architecture with the least administrative overhead.. What should the administrator recommend?",
+      "options": [
+        {
+          "id": "B",
+          "text": "Security pillar"
+        },
+        {
+          "id": "A",
+          "text": "Security at all layers"
+        },
+        {
+          "id": "C",
+          "text": "Elasticity"
+        },
+        {
+          "id": "D",
+          "text": "Three-tier architecture"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Security and Compliance",
+      "topic": "Security",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0161",
+      "type": "single_select",
+      "question": "A startup is designing a new AWS environment. It needs to identify the statement that is accurate about S3 Glacier while keeping operational effort low.. Which option is the BEST choice?",
+      "options": [
+        {
+          "id": "D",
+          "text": "is an enterprise-class relational database compatible with MySQL and PostgreSQL"
+        },
+        {
+          "id": "C",
+          "text": "is a key-value database service"
+        },
+        {
+          "id": "A",
+          "text": "supports retrieval in minutes to hours depending on retrieval options"
+        },
+        {
+          "id": "B",
+          "text": "is designed for infrequently accessed data that still requires high availability"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "S3 storage classes",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0332",
+      "type": "single_select",
+      "question": "A cloud administrator has been asked to improve an organization's AWS environment. The organization needs to identify the statement that is accurate about EBS versus EFS without introducing unnecessary complexity.. What should the administrator recommend?",
+      "options": [
+        {
+          "id": "A",
+          "text": "EFS is a regional file system designed for access across multiple Availability Zones"
+        },
+        {
+          "id": "C",
+          "text": "provides temporary block-level storage for an EC2 instance"
+        },
+        {
+          "id": "B",
+          "text": "is a data warehousing service"
+        },
+        {
+          "id": "D",
+          "text": "helps migrate databases to AWS"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "Storage comparison",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0610",
+      "type": "single_select",
+      "question": "A company is migrating an existing workload to AWS. The team needs to determine the correct AWS approach for this requirement: A team needs a capability that is available through AWS Organizations. Which option is the most appropriate choice while meeting the stated business requirement.. Which AWS service or approach should it choose?",
+      "options": [
+        {
+          "id": "B",
+          "text": "AWS Marketplace"
+        },
+        {
+          "id": "C",
+          "text": "Reservation-based savings"
+        },
+        {
+          "id": "D",
+          "text": "AWS Budgets"
+        },
+        {
+          "id": "A",
+          "text": "Consolidated billing"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Billing and Pricing",
+      "topic": "Organizations",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0487",
+      "type": "multi_select",
+      "question": "A security and operations team is reviewing a workload running on AWS. The team needs to determine the correct AWS approach for this requirement: Which TWO statements correctly describe Pay-as-you-go pricing while maintaining appropriate security.. Which AWS service or practice is the BEST fit?",
+      "options": [
+        {
+          "id": "B",
+          "text": "avoids requiring a large upfront purchase of physical infrastructure"
+        },
+        {
+          "id": "A",
+          "text": "charges customers for the AWS resources they use"
+        },
+        {
+          "id": "D",
+          "text": "is one of the AWS Support plans described in the module"
+        },
+        {
+          "id": "C",
+          "text": "provides AWS expertise across the range of AWS services"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Billing and Pricing",
+      "topic": "Pricing",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0663",
+      "type": "single_select",
+      "question": "A security and operations team is reviewing a workload running on AWS. The team needs to determine the correct AWS approach for this requirement: Which AWS concept or service is best described as one that can separate an application into presentation, application, and database layers while meeting the stated business requirement.. Which AWS service or practice is the BEST fit?",
+      "options": [
+        {
+          "id": "D",
+          "text": "Security pillar"
+        },
+        {
+          "id": "A",
+          "text": "Three-tier architecture"
+        },
+        {
+          "id": "C",
+          "text": "Cost optimization pillar"
+        },
+        {
+          "id": "B",
+          "text": "Operational excellence"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "Architecture",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0179",
+      "type": "single_select",
+      "question": "An e-commerce company is reviewing its AWS architecture. During planning, it determines that it must identify the statement that is accurate about On-premises deployment while keeping operational effort low.. Which option is MOST appropriate?",
+      "options": [
+        {
+          "id": "D",
+          "text": "allows organizations to access only the capacity they need"
+        },
+        {
+          "id": "C",
+          "text": "delivers IT resources and applications on demand through the internet with pay-as-you-go pricing"
+        },
+        {
+          "id": "A",
+          "text": "is also described in the module as a private cloud deployment"
+        },
+        {
+          "id": "B",
+          "text": "means paying for computing resources that are consumed instead of making a large upfront investment"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Cloud Concepts",
+      "topic": "Deployment models",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0555",
+      "type": "single_select",
+      "question": "An e-commerce company is reviewing its AWS architecture. During planning, it determines that it must determine the correct AWS approach for this requirement: Which AWS concept or service is best described as one that represent measurements collected from AWS resources and applications while meeting the stated business requirement.. Which option is MOST appropriate?",
+      "options": [
+        {
+          "id": "B",
+          "text": "Trusted Advisor checks"
+        },
+        {
+          "id": "A",
+          "text": "CloudWatch metrics"
+        },
+        {
+          "id": "D",
+          "text": "AWS CloudTrail"
+        },
+        {
+          "id": "C",
+          "text": "Resource utilization monitoring"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "Monitoring",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0771",
+      "type": "multi_select",
+      "question": "An e-commerce company is reviewing its AWS architecture. During planning, it determines that it must determine the correct AWS approach for this requirement: Select TWO characteristics that apply to Amazon S3 while avoiding unnecessary infrastructure management.. Which option is MOST appropriate?",
+      "options": [
+        {
+          "id": "D",
+          "text": "provides temporary block-level storage for an EC2 instance"
+        },
+        {
+          "id": "B",
+          "text": "stores objects in buckets"
+        },
+        {
+          "id": "C",
+          "text": "the choice depends on the workload's data model and access requirements"
+        },
+        {
+          "id": "A",
+          "text": "provides object-level storage"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Technology",
+      "topic": "Object storage",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0509",
+      "type": "multi_select",
+      "question": "A development team is preparing an application for production. The team needs to determine the correct AWS approach for this requirement: Which TWO statements correctly describe Stateful packet filtering while avoiding unnecessary infrastructure management.. Which AWS option best meets the requirement?",
+      "options": [
+        {
+          "id": "D",
+          "text": "is commonly described as the phone book of the internet"
+        },
+        {
+          "id": "B",
+          "text": "is the filtering behavior associated with security groups in the module"
+        },
+        {
+          "id": "A",
+          "text": "remembers previous traffic decisions for the connection"
+        },
+        {
+          "id": "C",
+          "text": "is a DNS web service"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Technology",
+      "topic": "Traffic control",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0725",
+      "type": "single_select",
+      "question": "A development team is preparing an application for production. The team needs to identify the statement that is accurate about Amazon EFS while keeping the solution cost-conscious.. Which AWS option best meets the requirement?",
+      "options": [
+        {
+          "id": "D",
+          "text": "EBS volumes are attached to EC2 instances and are Availability Zone-level resources"
+        },
+        {
+          "id": "B",
+          "text": "is a key-value database service"
+        },
+        {
+          "id": "A",
+          "text": "allows multiple EC2 instances to access the same file system concurrently"
+        },
+        {
+          "id": "C",
+          "text": "is designed for frequently accessed data"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "File storage",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0338",
+      "type": "multi_select",
+      "question": "A company is migrating an existing workload to AWS. The team needs to determine the correct AWS approach for this requirement: Which TWO statements correctly describe Security pillar while avoiding unnecessary infrastructure management.. Which AWS service or approach should it choose?",
+      "options": [
+        {
+          "id": "B",
+          "text": "includes practices such as applying security at all layers and protecting data in transit and at rest"
+        },
+        {
+          "id": "C",
+          "text": "can separate an application into presentation, application, and database layers"
+        },
+        {
+          "id": "D",
+          "text": "helps design and operate reliable, secure, efficient, and cost-effective systems"
+        },
+        {
+          "id": "A",
+          "text": "focuses on protecting information, systems, and assets"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Security and Compliance",
+      "topic": "Well-Architected pillars",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0094",
+      "type": "single_select",
+      "question": "A global business is expanding its AWS workload. Its architects need to determine the correct AWS approach for this requirement: Which AWS concept or service is best described as one that acts as a virtual firewall for resources such as EC2 instances while following AWS best practices.. Which option should they select?",
+      "options": [
+        {
+          "id": "D",
+          "text": "Subnet"
+        },
+        {
+          "id": "C",
+          "text": "AWS Direct Connect"
+        },
+        {
+          "id": "B",
+          "text": "Route 53 DNS records"
+        },
+        {
+          "id": "A",
+          "text": "Security group"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "Traffic control",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0236",
+      "type": "single_select",
+      "question": "A cloud administrator has been asked to improve an organization's AWS environment. The organization needs to identify the statement that is accurate about AWS Cloud Adoption Framework without introducing unnecessary complexity.. What should the administrator recommend?",
+      "options": [
+        {
+          "id": "A",
+          "text": "uses perspectives to organize business, people, governance, platform, security, and operations concerns"
+        },
+        {
+          "id": "D",
+          "text": "focuses on operating cloud environments"
+        },
+        {
+          "id": "B",
+          "text": "can extract text and data from documents"
+        },
+        {
+          "id": "C",
+          "text": "supports organization-wide change"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Cloud Concepts",
+      "topic": "AWS CAF",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0058",
+      "type": "multi_select",
+      "question": "A company is migrating an existing workload to AWS. The team needs to determine the correct AWS approach for this requirement: Select TWO characteristics that apply to VPC boundaries with the least administrative overhead.. Which AWS service or approach should it choose?",
+      "options": [
+        {
+          "id": "C",
+          "text": "can help reduce network costs compared with some internet-based connectivity patterns"
+        },
+        {
+          "id": "D",
+          "text": "is a subnet intended for resources that need a route toward an internet gateway"
+        },
+        {
+          "id": "B",
+          "text": "allow customers to define network configuration for their resources"
+        },
+        {
+          "id": "A",
+          "text": "help isolate AWS resources within a virtual network"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Technology",
+      "topic": "Network isolation",
+      "difficulty": "hard",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0372",
+      "type": "single_select",
+      "question": "A cloud administrator has been asked to improve an organization's AWS environment. The organization needs to identify the statement that is accurate about Private subnet while keeping operational effort low.. What should the administrator recommend?",
+      "options": [
+        {
+          "id": "A",
+          "text": "can be used to isolate resources that should not be directly reachable from the internet"
+        },
+        {
+          "id": "D",
+          "text": "acts as a virtual firewall for resources such as EC2 instances"
+        },
+        {
+          "id": "B",
+          "text": "is a DNS web service"
+        },
+        {
+          "id": "C",
+          "text": "help isolate AWS resources within a virtual network"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "Network segmentation",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0379",
+      "type": "multi_select",
+      "question": "An e-commerce company is reviewing its AWS architecture. During planning, it determines that it must determine the correct AWS approach for this requirement: Select TWO characteristics that apply to VPN connection while meeting the stated business requirement.. Which option is MOST appropriate?",
+      "options": [
+        {
+          "id": "B",
+          "text": "can use a virtual private gateway as the AWS-side connection component"
+        },
+        {
+          "id": "A",
+          "text": "can encrypt traffic between an organization and AWS over a network path"
+        },
+        {
+          "id": "C",
+          "text": "can route user requests to AWS infrastructure or infrastructure outside AWS"
+        },
+        {
+          "id": "D",
+          "text": "remembers previous traffic decisions for the connection"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Technology",
+      "topic": "Hybrid networking",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0769",
+      "type": "multi_select",
+      "question": "A startup is designing a new AWS environment. It needs to determine the correct AWS approach for this requirement: Select TWO characteristics that apply to Availability Zone while meeting the stated business requirement.. Which option is the BEST choice?",
+      "options": [
+        {
+          "id": "C",
+          "text": "can reduce latency by serving content from locations closer to users"
+        },
+        {
+          "id": "A",
+          "text": "is a single data center or a group of data centers within an AWS Region"
+        },
+        {
+          "id": "D",
+          "text": "can influence Region selection because placing workloads closer to customers can reduce latency"
+        },
+        {
+          "id": "B",
+          "text": "is designed to be sufficiently separated from other Availability Zones to improve resilience"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Technology",
+      "topic": "Availability Zones",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0744",
+      "type": "single_select",
+      "question": "A finance and technology team is evaluating several AWS solutions. They need to identify the statement that is accurate about Customer proximity while keeping the solution cost-conscious.. Which option is MOST suitable?",
+      "options": [
+        {
+          "id": "A",
+          "text": "is a factor to consider when choosing where to deploy an application"
+        },
+        {
+          "id": "C",
+          "text": "places resources across multiple Availability Zones"
+        },
+        {
+          "id": "D",
+          "text": "lets users make AWS API calls from a terminal"
+        },
+        {
+          "id": "B",
+          "text": "is a site used by Amazon CloudFront to cache copies of content"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Cloud Concepts",
+      "topic": "Region selection",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0629",
+      "type": "single_select",
+      "question": "A development team is preparing an application for production. The team needs to determine the correct AWS approach for this requirement: A team needs a capability that requires inbound and outbound rules to be considered independently. Which option is the most appropriate choice while following AWS best practices.. Which AWS option best meets the requirement?",
+      "options": [
+        {
+          "id": "C",
+          "text": "AWS Direct Connect"
+        },
+        {
+          "id": "A",
+          "text": "Stateless packet filtering"
+        },
+        {
+          "id": "D",
+          "text": "VPC boundaries"
+        },
+        {
+          "id": "B",
+          "text": "VPN connection"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "Traffic control",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0504",
+      "type": "single_select",
+      "question": "A finance and technology team is evaluating several AWS solutions. They need to determine the correct AWS approach for this requirement: A team needs a capability that is the filtering behavior associated with security groups in the module. Which option is the most appropriate choice while following AWS best practices.. Which option is MOST suitable?",
+      "options": [
+        {
+          "id": "D",
+          "text": "Virtual private gateway"
+        },
+        {
+          "id": "A",
+          "text": "Stateful packet filtering"
+        },
+        {
+          "id": "C",
+          "text": "Network ACL"
+        },
+        {
+          "id": "B",
+          "text": "Domain Name System"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "Traffic control",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0736",
+      "type": "multi_select",
+      "question": "A finance and technology team is evaluating several AWS solutions. They need to determine the correct AWS approach for this requirement: Select TWO characteristics that apply to Amazon ECS while keeping operational effort low.. Which option is MOST suitable?",
+      "options": [
+        {
+          "id": "A",
+          "text": "is an AWS container orchestration service"
+        },
+        {
+          "id": "B",
+          "text": "can be used to run and manage containerized applications"
+        },
+        {
+          "id": "C",
+          "text": "are useful when workloads have uncertain usage or need flexible capacity"
+        },
+        {
+          "id": "D",
+          "text": "are designed for workloads that need to process large data sets in memory"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Technology",
+      "topic": "Containers",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0493",
+      "type": "multi_select",
+      "question": "A development team is preparing an application for production. The team needs to determine the correct AWS approach for this requirement: Select TWO characteristics that apply to EBS versus EFS with the least administrative overhead.. Which AWS option best meets the requirement?",
+      "options": [
+        {
+          "id": "C",
+          "text": "is designed to support database migration activities"
+        },
+        {
+          "id": "B",
+          "text": "EFS is a regional file system designed for access across multiple Availability Zones"
+        },
+        {
+          "id": "D",
+          "text": "stores structured data in tables and commonly uses SQL"
+        },
+        {
+          "id": "A",
+          "text": "EBS volumes are attached to EC2 instances and are Availability Zone-level resources"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Technology",
+      "topic": "Storage comparison",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0323",
+      "type": "single_select",
+      "question": "An e-commerce company is reviewing its AWS architecture. During planning, it determines that it must identify the statement that is accurate about S3 Standard-IA without introducing unnecessary complexity.. Which option is MOST appropriate?",
+      "options": [
+        {
+          "id": "D",
+          "text": "is an incremental backup of an EBS volume after the first snapshot"
+        },
+        {
+          "id": "C",
+          "text": "stores data in a single Availability Zone"
+        },
+        {
+          "id": "B",
+          "text": "is a data warehousing service"
+        },
+        {
+          "id": "A",
+          "text": "has a lower storage price and higher retrieval price than S3 Standard"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "S3 storage classes",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0224",
+      "type": "multi_select",
+      "question": "A finance and technology team is evaluating several AWS solutions. They need to determine the correct AWS approach for this requirement: Select TWO characteristics that apply to Private subnet while maintaining appropriate security.. Which option is MOST suitable?",
+      "options": [
+        {
+          "id": "C",
+          "text": "uses stateful packet filtering"
+        },
+        {
+          "id": "A",
+          "text": "is a subnet without a direct route to an internet gateway"
+        },
+        {
+          "id": "B",
+          "text": "can be used to isolate resources that should not be directly reachable from the internet"
+        },
+        {
+          "id": "D",
+          "text": "provides an isolated network environment for AWS resources"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Technology",
+      "topic": "Network segmentation",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0502",
+      "type": "multi_select",
+      "question": "A global business is expanding its AWS workload. Its architects need to determine the correct AWS approach for this requirement: Which TWO statements correctly describe Amazon CloudFront while keeping the solution cost-conscious.. Which option should they select?",
+      "options": [
+        {
+          "id": "D",
+          "text": "is one factor to consider when choosing an AWS Region"
+        },
+        {
+          "id": "B",
+          "text": "can reduce latency by serving content from locations closer to users"
+        },
+        {
+          "id": "A",
+          "text": "is a content delivery network that uses edge locations to cache and deliver content"
+        },
+        {
+          "id": "C",
+          "text": "allows AWS management operations to be performed programmatically"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Technology",
+      "topic": "CDN",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0137",
+      "type": "multi_select",
+      "question": "A startup is designing a new AWS environment. It needs to determine the correct AWS approach for this requirement: Which TWO statements correctly describe AWS Lambda while keeping the solution cost-conscious.. Which option is the BEST choice?",
+      "options": [
+        {
+          "id": "A",
+          "text": "runs code without requiring customers to provision or manage servers"
+        },
+        {
+          "id": "C",
+          "text": "let customers pay for compute capacity without requiring a long-term commitment"
+        },
+        {
+          "id": "B",
+          "text": "can automatically scale serverless applications based on workload demand"
+        },
+        {
+          "id": "D",
+          "text": "provide a higher ratio of memory to compute resources"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Technology",
+      "topic": "AWS Lambda",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0407",
+      "type": "single_select",
+      "question": "A security and operations team is reviewing a workload running on AWS. The team needs to determine the correct AWS approach for this requirement: A team needs a capability that is one way AWS pricing can offer discounts compared with flexible On-Demand usage. Which option is the most appropriate choice while following AWS best practices.. Which AWS service or practice is the BEST fit?",
+      "options": [
+        {
+          "id": "B",
+          "text": "AWS Enterprise Support"
+        },
+        {
+          "id": "C",
+          "text": "Consolidated billing"
+        },
+        {
+          "id": "D",
+          "text": "AWS Marketplace"
+        },
+        {
+          "id": "A",
+          "text": "Reservation-based savings"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Billing and Pricing",
+      "topic": "Pricing",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0326",
+      "type": "single_select",
+      "question": "A global business is expanding its AWS workload. Its architects need to determine the correct AWS approach for this requirement: Which AWS concept or service is best described as one that charges customers for the AWS resources they use while avoiding unnecessary infrastructure management.. Which option should they select?",
+      "options": [
+        {
+          "id": "B",
+          "text": "Technical Account Manager"
+        },
+        {
+          "id": "C",
+          "text": "AWS Basic Support"
+        },
+        {
+          "id": "D",
+          "text": "AWS Marketplace"
+        },
+        {
+          "id": "A",
+          "text": "Pay-as-you-go pricing"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Billing and Pricing",
+      "topic": "Pricing",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0571",
+      "type": "single_select",
+      "question": "An e-commerce company is reviewing its AWS architecture. During planning, it determines that it must determine the correct AWS approach for this requirement: A team needs a capability that can support loosely coupled application architectures. Which option is the most appropriate choice while avoiding unnecessary infrastructure management.. Which option is MOST appropriate?",
+      "options": [
+        {
+          "id": "D",
+          "text": "Amazon SQS"
+        },
+        {
+          "id": "A",
+          "text": "Messaging and queuing"
+        },
+        {
+          "id": "C",
+          "text": "Serverless computing"
+        },
+        {
+          "id": "B",
+          "text": "Reserved Instances"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "Messaging",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0439",
+      "type": "single_select",
+      "question": "A security and operations team is reviewing a workload running on AWS. The team needs to identify the statement that is accurate about Amazon VPC while following AWS best practices.. Which AWS service or practice is the BEST fit?",
+      "options": [
+        {
+          "id": "D",
+          "text": "is a VPC component used with protected connectivity such as a VPN"
+        },
+        {
+          "id": "C",
+          "text": "is a virtual firewall that controls inbound and outbound traffic at the subnet level"
+        },
+        {
+          "id": "B",
+          "text": "is a DNS web service"
+        },
+        {
+          "id": "A",
+          "text": "lets customers define networking boundaries around resources"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "VPC",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0732",
+      "type": "single_select",
+      "question": "A cloud administrator has been asked to improve an organization's AWS environment. The organization needs to determine the correct AWS approach for this requirement: Which AWS concept or service is best described as one that uses the global footprint of AWS to deploy applications to customers around the world quickly while keeping operational effort low.. What should the administrator recommend?",
+      "options": [
+        {
+          "id": "C",
+          "text": "Increase speed and agility"
+        },
+        {
+          "id": "D",
+          "text": "Cloud-based deployment"
+        },
+        {
+          "id": "B",
+          "text": "Economies of scale"
+        },
+        {
+          "id": "A",
+          "text": "Go global in minutes"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Cloud Concepts",
+      "topic": "Cloud benefits",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0677",
+      "type": "single_select",
+      "question": "A development team is preparing an application for production. The team needs to determine the correct AWS approach for this requirement: Which AWS concept or service is best described as one that can influence Region selection because placing workloads closer to customers can reduce latency while keeping operational effort low.. Which AWS option best meets the requirement?",
+      "options": [
+        {
+          "id": "D",
+          "text": "AWS Command Line Interface"
+        },
+        {
+          "id": "A",
+          "text": "Customer proximity"
+        },
+        {
+          "id": "B",
+          "text": "Edge location"
+        },
+        {
+          "id": "C",
+          "text": "Multi-AZ architecture"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Cloud Concepts",
+      "topic": "Region selection",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0183",
+      "type": "multi_select",
+      "question": "A security and operations team is reviewing a workload running on AWS. The team needs to determine the correct AWS approach for this requirement: Select TWO characteristics that apply to AWS Fargate while meeting the stated business requirement.. Which AWS service or practice is the BEST fit?",
+      "options": [
+        {
+          "id": "A",
+          "text": "provides serverless compute for containers"
+        },
+        {
+          "id": "B",
+          "text": "removes the need to manage the underlying servers for supported container workloads"
+        },
+        {
+          "id": "C",
+          "text": "are associated with compute-intensive workloads"
+        },
+        {
+          "id": "D",
+          "text": "package application code and its dependencies so the application can run consistently"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Technology",
+      "topic": "Containers",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0325",
+      "type": "single_select",
+      "question": "A development team is preparing an application for production. The team needs to identify the statement that is accurate about Cost Explorer grouping by tag while keeping operational effort low.. Which AWS option best meets the requirement?",
+      "options": [
+        {
+          "id": "B",
+          "text": "lets users estimate the cost of AWS services"
+        },
+        {
+          "id": "A",
+          "text": "uses user-defined key-value tags as a cost-analysis dimension"
+        },
+        {
+          "id": "C",
+          "text": "lets customers use certain AWS services within specified free usage offers"
+        },
+        {
+          "id": "D",
+          "text": "includes all AWS Trusted Advisor checks"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Billing and Pricing",
+      "topic": "Cost analysis",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0573",
+      "type": "multi_select",
+      "question": "A development team is preparing an application for production. The team needs to determine the correct AWS approach for this requirement: Select TWO characteristics that apply to Organizational unit while maintaining appropriate security.. Which AWS option best meets the requirement?",
+      "options": [
+        {
+          "id": "A",
+          "text": "groups AWS accounts hierarchically"
+        },
+        {
+          "id": "C",
+          "text": "should follow least-privilege principles when permissions are granted"
+        },
+        {
+          "id": "B",
+          "text": "allows accounts with similar business or security requirements to inherit policies applied to the OU"
+        },
+        {
+          "id": "D",
+          "text": "is a deliberate attempt to make a website or application unavailable"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Security and Compliance",
+      "topic": "Organizations",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0795",
+      "type": "single_select",
+      "question": "An e-commerce company is reviewing its AWS architecture. During planning, it determines that it must determine the correct AWS approach for this requirement: Which AWS concept or service is best described as one that runs code without requiring customers to provision or manage servers while keeping operational effort low.. Which option is MOST appropriate?",
+      "options": [
+        {
+          "id": "C",
+          "text": "Memory optimized instances"
+        },
+        {
+          "id": "B",
+          "text": "On-Demand Instances"
+        },
+        {
+          "id": "A",
+          "text": "AWS Lambda"
+        },
+        {
+          "id": "D",
+          "text": "Spot Instances"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "AWS Lambda",
+      "difficulty": "easy",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0512",
+      "type": "single_select",
+      "question": "A finance and technology team is evaluating several AWS solutions. They need to identify the statement that is accurate about AWS Organizations while keeping the solution cost-conscious.. Which option is MOST suitable?",
+      "options": [
+        {
+          "id": "B",
+          "text": "helps identify software vulnerabilities and unintended network exposure"
+        },
+        {
+          "id": "D",
+          "text": "is a JSON document that allows or denies permissions to AWS services and resources"
+        },
+        {
+          "id": "A",
+          "text": "can support centralized billing, access control, compliance, security, and resource sharing"
+        },
+        {
+          "id": "C",
+          "text": "is accessed using the email address and password used to create the AWS account"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Security and Compliance",
+      "topic": "Organizations",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0549",
+      "type": "multi_select",
+      "question": "A development team is preparing an application for production. The team needs to determine the correct AWS approach for this requirement: Select TWO characteristics that apply to Hybrid deployment without introducing unnecessary complexity.. Which AWS option best meets the requirement?",
+      "options": [
+        {
+          "id": "B",
+          "text": "can integrate cloud resources with legacy applications that remain on premises"
+        },
+        {
+          "id": "C",
+          "text": "is also described in the module as a private cloud deployment"
+        },
+        {
+          "id": "D",
+          "text": "makes it easier to develop and deploy applications"
+        },
+        {
+          "id": "A",
+          "text": "connects cloud-based resources to on-premises infrastructure"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Cloud Concepts",
+      "topic": "Deployment models",
+      "difficulty": "hard",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0291",
+      "type": "single_select",
+      "question": "An e-commerce company is reviewing its AWS architecture. During planning, it determines that it must determine the correct AWS approach for this requirement: Which AWS concept or service is best described as one that divides security responsibilities between AWS and the customer while maintaining appropriate security.. Which option is MOST appropriate?",
+      "options": [
+        {
+          "id": "D",
+          "text": "Principle of least privilege"
+        },
+        {
+          "id": "A",
+          "text": "AWS shared responsibility model"
+        },
+        {
+          "id": "B",
+          "text": "AWS Shield Advanced"
+        },
+        {
+          "id": "C",
+          "text": "IAM policy"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Security and Compliance",
+      "topic": "Shared responsibility",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0798",
+      "type": "single_select",
+      "question": "A global business is expanding its AWS workload. Its architects need to identify the statement that is accurate about Accelerated computing instances while keeping the solution cost-conscious.. Which option should they select?",
+      "options": [
+        {
+          "id": "D",
+          "text": "runs code without requiring customers to provision or manage servers"
+        },
+        {
+          "id": "B",
+          "text": "is a managed Kubernetes service"
+        },
+        {
+          "id": "A",
+          "text": "can use processors such as GPUs for workloads that benefit from parallel processing"
+        },
+        {
+          "id": "C",
+          "text": "can provide discounted pricing in exchange for a commitment compared with On-Demand pricing"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "EC2 instance types",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0466",
+      "type": "multi_select",
+      "question": "A company is migrating an existing workload to AWS. The team needs to determine the correct AWS approach for this requirement: Which TWO statements correctly describe Variable expense while keeping the solution cost-conscious.. Which AWS service or approach should it choose?",
+      "options": [
+        {
+          "id": "A",
+          "text": "means paying for computing resources that are consumed instead of making a large upfront investment"
+        },
+        {
+          "id": "B",
+          "text": "can reduce the need to invest heavily in data centers before resource usage is known"
+        },
+        {
+          "id": "D",
+          "text": "can translate aggregated usage into lower pay-as-you-go prices"
+        },
+        {
+          "id": "C",
+          "text": "keeps resources on premises while using virtualization and resource-management technologies"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Cloud Concepts",
+      "topic": "Cloud benefits",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0135",
+      "type": "single_select",
+      "question": "A security and operations team is reviewing a workload running on AWS. The team needs to determine the correct AWS approach for this requirement: Which AWS concept or service is best described as one that records API calls made in an AWS account while maintaining appropriate security.. Which AWS service or practice is the BEST fit?",
+      "options": [
+        {
+          "id": "A",
+          "text": "AWS CloudTrail"
+        },
+        {
+          "id": "D",
+          "text": "Resource utilization monitoring"
+        },
+        {
+          "id": "C",
+          "text": "CloudTrail event"
+        },
+        {
+          "id": "B",
+          "text": "CloudWatch dashboard"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Security and Compliance",
+      "topic": "Auditing",
+      "difficulty": "easy",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0312",
+      "type": "single_select",
+      "question": "A finance and technology team is evaluating several AWS solutions. They need to determine the correct AWS approach for this requirement: A team needs a capability that provides faster access to technical support than Basic or Developer support. Which option is the most appropriate choice while meeting the stated business requirement.. Which option is MOST suitable?",
+      "options": [
+        {
+          "id": "C",
+          "text": "AWS Marketplace"
+        },
+        {
+          "id": "D",
+          "text": "AWS Billing Dashboard"
+        },
+        {
+          "id": "B",
+          "text": "AWS Free Tier"
+        },
+        {
+          "id": "A",
+          "text": "AWS Business Support"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Billing and Pricing",
+      "topic": "Support",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0630",
+      "type": "single_select",
+      "question": "A global business is expanding its AWS workload. Its architects need to determine the correct AWS approach for this requirement: A team needs a capability that includes categories such as Always Free, 12 Months Free, and Trials. Which option is the most appropriate choice while avoiding unnecessary infrastructure management.. Which option should they select?",
+      "options": [
+        {
+          "id": "C",
+          "text": "AWS Developer Support"
+        },
+        {
+          "id": "B",
+          "text": "Technical Account Manager"
+        },
+        {
+          "id": "A",
+          "text": "AWS Free Tier"
+        },
+        {
+          "id": "D",
+          "text": "AWS Cost Explorer"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Billing and Pricing",
+      "topic": "Free Tier",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0180",
+      "type": "single_select",
+      "question": "A cloud administrator has been asked to improve an organization's AWS environment. The organization needs to identify the statement that is accurate about AWS Snowcone while following AWS best practices.. What should the administrator recommend?",
+      "options": [
+        {
+          "id": "C",
+          "text": "is an exabyte-scale data transfer service"
+        },
+        {
+          "id": "D",
+          "text": "provides guidance for managing an organization's cloud adoption process"
+        },
+        {
+          "id": "A",
+          "text": "can be used when a smaller physical device is appropriate"
+        },
+        {
+          "id": "B",
+          "text": "provide AWS capabilities powered by artificial intelligence"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "Snow Family",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0169",
+      "type": "single_select",
+      "question": "A startup is designing a new AWS environment. It needs to identify the statement that is accurate about Resource utilization monitoring while maintaining appropriate security.. Which option is the BEST choice?",
+      "options": [
+        {
+          "id": "B",
+          "text": "provides a consolidated view of metrics"
+        },
+        {
+          "id": "D",
+          "text": "monitors AWS resources and applications using metrics"
+        },
+        {
+          "id": "C",
+          "text": "records API calls made in an AWS account"
+        },
+        {
+          "id": "A",
+          "text": "can support decisions such as scaling resources when demand changes"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "Monitoring",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0751",
+      "type": "multi_select",
+      "question": "A security and operations team is reviewing a workload running on AWS. The team needs to determine the correct AWS approach for this requirement: Which TWO statements correctly describe AWS Well-Architected Framework without introducing unnecessary complexity.. Which AWS service or practice is the BEST fit?",
+      "options": [
+        {
+          "id": "D",
+          "text": "reduces the time needed to obtain new computing resources"
+        },
+        {
+          "id": "C",
+          "text": "focuses on protecting information, systems, and assets"
+        },
+        {
+          "id": "B",
+          "text": "helps design and operate reliable, secure, efficient, and cost-effective systems"
+        },
+        {
+          "id": "A",
+          "text": "helps evaluate AWS architectures against best practices"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Cloud Concepts",
+      "topic": "Well-Architected",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0746",
+      "type": "single_select",
+      "question": "A company is migrating an existing workload to AWS. The team needs to identify the statement that is accurate about AWS shared responsibility model with the least administrative overhead.. Which AWS service or approach should it choose?",
+      "options": [
+        {
+          "id": "A",
+          "text": "means AWS is responsible for security of the cloud while customers are responsible for security in the cloud"
+        },
+        {
+          "id": "C",
+          "text": "is a JSON document that allows or denies permissions to AWS services and resources"
+        },
+        {
+          "id": "D",
+          "text": "grants only the permissions required to perform necessary tasks"
+        },
+        {
+          "id": "B",
+          "text": "is a paid DDoS protection service"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Security and Compliance",
+      "topic": "Shared responsibility",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    },
+    {
+      "id": "SCN-0672",
+      "type": "multi_select",
+      "question": "A finance and technology team is evaluating several AWS solutions. They need to determine the correct AWS approach for this requirement: Which TWO statements correctly describe AWS Command Line Interface while keeping the solution cost-conscious.. Which option is MOST suitable?",
+      "options": [
+        {
+          "id": "D",
+          "text": "can reduce latency by serving content from locations closer to users"
+        },
+        {
+          "id": "B",
+          "text": "can be used to automate repeatable AWS management operations through commands"
+        },
+        {
+          "id": "C",
+          "text": "can influence AWS Region selection because organizations may have legal or governance requirements about where data resides"
+        },
+        {
+          "id": "A",
+          "text": "lets users make AWS API calls from a terminal"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Technology",
+      "topic": "AWS CLI",
+      "difficulty": "medium",
+      "source": "CloudPrep original 800-question bank, scenario adaptation",
+      "source_type": "scenario_based",
+      "explanation": "",
+      "scenario_based": true
+    }
+  ]
+}

@@ -78,16 +78,31 @@ export async function POST(req: Request) {
     // Setup PRNG
     let rng = Math.random;
 
-    // Helper to sample with single/multi select balancing
+    // Helper to sample with single/multi select balancing AND scenario/normal balancing
     function sampleDomain(pool: any[], targetCount: number) {
-      const single = shuffleArray(pool.filter(q => q.type === 'SINGLE_SELECT'), rng);
-      const multi = shuffleArray(pool.filter(q => q.type === 'MULTI_SELECT'), rng);
+      function pickBalanced(subPool: any[], count: number) {
+        if (count <= 0) return [];
+        const scenario = shuffleArray(subPool.filter(q => q.sourceType === 'scenario_based'), rng);
+        const normal = shuffleArray(subPool.filter(q => q.sourceType !== 'scenario_based'), rng);
+        const tScen = Math.round(count * 0.5);
+        const tNorm = count - tScen;
+        
+        let picked = [...scenario.slice(0, tScen), ...normal.slice(0, tNorm)];
+        if (picked.length < count) {
+            const remaining = shuffleArray(subPool.filter(q => !picked.some(p => p.id === q.id)), rng);
+            picked.push(...remaining.slice(0, count - picked.length));
+        }
+        return picked;
+      }
+
+      const single = pool.filter(q => q.type === 'SINGLE_SELECT');
+      const multi = pool.filter(q => q.type === 'MULTI_SELECT');
       
       const targetMulti = Math.max(1, Math.round(targetCount * 0.22));
       const targetSingle = targetCount - targetMulti;
 
-      const pickedMulti = multi.slice(0, targetMulti);
-      const pickedSingle = single.slice(0, targetSingle);
+      const pickedMulti = pickBalanced(multi, targetMulti);
+      const pickedSingle = pickBalanced(single, targetSingle);
       let combined = [...pickedSingle, ...pickedMulti];
 
       if (combined.length < targetCount) {

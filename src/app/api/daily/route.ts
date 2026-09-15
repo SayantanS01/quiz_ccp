@@ -24,21 +24,30 @@ export async function GET(req: Request) {
     }
     const seed = Math.abs(hash);
 
-    // Fetch all active question IDs
+    // Fetch all active question IDs, partitioned by sourceType
     const allQuestions = await prisma.question.findMany({
       where: { status: 'active' },
-      select: { id: true },
+      select: { id: true, sourceType: true },
       orderBy: { id: 'asc' },
     });
 
-    const totalCount = allQuestions.length;
+    const scenarioQuestions = allQuestions.filter(q => q.sourceType === 'scenario_based');
+    const normalQuestions = allQuestions.filter(q => q.sourceType !== 'scenario_based');
+
     const selectedIds: string[] = [];
 
-    // Pick 10 pseudo-random questions deterministically based on seed
-    for (let i = 0; i < 10; i++) {
-      const idx = (seed + i * 37) % totalCount;
-      selectedIds.push(allQuestions[idx].id);
-    }
+    // Helper to pick deterministically
+    const pickQuestions = (pool: any[], count: number, hashSeed: number) => {
+      if (pool.length === 0) return;
+      for (let i = 0; i < count; i++) {
+        const idx = (hashSeed + i * 37) % pool.length;
+        selectedIds.push(pool[idx].id);
+      }
+    };
+
+    // Pick 5 scenario and 5 normal
+    pickQuestions(scenarioQuestions, 5, seed);
+    pickQuestions(normalQuestions, 5, seed + 100); // Use a slightly different seed so it doesn't just mirror indices
 
     const questions = await prisma.question.findMany({
       where: { id: { in: selectedIds } },
