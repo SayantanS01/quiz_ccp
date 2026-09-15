@@ -155,36 +155,35 @@ export default function AdminPage() {
       <Navbar />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <header className="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-800 pb-6">
-          <div>
-            <div className="flex items-center gap-3 mb-2">
-              <div className="bg-gradient-to-br from-purple-500 to-indigo-600 p-2 rounded-lg">
-                <Sliders className="w-6 h-6 text-white" />
-              </div>
-              <h1 className="text-3xl font-black tracking-tight text-white">CloudPrep Admin Portal</h1>
+        <header className="mb-8">
+          <div className="flex items-center gap-3 mb-2">
+            <div className="bg-gradient-to-br from-purple-500 to-indigo-600 p-2 rounded-lg">
+              <Sliders className="w-6 h-6 text-white" />
             </div>
-            <p className="text-slate-400">Manage local user accounts, monitor exam attempts, and audit the question pool.</p>
+            <h1 className="text-3xl font-bold text-white">CloudPrep Admin Portal</h1>
           </div>
-          
-          <div className="flex items-center gap-3 bg-slate-900/80 p-1.5 rounded-xl border border-slate-800">
+          <p className="text-slate-400">Manage user accounts, monitor exam attempts, and audit the question pool.</p>
+
+          <div className="flex items-center gap-2 mt-6 border-b border-slate-800 pb-px overflow-x-auto hide-scrollbar">
             {[
-              { id: 'dashboard', label: 'Dashboard & Attempts', icon: History },
-              { id: 'users', label: 'User Management', icon: Users },
+              { id: 'dashboard', label: 'Dashboard', icon: Sliders },
+              { id: 'users', label: 'Users', icon: Users },
               { id: 'question_bank', label: 'Question Bank', icon: Database },
             ].map((tab) => {
               const Icon = tab.icon;
+              const isActive = activeTab === tab.id;
               return (
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id as any)}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all ${
-                    activeTab === tab.id
-                      ? 'bg-purple-500 text-white shadow-md'
-                      : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800'
+                  className={`flex items-center gap-2 px-4 py-2.5 font-medium text-sm transition-colors border-b-2 whitespace-nowrap ${
+                    isActive 
+                      ? 'border-purple-500 text-purple-400 bg-purple-500/10 rounded-t-lg' 
+                      : 'border-transparent text-slate-400 hover:text-white hover:bg-slate-800/50 rounded-t-lg'
                   }`}
                 >
                   <Icon className="w-4 h-4" />
-                  <span className="hidden sm:inline">{tab.label}</span>
+                  <span>{tab.label}</span>
                 </button>
               );
             })}
@@ -202,7 +201,7 @@ export default function AdminPage() {
                 {/* Stats Row */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                   <div className="bg-slate-900/60 border border-slate-800 rounded-xl p-5">
-                    <p className="text-sm font-semibold text-slate-400 mb-1">Total Local Users</p>
+                    <p className="text-sm font-semibold text-slate-400 mb-1">Total Users</p>
                     <p className="text-3xl font-black text-white">{users.length}</p>
                   </div>
                   <div className="bg-slate-900/60 border border-slate-800 rounded-xl p-5">
@@ -262,7 +261,7 @@ export default function AdminPage() {
                           {attempts.length === 0 ? (
                             <tr>
                               <td colSpan={7} className="px-6 py-8 text-center text-slate-500">
-                                No local attempts found.
+                                No attempts found.
                               </td>
                             </tr>
                           ) : (
@@ -356,13 +355,13 @@ export default function AdminPage() {
             {activeTab === 'users' && (
               <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
                 <div className="flex items-center justify-between mb-4">
-                  <h2 className="text-xl font-bold text-white">Local User Accounts</h2>
+                  <h2 className="text-xl font-bold text-white">User Accounts</h2>
                 </div>
 
                 <div className="grid gap-4">
                   {users.length === 0 ? (
                     <div className="bg-slate-900/50 border border-slate-800 rounded-xl p-8 text-center text-slate-500">
-                      No users registered locally yet.
+                      No users registered yet.
                     </div>
                   ) : (
                     users.map((u) => {
@@ -371,10 +370,10 @@ export default function AdminPage() {
                       const avgScore = userAtts.length ? Math.round(userAtts.reduce((acc, a) => acc + (a.percentage || 0), 0) / userAtts.length) : 0;
                       
                       return (
-                        <div key={u.username} className="bg-[#111827] border border-slate-800 rounded-xl p-5 flex flex-col md:flex-row gap-6 justify-between items-center hover:border-slate-700 transition-colors">
+                        <div key={u.username} className="bg-[#111827] border border-slate-800 rounded-xl p-5 flex flex-col lg:flex-row gap-6 justify-between items-start lg:items-center hover:border-slate-700 transition-colors">
                           <div className="flex-1 flex flex-col sm:flex-row items-start sm:items-center gap-6 w-full">
                             <div>
-                              <h3 className="text-lg font-bold text-white">{u.displayName}</h3>
+                              <h3 className="text-lg font-bold text-white">{(u as any).name || u.displayName}</h3>
                               <p className="text-sm text-slate-400 font-mono">@{u.username}</p>
                             </div>
                             
