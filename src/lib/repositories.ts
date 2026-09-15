@@ -258,27 +258,21 @@ export class ApiAttemptRepository {
     if (!data.success) return null;
     
     // Convert API format to LocalAttempt format for the UI
-    const attempt = data.attempt;
-    const questions = attempt.questions.map((q: any, i: number) => {
-      let options = q.question.options;
-      if (q.optionsOrder) {
-        try {
-          const order = JSON.parse(q.optionsOrder);
-          options = order.map((id: string) => options.find((o: any) => o.id === id));
-        } catch (e) {}
-      }
-
+    const attempt = data; // data contains the fields directly
+    const questions = (attempt.questions || []).map((q: any, i: number) => {
+      let options = q.options || []; // The API already returns formatted options, so we can just map them directly
+      
       return {
-        questionId: q.questionId,
+        questionId: q.id, // API returns id instead of questionId
         displayNumber: q.position,
-        isScored: q.isScored,
-        selectedAnswers: q.selectedOptions ? JSON.parse(q.selectedOptions) : [],
-        flagged: q.isFlagged,
-        displayedOptions: options.map((o: any, idx: number) => ({
+        isScored: q.isScored ?? true, // Default to true if not provided by API
+        selectedAnswers: q.selectedOptions || [],
+        flagged: q.isFlagged || false,
+        displayedOptions: options.map((o: any) => ({
           id: o.id,
-          label: String.fromCharCode(65 + idx),
+          label: o.label,
           text: o.text,
-          isCorrect: o.isCorrect
+          isCorrect: o.isCorrect // Might be undefined depending on API, which is fine for candidate view
         })),
         correctAnswers: options.filter((o: any) => o.isCorrect).map((o: any) => o.id)
       };
@@ -315,25 +309,19 @@ export class ApiAttemptRepository {
     const data = await res.json();
     if (!data.success) return undefined;
     
-    const attempt = data.attempt;
-    const questions = attempt.questions.map((q: any) => {
-      let options = q.question.options;
-      if (q.optionsOrder) {
-        try {
-          const order = JSON.parse(q.optionsOrder);
-          options = order.map((id: string) => options.find((o: any) => o.id === id));
-        } catch (e) {}
-      }
+    const attempt = data;
+    const questions = (attempt.questions || []).map((q: any) => {
+      let options = q.options || [];
 
       return {
-        questionId: q.questionId,
+        questionId: q.id,
         displayNumber: q.position,
-        isScored: q.isScored,
-        selectedAnswers: q.selectedOptions ? JSON.parse(q.selectedOptions) : [],
-        flagged: q.isFlagged,
-        displayedOptions: options.map((o: any, idx: number) => ({
+        isScored: q.isScored ?? true,
+        selectedAnswers: q.selectedOptions || [],
+        flagged: q.isFlagged || false,
+        displayedOptions: options.map((o: any) => ({
           id: o.id,
-          label: String.fromCharCode(65 + idx),
+          label: o.label,
           text: o.text,
           isCorrect: o.isCorrect
         })),
