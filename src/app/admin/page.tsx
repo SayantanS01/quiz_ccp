@@ -15,7 +15,11 @@ import {
   RefreshCw,
   Eye,
   LogOut,
-  Download
+  Download,
+  Link2,
+  RotateCcw,
+  Copy,
+  X
 } from 'lucide-react';
 import { Navbar } from '@/components/Navbar';
 import { LocalAttempt, User } from '@/lib/idb';
@@ -30,6 +34,8 @@ export default function AdminPage() {
 
   // Bank stats (from API)
   const [bankStats, setBankStats] = useState({ total: 0 });
+  const [reconnectLink, setReconnectLink] = useState<string | null>(null);
+  const [actionLoading, setActionLoading] = useState<string | null>(null);
 
   useEffect(() => {
     loadLocalData();
@@ -58,10 +64,59 @@ export default function AdminPage() {
     }
   };
 
-  const handleDeleteUser = async (username: string) => {
-    // Note: Backend deletion would require a new API endpoint. 
-    // We can stub this out or remove it for now since they are in Postgres.
-    alert('Deleting users is disabled in this cloud deployment.');
+  const handleDeleteAttempt = async (attemptId: string) => {
+    if (!confirm(`Delete this attempt permanently? This cannot be undone.`)) return;
+    setActionLoading(attemptId);
+    try {
+      const res = await fetch('/api/admin/attempts/manage', {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ attemptId })
+      });
+      const data = await res.json();
+      if (data.success) await loadLocalData();
+      else alert(data.error);
+    } catch (err) { console.error(err); }
+    setActionLoading(null);
+  };
+
+  const handleReconnect = async (attemptId: string) => {
+    setActionLoading(attemptId);
+    try {
+      const res = await fetch('/api/admin/attempts/manage', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ attemptId, action: 'reconnect' })
+      });
+      const data = await res.json();
+      if (data.success) {
+        const fullLink = `${window.location.origin}${data.link}`;
+        setReconnectLink(fullLink);
+      } else {
+        alert(data.error);
+      }
+    } catch (err) { console.error(err); }
+    setActionLoading(null);
+  };
+
+  const handleReset = async (attemptId: string) => {
+    if (!confirm(`Reset this attempt? The old attempt will be deleted and a new exam will need to be started by the user.`)) return;
+    setActionLoading(attemptId);
+    try {
+      const res = await fetch('/api/admin/attempts/manage', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ attemptId, action: 'reset' })
+      });
+      const data = await res.json();
+      if (data.success) {
+        alert(`Attempt reset. User "${data.userId}" can start a new ${data.mode} exam.`);
+        await loadLocalData();
+      } else {
+        alert(data.error);
+      }
+    } catch (err) { console.error(err); }
+    setActionLoading(null);
   };
 
   const handleDownloadPackage = async (attemptId: string) => {
@@ -239,16 +294,33 @@ export default function AdminPage() {
                                   {new Date(att.expiresAt).toLocaleTimeString()}
                                 </td>
                                 <td className="px-6 py-4 text-right">
-                                  {att.submittedAt && (
-                                    <div className="flex items-center justify-end gap-2">
+                                  <div className="flex items-center justify-end gap-2 flex-wrap">
+                                    {/* Reconnect — only for in-progress attempts */}
+                                    {!att.submittedAt && (
                                       <button
-                                        onClick={() => handleDownloadPackage(att.attemptId)}
-                                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-500/10 hover:bg-blue-500/20 text-blue-400 text-xs font-medium transition-colors border border-blue-500/20"
-                                        title="Download JSON, LOG, and PDF Package"
+                                        onClick={() => handleReconnect(att.attemptId)}
+                                        disabled={actionLoading === att.attemptId}
+                                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-400 text-xs font-medium transition-colors border border-cyan-500/20"
+                                        title="Generate reconnect link for user"
                                       >
-                                        <Download className="w-3.5 h-3.5" />
-                                        ZIP
+                                        <Link2 className="w-3.5 h-3.5" />
+                                        Reconnect
                                       </button>
+                                    )}
+
+                                    {/* Reset — available for any attempt */}
+                                    <button
+                                      onClick={() => handleReset(att.attemptId)}
+                                      disabled={actionLoading === att.attemptId}
+                                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 text-xs font-medium transition-colors border border-amber-500/20"
+                                      title="Delete old attempt and allow user to restart"
+                                    >
+                                      <RotateCcw className="w-3.5 h-3.5" />
+                                      Reset
+                                    </button>
+
+                                    {/* View — only for completed attempts */}
+                                    {att.submittedAt && (
                                       <Link 
                                         href={`/exam/result/${att.attemptId}`}
                                         className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-white text-xs font-medium transition-colors"
@@ -256,8 +328,19 @@ export default function AdminPage() {
                                         <Eye className="w-3.5 h-3.5" />
                                         View
                                       </Link>
-                                    </div>
-                                  )}
+                                    )}
+
+                                    {/* Delete */}
+                                    <button
+                                      onClick={() => handleDeleteAttempt(att.attemptId)}
+                                      disabled={actionLoading === att.attemptId}
+                                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 text-xs font-medium transition-colors border border-rose-500/20"
+                                      title="Delete this attempt permanently"
+                                    >
+                                      <Trash2 className="w-3.5 h-3.5" />
+                                      Delete
+                                    </button>
+                                  </div>
                                 </td>
                               </tr>
                             ))
@@ -316,7 +399,7 @@ export default function AdminPage() {
                           </div>
                           
                           <button
-                            onClick={() => handleDeleteUser(u.username)}
+                            onClick={() => alert('User deletion is managed via database admin.')}
                             className="shrink-0 flex items-center gap-2 px-4 py-2 rounded-lg bg-rose-500/10 hover:bg-rose-500/20 text-rose-500 text-sm font-semibold transition-colors border border-rose-500/20"
                           >
                             <Trash2 className="w-4 h-4" />
@@ -344,6 +427,42 @@ export default function AdminPage() {
           </>
         )}
       </main>
+
+      {/* Reconnect Link Modal */}
+      {reconnectLink && (
+        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="bg-[#111827] border border-slate-700 rounded-2xl p-6 max-w-lg w-full shadow-2xl">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-lg font-bold text-white flex items-center gap-2">
+                <Link2 className="w-5 h-5 text-cyan-400" />
+                Reconnect Link Generated
+              </h3>
+              <button onClick={() => setReconnectLink(null)} className="text-slate-400 hover:text-white">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            <p className="text-sm text-slate-400 mb-4">Share this link with the user so they can resume their exam session:</p>
+            <div className="bg-slate-900 border border-slate-700 rounded-lg p-3 flex items-center gap-2">
+              <input 
+                type="text" 
+                readOnly 
+                value={reconnectLink} 
+                className="bg-transparent text-cyan-300 text-sm font-mono flex-1 outline-none"
+              />
+              <button
+                onClick={() => {
+                  navigator.clipboard.writeText(reconnectLink);
+                  alert('Link copied to clipboard!');
+                }}
+                className="px-3 py-1.5 bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-400 rounded-lg text-xs font-medium flex items-center gap-1 transition-colors"
+              >
+                <Copy className="w-3.5 h-3.5" />
+                Copy
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
