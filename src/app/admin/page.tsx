@@ -237,10 +237,26 @@ export default function AdminPage() {
                 <div>
                   <div className="flex items-center justify-between mb-4">
                     <h2 className="text-xl font-bold text-white">All Attempts</h2>
-                    <button onClick={loadLocalData} className="text-slate-400 hover:text-white flex items-center gap-1.5 text-sm">
-                      <RefreshCw className="w-4 h-4" />
-                      Refresh
-                    </button>
+                    <div className="flex items-center gap-4">
+                      <button 
+                        onClick={async () => {
+                          if (!confirm('Are you sure you want to globally reshuffle the Daily Challenge questions for all users?')) return;
+                          try {
+                            const res = await fetch('/api/admin/daily/reshuffle', { method: 'POST' });
+                            const data = await res.json();
+                            if (data.success) alert('Daily Challenge reshuffled successfully!');
+                            else alert('Failed: ' + data.error);
+                          } catch (err) { console.error(err); }
+                        }} 
+                        className="px-3 py-1.5 rounded-lg bg-amber-500/10 text-amber-400 border border-amber-500/30 text-sm font-semibold hover:bg-amber-500/20 transition-colors"
+                      >
+                        Reshuffle Daily Questions
+                      </button>
+                      <button onClick={loadLocalData} className="text-slate-400 hover:text-white flex items-center gap-1.5 text-sm">
+                        <RefreshCw className="w-4 h-4" />
+                        Refresh
+                      </button>
+                    </div>
                   </div>
 
                   <div className="bg-[#111827] border border-slate-800 rounded-xl overflow-hidden">

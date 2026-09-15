@@ -77,12 +77,6 @@ export async function POST(req: Request) {
 
     // Setup PRNG
     let rng = Math.random;
-    if (mode === 'DAILY_CHALLENGE') {
-      const today = new Date();
-      // Use YYYYMMDD as seed
-      const seedStr = `${today.getUTCFullYear()}${(today.getUTCMonth() + 1).toString().padStart(2, '0')}${today.getUTCDate().toString().padStart(2, '0')}`;
-      rng = mulberry32(parseInt(seedStr, 10));
-    }
 
     // Helper to sample with single/multi select balancing
     function sampleDomain(pool: any[], targetCount: number) {

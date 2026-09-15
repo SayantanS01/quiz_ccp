@@ -11,10 +11,15 @@ export async function GET(req: Request) {
     // Get today's UTC date string YYYY-MM-DD
     const today = new Date().toISOString().split('T')[0];
 
-    // Compute simple hash from date string to seed selection
+    // Get offset from SystemSettings
+    const offsetSetting = await prisma.systemSetting.findUnique({ where: { key: 'daily_seed_offset' } });
+    const offset = offsetSetting ? parseInt(offsetSetting.value, 10) : 0;
+
+    // Compute simple hash from date + userId + offset to seed selection
+    const seedString = `${today}-${userId}-${offset}`;
     let hash = 0;
-    for (let i = 0; i < today.length; i++) {
-      hash = (hash << 5) - hash + today.charCodeAt(i);
+    for (let i = 0; i < seedString.length; i++) {
+      hash = (hash << 5) - hash + seedString.charCodeAt(i);
       hash |= 0;
     }
     const seed = Math.abs(hash);
