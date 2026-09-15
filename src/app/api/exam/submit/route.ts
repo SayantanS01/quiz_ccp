@@ -105,12 +105,36 @@ export async function POST(req: Request) {
       Math.floor((now.getTime() - attempt.startedAt.getTime()) / 1000)
     );
 
-    // Update individual attempt questions
+    // Update individual attempt questions and track user mistakes
     for (const q of questionEvaluations) {
       await prisma.attemptQuestion.update({
         where: { id: q.aqId },
         data: { isCorrect: q.isCorrect },
       });
+
+      if (!q.isCorrect && attempt.userId !== 'candidate_default') {
+        // Track the mistake
+        await prisma.userMistake.upsert({
+          where: {
+            userId_questionId: {
+              userId: attempt.userId,
+              questionId: q.questionId
+            }
+          },
+          update: {
+            mistakeCount: { increment: 1 },
+            lastAttempted: new Date(),
+            domain: q.domain
+          },
+          create: {
+            userId: attempt.userId,
+            questionId: q.questionId,
+            domain: q.domain,
+            mistakeCount: 1,
+            lastAttempted: new Date()
+          }
+        });
+      }
     }
 
     // Update ExamAttempt record

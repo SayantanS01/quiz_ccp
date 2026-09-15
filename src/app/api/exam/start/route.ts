@@ -1,11 +1,21 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 
-// Helper to shuffle an array (Fisher-Yates)
-function shuffleArray<T>(array: T[]): T[] {
+// Mulberry32 PRNG
+function mulberry32(a: number) {
+  return function() {
+    var t = a += 0x6D2B79F5;
+    t = Math.imul(t ^ t >>> 15, t | 1);
+    t ^= t + Math.imul(t ^ t >>> 7, t | 61);
+    return ((t ^ t >>> 14) >>> 0) / 4294967296;
+  }
+}
+
+// Helper to shuffle an array (Fisher-Yates) with optional PRNG
+function shuffleArray<T>(array: T[], rng: () => number = Math.random): T[] {
   const arr = [...array];
   for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
+    const j = Math.floor(rng() * (i + 1));
     [arr[i], arr[j]] = [arr[j], arr[i]];
   }
   return arr;
@@ -65,10 +75,19 @@ export async function POST(req: Request) {
       }),
     ]);
 
+    // Setup PRNG
+    let rng = Math.random;
+    if (mode === 'DAILY_CHALLENGE') {
+      const today = new Date();
+      // Use YYYYMMDD as seed
+      const seedStr = `${today.getUTCFullYear()}${(today.getUTCMonth() + 1).toString().padStart(2, '0')}${today.getUTCDate().toString().padStart(2, '0')}`;
+      rng = mulberry32(parseInt(seedStr, 10));
+    }
+
     // Helper to sample with single/multi select balancing
     function sampleDomain(pool: any[], targetCount: number) {
-      const single = shuffleArray(pool.filter(q => q.type === 'SINGLE_SELECT'));
-      const multi = shuffleArray(pool.filter(q => q.type === 'MULTI_SELECT'));
+      const single = shuffleArray(pool.filter(q => q.type === 'SINGLE_SELECT'), rng);
+      const multi = shuffleArray(pool.filter(q => q.type === 'MULTI_SELECT'), rng);
       
       const targetMulti = Math.max(1, Math.round(targetCount * 0.22));
       const targetSingle = targetCount - targetMulti;
@@ -79,7 +98,7 @@ export async function POST(req: Request) {
 
       if (combined.length < targetCount) {
         const remaining = pool.filter(q => !combined.some(c => c.id === q.id));
-        combined.push(...shuffleArray(remaining).slice(0, targetCount - combined.length));
+        combined.push(...shuffleArray(remaining, rng).slice(0, targetCount - combined.length));
       }
       return combined.slice(0, targetCount);
     }
@@ -94,7 +113,7 @@ export async function POST(req: Request) {
 
     // Ensure we have exactly 65 questions
     if (selectedQuestions.length < 65) {
-      const allPool = shuffleArray([...d1Pool, ...d2Pool, ...d3Pool, ...d4Pool]);
+      const allPool = shuffleArray([...d1Pool, ...d2Pool, ...d3Pool, ...d4Pool], rng);
       for (const q of allPool) {
         if (!selectedQuestions.find((sq) => sq.id === q.id)) {
           selectedQuestions.push(q);
@@ -110,10 +129,10 @@ export async function POST(req: Request) {
     const scoredDesignations = shuffleArray([
       ...Array(50).fill(true),
       ...Array(15).fill(false),
-    ]);
+    ], rng);
 
     // 3. Shuffle question order
-    const shuffledQuestions = shuffleArray(selectedQuestions);
+    const shuffledQuestions = shuffleArray(selectedQuestions, rng);
 
     // 4. Determine exam duration (90 minutes standard)
     const now = new Date();

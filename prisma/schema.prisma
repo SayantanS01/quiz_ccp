@@ -43,6 +43,7 @@ model Question {
   options                 QuestionOption[]
   attemptQuestions        AttemptQuestion[]
   bookmarks               Bookmark[]
+  userMistakes            UserMistake[]
 }
 
 model QuestionOption {
@@ -130,4 +131,17 @@ model SystemSetting {
   value       String
   description String?
   updatedAt   DateTime  @updatedAt
+}
+
+model UserMistake {
+  id            String    @id @default(cuid())
+  userId        String
+  questionId    String
+  domain        String
+  mistakeCount  Int       @default(1)
+  lastAttempted DateTime  @default(now())
+  
+  question      Question  @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  
+  @@unique([userId, questionId])
 }

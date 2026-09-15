@@ -14,6 +14,7 @@ import {
   Award
 } from 'lucide-react';
 import { Navbar } from '@/components/Navbar';
+import { useAuth } from '@/components/AuthProvider';
 
 export default function WeakAreasPage() {
   const [loading, setLoading] = useState(true);
@@ -23,16 +24,23 @@ export default function WeakAreasPage() {
   const [userSelections, setUserSelections] = useState<Record<string, string[]>>({});
   const [evalResults, setEvalResults] = useState<Record<string, any>>({});
 
+  const { session } = useAuth(); // Import useAuth to get session
+
   useEffect(() => {
     async function loadWeakAreas() {
+      if (!session) return;
       try {
         setLoading(true);
-        const res = await fetch('/api/weak-areas');
+        const res = await fetch(`/api/weak-areas?userId=${session.username}`);
         const data = await res.json();
         if (data.success) {
-          setWeakTopics(data.weakTopics || []);
-          setTargetedTopics(data.targetedTopics || []);
-          setQuestions(data.questions || []);
+          // Extract questions from UserMistakes
+          const mappedQuestions = (data.mistakes || []).map((m: any) => m.question);
+          setQuestions(mappedQuestions);
+          
+          // Group by domain for display
+          const domains = [...new Set(mappedQuestions.map((q: any) => q.domain))];
+          setTargetedTopics(domains as string[]);
         }
       } catch (err) {
         console.error('Failed to load weak areas:', err);
@@ -41,7 +49,7 @@ export default function WeakAreasPage() {
       }
     }
     loadWeakAreas();
-  }, []);
+  }, [session]);
 
   const handleSelectOption = (qId: string, type: string, required: number, label: string) => {
     if (evalResults[qId]) return;
@@ -61,13 +69,13 @@ export default function WeakAreasPage() {
 
   const verifyQuestion = async (qId: string) => {
     const selected = userSelections[qId];
-    if (!selected || selected.length === 0) return;
+    if (!selected || selected.length === 0 || !session) return;
 
     try {
-      const res = await fetch('/api/study', {
+      const res = await fetch('/api/weak-areas', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ questionId: qId, selectedOptions: selected }),
+        body: JSON.stringify({ userId: session.username, questionId: qId, selectedOptions: selected }),
       });
       const data = await res.json();
       if (data.success) {
