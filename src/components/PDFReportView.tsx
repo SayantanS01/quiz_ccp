@@ -228,7 +228,8 @@ export function PDFReportView({ attempt, summary, questions }: PDFReportViewProp
       doc.text('This diagnostic report represents a certified simulation based on the official AWS CLF-C02 Exam Blueprint.', 14, y + 5);
 
       // Save PDF
-      doc.save(`CloudPrep_ScoreReport_${attempt.id.substring(0, 8)}.pdf`);
+      const pdfId = attempt.id || attempt.attemptId || 'UNKNOWN';
+      doc.save(`CloudPrep_ScoreReport_${pdfId.substring(0, 8)}.pdf`);
     } catch (err) {
       console.error('Failed to generate PDF:', err);
       alert('Could not generate PDF. You can also use Print to save as PDF.');
