@@ -40,16 +40,18 @@ export default function AdminLoginPage() {
       }
 
       // Save session locally
-      const { getDB } = await import('@/lib/idb');
+      const { getDB, generateId } = await import('@/lib/idb');
       const db = await getDB();
       if (db) {
+        const sessionId = generateId();
         await db.put('sessions', {
-          sessionId: 'current_session',
+          sessionId,
           username: data.user.username,
           startedAt: new Date().toISOString(),
           lastActivityAt: new Date().toISOString(),
           isAdmin: data.user.role === 'admin'
         });
+        localStorage.setItem('cloudprep_session', sessionId);
       }
 
       await refreshSession();
