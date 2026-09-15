@@ -18,19 +18,19 @@ async function main() {
   const questions = Array.isArray(bank) ? bank : bank.questions;
 
   console.log(`Loaded ${questions.length} questions from question_bank.json`);
-  console.log('Clearing existing data...');
-  
-  // Clean up existing
-  await prisma.proctorEvent.deleteMany({});
-  await prisma.attemptQuestion.deleteMany({});
-  await prisma.examAttempt.deleteMany({});
-  await prisma.questionOption.deleteMany({});
-  await prisma.question.deleteMany({});
+  console.log('Fetching existing questions to avoid duplicates...');
+  const existingQuestions = await prisma.question.findMany({ select: { id: true } });
+  const existingSet = new Set(existingQuestions.map(q => q.id));
 
   console.log('Seeding Questions...');
   
   let count = 0;
+  let skipped = 0;
   for (const q of questions) {
+    if (existingSet.has(q.id)) {
+      skipped++;
+      continue;
+    }
     await prisma.question.create({
       data: {
         id: q.id,
@@ -61,10 +61,10 @@ async function main() {
       }
     });
     count++;
-    if (count % 50 === 0) console.log(`Seeded ${count}/${questions.length}...`);
+    if (count % 50 === 0) console.log(`Seeded ${count} new questions...`);
   }
 
-  console.log(`\nSuccessfully seeded ${count} questions to Postgres!`);
+  console.log(`\nSuccessfully seeded ${count} new questions to Postgres! (Skipped ${skipped} existing questions)`);
 }
 
 main()
