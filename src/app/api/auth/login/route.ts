@@ -9,8 +9,8 @@ export async function POST(req: Request) {
       return NextResponse.json({ success: false, error: 'Missing fields' }, { status: 400 });
     }
 
-    const user = await prisma.user.findUnique({
-      where: { username }
+    const user = await prisma.user.findFirst({
+      where: { username: { equals: username, mode: 'insensitive' } }
     });
 
     if (!user || user.passcode !== passcode) {
