@@ -45,11 +45,11 @@ export default function LoginPage() {
       const db = await getDB();
       if (db) {
         await db.put('sessions', {
-          id: 'current_session',
+          sessionId: 'current_session',
           username: data.user.username,
-          candidateName: data.user.name,
-          role: data.user.role,
-          loggedInAt: new Date().toISOString()
+          startedAt: new Date().toISOString(),
+          lastActivityAt: new Date().toISOString(),
+          isAdmin: data.user.role === 'admin'
         });
       }
 
