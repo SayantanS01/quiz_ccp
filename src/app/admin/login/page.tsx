@@ -43,7 +43,7 @@ export default function AdminLoginPage() {
       const { getDB } = await import('@/lib/idb');
       const db = await getDB();
       if (db) {
-        await db.put('session', {
+        await db.put('sessions', {
           id: 'current_session',
           username: data.user.username,
           candidateName: data.user.name,
