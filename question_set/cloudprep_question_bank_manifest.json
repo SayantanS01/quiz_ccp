@@ -1,0 +1,57 @@
+{
+  "question_bank": {
+    "total_files": 8,
+    "total_questions": 800,
+    "files": [
+      "cloudprep_aws_cp_set_01.json",
+      "cloudprep_aws_cp_set_02.json",
+      "cloudprep_aws_cp_set_03.json",
+      "cloudprep_aws_cp_set_04.json",
+      "cloudprep_aws_cp_set_05.json",
+      "cloudprep_aws_cp_set_06.json",
+      "cloudprep_aws_cp_set_07.json",
+      "cloudprep_aws_cp_set_08.json"
+    ]
+  },
+  "exam_generation": {
+    "pool": 800,
+    "select_questions": 65,
+    "scored_questions": 50,
+    "unscored_questions": 15,
+    "time_minutes": 90,
+    "passing_scored_correct": 35
+  },
+  "selection_rule": "Load all eight JSON files, merge into one pool, randomly select 65 unique questions, randomly designate 50 scored and 15 unscored, hide that classification, then shuffle questions and options.",
+  "scoring_rule": "Pass only when at least 35 of the 50 scored questions are correct. Unscored questions do not affect pass/fail.",
+  "multi_select": "Exact-match by default; no partial credit.",
+  "schema": {
+    "id": "string",
+    "type": "single_select | multi_select",
+    "question": "string",
+    "options": [
+      {
+        "id": "A",
+        "text": "..."
+      },
+      {
+        "id": "B",
+        "text": "..."
+      },
+      {
+        "id": "C",
+        "text": "..."
+      },
+      {
+        "id": "D",
+        "text": "..."
+      }
+    ],
+    "correct_answers": [
+      "A"
+    ],
+    "domain": "string",
+    "topic": "string",
+    "difficulty": "easy | medium | hard",
+    "source_module": "string"
+  }
+}

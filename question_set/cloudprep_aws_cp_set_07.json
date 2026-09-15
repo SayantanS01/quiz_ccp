@@ -1,0 +1,3055 @@
+{
+  "metadata": {
+    "title": "CloudPrep AWS Cloud Practitioner Question Set 7",
+    "set_number": 7,
+    "question_count": 100,
+    "question_types": [
+      "single_select",
+      "multi_select"
+    ],
+    "option_count": {
+      "minimum": 4,
+      "maximum": 5
+    },
+    "multi_select_rule": "Select all required correct answers; default exact-match scoring.",
+    "source": "Uploaded AWS Cloud Practitioner learning modules",
+    "note": "Original practice questions grounded in the uploaded modules; not real AWS exam questions."
+  },
+  "questions": [
+    {
+      "id": "SET07-Q001",
+      "type": "single_select",
+      "question": "Which AWS concept or service is best described as one that can trigger an action when a metric crosses a configured threshold?",
+      "options": [
+        {
+          "id": "C",
+          "text": "Trusted Advisor checks"
+        },
+        {
+          "id": "B",
+          "text": "Amazon CloudWatch"
+        },
+        {
+          "id": "D",
+          "text": "AWS CloudTrail"
+        },
+        {
+          "id": "A",
+          "text": "CloudWatch alarm"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "Monitoring",
+      "difficulty": "medium",
+      "source_module": "Module 7"
+    },
+    {
+      "id": "SET07-Q002",
+      "type": "single_select",
+      "question": "A team needs a capability that can use components such as a load balancer, application servers, and a backend database. Which option is the most appropriate choice?",
+      "options": [
+        {
+          "id": "C",
+          "text": "Security pillar"
+        },
+        {
+          "id": "A",
+          "text": "Three-tier architecture"
+        },
+        {
+          "id": "D",
+          "text": "Small reversible changes"
+        },
+        {
+          "id": "B",
+          "text": "Cost optimization pillar"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "Architecture",
+      "difficulty": "medium",
+      "source_module": "Module 10"
+    },
+    {
+      "id": "SET07-Q003",
+      "type": "multi_select",
+      "question": "Which TWO statements correctly describe Spot Instances?",
+      "options": [
+        {
+          "id": "D",
+          "text": "are associated with compute-intensive workloads"
+        },
+        {
+          "id": "A",
+          "text": "use spare AWS compute capacity and can offer significant discounts"
+        },
+        {
+          "id": "B",
+          "text": "can be interrupted when AWS needs the capacity back"
+        },
+        {
+          "id": "C",
+          "text": "provides virtual servers in the AWS Cloud"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Technology",
+      "topic": "EC2 pricing",
+      "difficulty": "medium",
+      "source_module": "Module 2"
+    },
+    {
+      "id": "SET07-Q004",
+      "type": "single_select",
+      "question": "Which AWS concept or service is best described as one that provides a dedicated private network connection between an organization and AWS?",
+      "options": [
+        {
+          "id": "B",
+          "text": "Internet gateway"
+        },
+        {
+          "id": "D",
+          "text": "Security group"
+        },
+        {
+          "id": "C",
+          "text": "Stateful packet filtering"
+        },
+        {
+          "id": "A",
+          "text": "AWS Direct Connect"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "Hybrid networking",
+      "difficulty": "medium",
+      "source_module": "Module 4"
+    },
+    {
+      "id": "SET07-Q005",
+      "type": "multi_select",
+      "question": "Which TWO statements correctly describe Free Tier trials?",
+      "options": [
+        {
+          "id": "A",
+          "text": "are short-term free offers that start when a particular service is activated"
+        },
+        {
+          "id": "D",
+          "text": "is a distinct AWS Free Tier category"
+        },
+        {
+          "id": "C",
+          "text": "lets customers use certain AWS services within specified free usage offers"
+        },
+        {
+          "id": "B",
+          "text": "have a specified trial duration"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Billing and Pricing",
+      "topic": "Free Tier",
+      "difficulty": "medium",
+      "source_module": "Module 8"
+    },
+    {
+      "id": "SET07-Q006",
+      "type": "multi_select",
+      "question": "Select TWO characteristics that apply to Variable expense.",
+      "options": [
+        {
+          "id": "C",
+          "text": "can make new resources available within minutes rather than waiting weeks for data-center resources"
+        },
+        {
+          "id": "D",
+          "text": "allows organizations to access only the capacity they need"
+        },
+        {
+          "id": "B",
+          "text": "can reduce the need to invest heavily in data centers before resource usage is known"
+        },
+        {
+          "id": "A",
+          "text": "means paying for computing resources that are consumed instead of making a large upfront investment"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Cloud Concepts",
+      "topic": "Cloud benefits",
+      "difficulty": "medium",
+      "source_module": "Module 1"
+    },
+    {
+      "id": "SET07-Q007",
+      "type": "single_select",
+      "question": "A team needs a capability that supports retrieval in minutes to hours depending on retrieval options. Which option is the most appropriate choice?",
+      "options": [
+        {
+          "id": "A",
+          "text": "S3 Glacier"
+        },
+        {
+          "id": "D",
+          "text": "S3 Glacier Deep Archive"
+        },
+        {
+          "id": "B",
+          "text": "Amazon DynamoDB"
+        },
+        {
+          "id": "C",
+          "text": "Amazon Aurora"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "S3 storage classes",
+      "difficulty": "medium",
+      "source_module": "Module 5"
+    },
+    {
+      "id": "SET07-Q008",
+      "type": "single_select",
+      "question": "Which statement is accurate about Platform Perspective?",
+      "options": [
+        {
+          "id": "B",
+          "text": "is a compact Snow Family device for data transfer"
+        },
+        {
+          "id": "A",
+          "text": "helps communicate and structure the architecture of IT environments"
+        },
+        {
+          "id": "C",
+          "text": "helps align IT with business needs"
+        },
+        {
+          "id": "D",
+          "text": "moves an application to the cloud without significant changes"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Cloud Concepts",
+      "topic": "AWS CAF",
+      "difficulty": "medium",
+      "source_module": "Module 9"
+    },
+    {
+      "id": "SET07-Q009",
+      "type": "multi_select",
+      "question": "Which TWO statements correctly describe Stateless packet filtering?",
+      "options": [
+        {
+          "id": "D",
+          "text": "can use a virtual private gateway as the AWS-side connection component"
+        },
+        {
+          "id": "A",
+          "text": "does not remember previous traffic decisions"
+        },
+        {
+          "id": "C",
+          "text": "acts as a virtual firewall for resources such as EC2 instances"
+        },
+        {
+          "id": "B",
+          "text": "requires inbound and outbound rules to be considered independently"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Technology",
+      "topic": "Traffic control",
+      "difficulty": "medium",
+      "source_module": "Module 4"
+    },
+    {
+      "id": "SET07-Q010",
+      "type": "single_select",
+      "question": "A team needs a capability that is available through AWS Organizations. Which option is the most appropriate choice?",
+      "options": [
+        {
+          "id": "B",
+          "text": "AWS Marketplace"
+        },
+        {
+          "id": "C",
+          "text": "Reservation-based savings"
+        },
+        {
+          "id": "D",
+          "text": "AWS Budgets"
+        },
+        {
+          "id": "A",
+          "text": "Consolidated billing"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Billing and Pricing",
+      "topic": "Organizations",
+      "difficulty": "medium",
+      "source_module": "Module 8"
+    },
+    {
+      "id": "SET07-Q011",
+      "type": "single_select",
+      "question": "Which AWS concept or service is best described as one that connects a VPC to the internet?",
+      "options": [
+        {
+          "id": "D",
+          "text": "Network ACL rules"
+        },
+        {
+          "id": "B",
+          "text": "Amazon VPC"
+        },
+        {
+          "id": "A",
+          "text": "Internet gateway"
+        },
+        {
+          "id": "C",
+          "text": "Network ACL"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "Internet connectivity",
+      "difficulty": "medium",
+      "source_module": "Module 4"
+    },
+    {
+      "id": "SET07-Q012",
+      "type": "single_select",
+      "question": "Which AWS concept or service is best described as one that provides object-level storage?",
+      "options": [
+        {
+          "id": "D",
+          "text": "RDS versus DynamoDB"
+        },
+        {
+          "id": "C",
+          "text": "S3 Glacier Deep Archive"
+        },
+        {
+          "id": "B",
+          "text": "S3 One Zone-IA"
+        },
+        {
+          "id": "A",
+          "text": "Amazon S3"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "Object storage",
+      "difficulty": "easy",
+      "source_module": "Module 5"
+    },
+    {
+      "id": "SET07-Q013",
+      "type": "single_select",
+      "question": "Which AWS concept or service is best described as one that is an incremental backup of an EBS volume after the first snapshot?",
+      "options": [
+        {
+          "id": "C",
+          "text": "EBS versus EFS"
+        },
+        {
+          "id": "D",
+          "text": "Amazon S3"
+        },
+        {
+          "id": "A",
+          "text": "EBS snapshot"
+        },
+        {
+          "id": "B",
+          "text": "Amazon Aurora"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "Backup",
+      "difficulty": "medium",
+      "source_module": "Module 5"
+    },
+    {
+      "id": "SET07-Q014",
+      "type": "multi_select",
+      "question": "Which TWO statements correctly describe Accelerated computing instances?",
+      "options": [
+        {
+          "id": "B",
+          "text": "can use processors such as GPUs for workloads that benefit from parallel processing"
+        },
+        {
+          "id": "D",
+          "text": "are an EC2 pricing option for workloads with predictable usage"
+        },
+        {
+          "id": "A",
+          "text": "use hardware accelerators for workloads such as graphics or specialized computation"
+        },
+        {
+          "id": "C",
+          "text": "is a managed Kubernetes service"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Technology",
+      "topic": "EC2 instance types",
+      "difficulty": "medium",
+      "source_module": "Module 2"
+    },
+    {
+      "id": "SET07-Q015",
+      "type": "single_select",
+      "question": "Which AWS concept or service is best described as one that helps determine whether resources are over- or under-utilized?",
+      "options": [
+        {
+          "id": "C",
+          "text": "AWS CloudTrail"
+        },
+        {
+          "id": "D",
+          "text": "Amazon CloudWatch"
+        },
+        {
+          "id": "B",
+          "text": "CloudWatch dashboard"
+        },
+        {
+          "id": "A",
+          "text": "Resource utilization monitoring"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "Monitoring",
+      "difficulty": "easy",
+      "source_module": "Module 7"
+    },
+    {
+      "id": "SET07-Q016",
+      "type": "single_select",
+      "question": "A team needs a capability that helps identify abnormal patterns in account API usage. Which option is the most appropriate choice?",
+      "options": [
+        {
+          "id": "D",
+          "text": "Trusted Advisor checks"
+        },
+        {
+          "id": "A",
+          "text": "CloudTrail Insights"
+        },
+        {
+          "id": "C",
+          "text": "AWS Trusted Advisor"
+        },
+        {
+          "id": "B",
+          "text": "CloudWatch metrics"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Security and Compliance",
+      "topic": "Threat detection",
+      "difficulty": "medium",
+      "source_module": "Module 7"
+    },
+    {
+      "id": "SET07-Q017",
+      "type": "multi_select",
+      "question": "Which TWO statements correctly describe AWS Snowcone?",
+      "options": [
+        {
+          "id": "C",
+          "text": "provide AWS capabilities powered by artificial intelligence"
+        },
+        {
+          "id": "B",
+          "text": "can be used when a smaller physical device is appropriate"
+        },
+        {
+          "id": "A",
+          "text": "is a compact Snow Family device for data transfer"
+        },
+        {
+          "id": "D",
+          "text": "is intended for moving extremely large amounts of data"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Technology",
+      "topic": "Snow Family",
+      "difficulty": "medium",
+      "source_module": "Module 9"
+    },
+    {
+      "id": "SET07-Q018",
+      "type": "multi_select",
+      "question": "Which TWO statements correctly describe Amazon Route 53?",
+      "options": [
+        {
+          "id": "D",
+          "text": "contains a range of IP addresses within a VPC"
+        },
+        {
+          "id": "B",
+          "text": "can route user requests to AWS infrastructure or infrastructure outside AWS"
+        },
+        {
+          "id": "C",
+          "text": "provides an isolated network environment for AWS resources"
+        },
+        {
+          "id": "A",
+          "text": "is a DNS web service"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Technology",
+      "topic": "DNS",
+      "difficulty": "medium",
+      "source_module": "Module 4"
+    },
+    {
+      "id": "SET07-Q019",
+      "type": "multi_select",
+      "question": "Which TWO statements correctly describe VPN connection?",
+      "options": [
+        {
+          "id": "D",
+          "text": "is commonly described as the phone book of the internet"
+        },
+        {
+          "id": "B",
+          "text": "can use a virtual private gateway as the AWS-side connection component"
+        },
+        {
+          "id": "C",
+          "text": "is a subnet intended for resources that need a route toward an internet gateway"
+        },
+        {
+          "id": "A",
+          "text": "can encrypt traffic between an organization and AWS over a network path"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Technology",
+      "topic": "Hybrid networking",
+      "difficulty": "medium",
+      "source_module": "Module 4"
+    },
+    {
+      "id": "SET07-Q020",
+      "type": "single_select",
+      "question": "A team needs a capability that focuses on people, skills, and organizational change during cloud adoption. Which option is the most appropriate choice?",
+      "options": [
+        {
+          "id": "C",
+          "text": "Artificial intelligence services"
+        },
+        {
+          "id": "D",
+          "text": "AWS IoT"
+        },
+        {
+          "id": "B",
+          "text": "AWS Cloud Adoption Framework"
+        },
+        {
+          "id": "A",
+          "text": "People Perspective"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Cloud Concepts",
+      "topic": "AWS CAF",
+      "difficulty": "medium",
+      "source_module": "Module 9"
+    },
+    {
+      "id": "SET07-Q021",
+      "type": "single_select",
+      "question": "Which statement is accurate about AWS Snowmobile?",
+      "options": [
+        {
+          "id": "B",
+          "text": "is a Snow Family device used to physically transfer data"
+        },
+        {
+          "id": "C",
+          "text": "provide AWS capabilities powered by artificial intelligence"
+        },
+        {
+          "id": "A",
+          "text": "is intended for moving extremely large amounts of data"
+        },
+        {
+          "id": "D",
+          "text": "moves an application while making limited optimizations"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "Snow Family",
+      "difficulty": "medium",
+      "source_module": "Module 9"
+    },
+    {
+      "id": "SET07-Q022",
+      "type": "single_select",
+      "question": "Which statement is accurate about Amazon S3?",
+      "options": [
+        {
+          "id": "C",
+          "text": "is the lowest-cost S3 object storage class for long-term archiving"
+        },
+        {
+          "id": "A",
+          "text": "stores objects in buckets"
+        },
+        {
+          "id": "D",
+          "text": "RDS is relational while DynamoDB is a nonrelational key-value database"
+        },
+        {
+          "id": "B",
+          "text": "stores data in a single Availability Zone"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "Object storage",
+      "difficulty": "medium",
+      "source_module": "Module 5"
+    },
+    {
+      "id": "SET07-Q023",
+      "type": "single_select",
+      "question": "Which AWS concept or service is best described as one that re-architects an application to take better advantage of cloud capabilities?",
+      "options": [
+        {
+          "id": "D",
+          "text": "People Perspective"
+        },
+        {
+          "id": "B",
+          "text": "AWS Cloud Adoption Framework"
+        },
+        {
+          "id": "C",
+          "text": "Artificial intelligence services"
+        },
+        {
+          "id": "A",
+          "text": "Refactoring"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Cloud Concepts",
+      "topic": "Migration",
+      "difficulty": "medium",
+      "source_module": "Module 9"
+    },
+    {
+      "id": "SET07-Q024",
+      "type": "multi_select",
+      "question": "Which TWO statements correctly describe Stop guessing capacity?",
+      "options": [
+        {
+          "id": "C",
+          "text": "uses a client such as a web browser or desktop application to make requests to a server"
+        },
+        {
+          "id": "B",
+          "text": "supports scaling in or scaling out in response to demand"
+        },
+        {
+          "id": "D",
+          "text": "can translate aggregated usage into lower pay-as-you-go prices"
+        },
+        {
+          "id": "A",
+          "text": "allows organizations to access only the capacity they need"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Cloud Concepts",
+      "topic": "Cloud benefits",
+      "difficulty": "medium",
+      "source_module": "Module 1"
+    },
+    {
+      "id": "SET07-Q025",
+      "type": "single_select",
+      "question": "Which statement is accurate about IAM role?",
+      "options": [
+        {
+          "id": "D",
+          "text": "can restrict AWS services, resources, or API actions available to accounts in an organization"
+        },
+        {
+          "id": "C",
+          "text": "helps identify software vulnerabilities and unintended network exposure"
+        },
+        {
+          "id": "A",
+          "text": "is useful when access should be granted temporarily rather than tied to long-lived credentials"
+        },
+        {
+          "id": "B",
+          "text": "groups AWS accounts hierarchically"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Security and Compliance",
+      "topic": "IAM roles",
+      "difficulty": "medium",
+      "source_module": "Module 6"
+    },
+    {
+      "id": "SET07-Q026",
+      "type": "multi_select",
+      "question": "Select TWO characteristics that apply to Amazon RDS.",
+      "options": [
+        {
+          "id": "C",
+          "text": "S3 objects are web-enabled resources while EBS volumes are attached to compute resources"
+        },
+        {
+          "id": "B",
+          "text": "supports several database engines including Aurora, PostgreSQL, MySQL, MariaDB, Oracle Database, and Microsoft SQL Server"
+        },
+        {
+          "id": "D",
+          "text": "is a low-cost storage class designed for data archiving"
+        },
+        {
+          "id": "A",
+          "text": "is a managed relational database service"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Technology",
+      "topic": "Managed databases",
+      "difficulty": "hard",
+      "source_module": "Module 5"
+    },
+    {
+      "id": "SET07-Q027",
+      "type": "multi_select",
+      "question": "Which TWO statements correctly describe AWS shared responsibility model?",
+      "options": [
+        {
+          "id": "C",
+          "text": "is a paid DDoS protection service"
+        },
+        {
+          "id": "B",
+          "text": "means AWS is responsible for security of the cloud while customers are responsible for security in the cloud"
+        },
+        {
+          "id": "D",
+          "text": "should follow least-privilege principles when permissions are granted"
+        },
+        {
+          "id": "A",
+          "text": "divides security responsibilities between AWS and the customer"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Security and Compliance",
+      "topic": "Shared responsibility",
+      "difficulty": "medium",
+      "source_module": "Module 6"
+    },
+    {
+      "id": "SET07-Q028",
+      "type": "single_select",
+      "question": "Which statement is accurate about Public subnet?",
+      "options": [
+        {
+          "id": "C",
+          "text": "can encrypt traffic between an organization and AWS over a network path"
+        },
+        {
+          "id": "B",
+          "text": "translates human-readable domain names into information used to reach network resources"
+        },
+        {
+          "id": "D",
+          "text": "is a DNS web service"
+        },
+        {
+          "id": "A",
+          "text": "can be used for resources that need internet connectivity when appropriate routing and security rules are configured"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "Network segmentation",
+      "difficulty": "medium",
+      "source_module": "Module 4"
+    },
+    {
+      "id": "SET07-Q029",
+      "type": "single_select",
+      "question": "A team needs a capability that requires inbound and outbound rules to be considered independently. Which option is the most appropriate choice?",
+      "options": [
+        {
+          "id": "C",
+          "text": "AWS Direct Connect"
+        },
+        {
+          "id": "A",
+          "text": "Stateless packet filtering"
+        },
+        {
+          "id": "D",
+          "text": "VPC boundaries"
+        },
+        {
+          "id": "B",
+          "text": "VPN connection"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "Traffic control",
+      "difficulty": "medium",
+      "source_module": "Module 4"
+    },
+    {
+      "id": "SET07-Q030",
+      "type": "single_select",
+      "question": "A team needs a capability that includes categories such as Always Free, 12 Months Free, and Trials. Which option is the most appropriate choice?",
+      "options": [
+        {
+          "id": "C",
+          "text": "AWS Developer Support"
+        },
+        {
+          "id": "B",
+          "text": "Technical Account Manager"
+        },
+        {
+          "id": "A",
+          "text": "AWS Free Tier"
+        },
+        {
+          "id": "D",
+          "text": "AWS Cost Explorer"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Billing and Pricing",
+      "topic": "Free Tier",
+      "difficulty": "medium",
+      "source_module": "Module 8"
+    },
+    {
+      "id": "SET07-Q031",
+      "type": "single_select",
+      "question": "A team needs a capability that can be used to create estimates for planned AWS architectures and compare costs across Regions. Which option is the most appropriate choice?",
+      "options": [
+        {
+          "id": "D",
+          "text": "AWS Cost Explorer"
+        },
+        {
+          "id": "B",
+          "text": "AWS Marketplace"
+        },
+        {
+          "id": "C",
+          "text": "AWS Free Tier"
+        },
+        {
+          "id": "A",
+          "text": "AWS Pricing Calculator"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Billing and Pricing",
+      "topic": "Pricing tools",
+      "difficulty": "medium",
+      "source_module": "Module 8"
+    },
+    {
+      "id": "SET07-Q032",
+      "type": "single_select",
+      "question": "Which AWS concept or service is best described as one that provides temporary block-level storage for an EC2 instance?",
+      "options": [
+        {
+          "id": "D",
+          "text": "Amazon EBS"
+        },
+        {
+          "id": "C",
+          "text": "Amazon EFS"
+        },
+        {
+          "id": "A",
+          "text": "Instance store"
+        },
+        {
+          "id": "B",
+          "text": "EBS snapshot"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "Block storage",
+      "difficulty": "medium",
+      "source_module": "Module 5"
+    },
+    {
+      "id": "SET07-Q033",
+      "type": "single_select",
+      "question": "Which AWS concept or service is best described as one that can lower variable costs because cloud providers aggregate usage from many customers?",
+      "options": [
+        {
+          "id": "B",
+          "text": "Increase speed and agility"
+        },
+        {
+          "id": "D",
+          "text": "Variable expense"
+        },
+        {
+          "id": "C",
+          "text": "On-premises deployment"
+        },
+        {
+          "id": "A",
+          "text": "Economies of scale"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Cloud Concepts",
+      "topic": "Cloud benefits",
+      "difficulty": "medium",
+      "source_module": "Module 1"
+    },
+    {
+      "id": "SET07-Q034",
+      "type": "single_select",
+      "question": "A team needs a capability that allow customers to define network configuration for their resources. Which option is the most appropriate choice?",
+      "options": [
+        {
+          "id": "C",
+          "text": "AWS Direct Connect"
+        },
+        {
+          "id": "A",
+          "text": "VPC boundaries"
+        },
+        {
+          "id": "B",
+          "text": "VPN connection"
+        },
+        {
+          "id": "D",
+          "text": "Public subnet"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "Network isolation",
+      "difficulty": "medium",
+      "source_module": "Module 4"
+    },
+    {
+      "id": "SET07-Q035",
+      "type": "single_select",
+      "question": "Which AWS concept or service is best described as one that delivers IT resources and applications on demand through the internet with pay-as-you-go pricing?",
+      "options": [
+        {
+          "id": "D",
+          "text": "Client-server model"
+        },
+        {
+          "id": "C",
+          "text": "Hybrid deployment"
+        },
+        {
+          "id": "B",
+          "text": "Cloud-based deployment"
+        },
+        {
+          "id": "A",
+          "text": "Cloud computing"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Cloud Concepts",
+      "topic": "Cloud computing",
+      "difficulty": "easy",
+      "source_module": "Module 1"
+    },
+    {
+      "id": "SET07-Q036",
+      "type": "single_select",
+      "question": "A team needs a capability that are associated with compute-intensive workloads. Which option is the most appropriate choice?",
+      "options": [
+        {
+          "id": "B",
+          "text": "General purpose instances"
+        },
+        {
+          "id": "C",
+          "text": "Containers"
+        },
+        {
+          "id": "D",
+          "text": "AWS Fargate"
+        },
+        {
+          "id": "A",
+          "text": "Compute optimized instances"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "EC2 instance types",
+      "difficulty": "medium",
+      "source_module": "Module 2"
+    },
+    {
+      "id": "SET07-Q037",
+      "type": "multi_select",
+      "question": "Which TWO statements correctly describe Replatforming?",
+      "options": [
+        {
+          "id": "D",
+          "text": "is commonly described as a lift-and-shift approach"
+        },
+        {
+          "id": "B",
+          "text": "changes the platform without fundamentally changing the application's architecture"
+        },
+        {
+          "id": "A",
+          "text": "moves an application while making limited optimizations"
+        },
+        {
+          "id": "C",
+          "text": "focuses on aligning IT strategy with business outcomes"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Cloud Concepts",
+      "topic": "Migration",
+      "difficulty": "medium",
+      "source_module": "Module 9"
+    },
+    {
+      "id": "SET07-Q038",
+      "type": "single_select",
+      "question": "Which AWS concept or service is best described as one that should both be protected as part of the Security pillar?",
+      "options": [
+        {
+          "id": "C",
+          "text": "Multi-AZ resilience"
+        },
+        {
+          "id": "A",
+          "text": "Data in transit and at rest"
+        },
+        {
+          "id": "D",
+          "text": "Cost optimization pillar"
+        },
+        {
+          "id": "B",
+          "text": "AWS Well-Architected Framework"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Security and Compliance",
+      "topic": "Data protection",
+      "difficulty": "medium",
+      "source_module": "Module 10"
+    },
+    {
+      "id": "SET07-Q039",
+      "type": "single_select",
+      "question": "Which AWS concept or service is best described as one that is an identity created in AWS to represent a person or application?",
+      "options": [
+        {
+          "id": "A",
+          "text": "IAM user"
+        },
+        {
+          "id": "C",
+          "text": "IAM group"
+        },
+        {
+          "id": "D",
+          "text": "AWS Organizations"
+        },
+        {
+          "id": "B",
+          "text": "Multi-factor authentication"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Security and Compliance",
+      "topic": "IAM users",
+      "difficulty": "medium",
+      "source_module": "Module 6"
+    },
+    {
+      "id": "SET07-Q040",
+      "type": "single_select",
+      "question": "Which AWS concept or service is best described as one that is a single data center or a group of data centers within an AWS Region?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Availability Zone"
+        },
+        {
+          "id": "B",
+          "text": "AWS Elastic Beanstalk"
+        },
+        {
+          "id": "D",
+          "text": "Amazon CloudFront"
+        },
+        {
+          "id": "C",
+          "text": "Automation through APIs"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "Availability Zones",
+      "difficulty": "medium",
+      "source_module": "Module 3"
+    },
+    {
+      "id": "SET07-Q041",
+      "type": "single_select",
+      "question": "A team needs a capability that helps customers find and acquire software solutions for AWS. Which option is the most appropriate choice?",
+      "options": [
+        {
+          "id": "D",
+          "text": "Consolidated billing"
+        },
+        {
+          "id": "A",
+          "text": "AWS Marketplace"
+        },
+        {
+          "id": "B",
+          "text": "Pay-as-you-go pricing"
+        },
+        {
+          "id": "C",
+          "text": "AWS Developer Support"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Billing and Pricing",
+      "topic": "Marketplace",
+      "difficulty": "medium",
+      "source_module": "Module 8"
+    },
+    {
+      "id": "SET07-Q042",
+      "type": "multi_select",
+      "question": "Which TWO statements correctly describe Cost optimization pillar?",
+      "options": [
+        {
+          "id": "A",
+          "text": "focuses on delivering business value at the lowest price point"
+        },
+        {
+          "id": "B",
+          "text": "includes adopting a consumption model and using managed services to reduce cost of ownership"
+        },
+        {
+          "id": "D",
+          "text": "includes practices such as applying security at all layers and protecting data in transit and at rest"
+        },
+        {
+          "id": "C",
+          "text": "allows resources to change as demand changes"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Billing and Pricing",
+      "topic": "Well-Architected pillars",
+      "difficulty": "medium",
+      "source_module": "Module 10"
+    },
+    {
+      "id": "SET07-Q043",
+      "type": "single_select",
+      "question": "A team needs a capability that is suited to data relationships that can be represented through structured tables. Which option is the most appropriate choice?",
+      "options": [
+        {
+          "id": "C",
+          "text": "Amazon Aurora"
+        },
+        {
+          "id": "A",
+          "text": "Relational database"
+        },
+        {
+          "id": "D",
+          "text": "S3 Glacier Deep Archive"
+        },
+        {
+          "id": "B",
+          "text": "S3 Standard-IA"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "Relational databases",
+      "difficulty": "medium",
+      "source_module": "Module 5"
+    },
+    {
+      "id": "SET07-Q044",
+      "type": "multi_select",
+      "question": "Which TWO statements correctly describe IAM role?",
+      "options": [
+        {
+          "id": "D",
+          "text": "is used to assess supported workloads for security issues"
+        },
+        {
+          "id": "B",
+          "text": "is useful when access should be granted temporarily rather than tied to long-lived credentials"
+        },
+        {
+          "id": "A",
+          "text": "is an identity that can be assumed to obtain temporary permissions"
+        },
+        {
+          "id": "C",
+          "text": "groups AWS accounts hierarchically"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Security and Compliance",
+      "topic": "IAM roles",
+      "difficulty": "medium",
+      "source_module": "Module 6"
+    },
+    {
+      "id": "SET07-Q045",
+      "type": "multi_select",
+      "question": "Select TWO characteristics that apply to AWS account root user.",
+      "options": [
+        {
+          "id": "D",
+          "text": "automatically protects AWS customers against common DDoS attacks"
+        },
+        {
+          "id": "A",
+          "text": "is accessed using the email address and password used to create the AWS account"
+        },
+        {
+          "id": "B",
+          "text": "has broad account-level privileges and should not be used for routine tasks"
+        },
+        {
+          "id": "C",
+          "text": "can include descriptions of report contents and reporting periods"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Security and Compliance",
+      "topic": "Root user",
+      "difficulty": "medium",
+      "source_module": "Module 6"
+    },
+    {
+      "id": "SET07-Q046",
+      "type": "multi_select",
+      "question": "Select TWO characteristics that apply to Economies of scale.",
+      "options": [
+        {
+          "id": "D",
+          "text": "connects cloud-based resources to on-premises infrastructure"
+        },
+        {
+          "id": "C",
+          "text": "can reduce the need to invest heavily in data centers before resource usage is known"
+        },
+        {
+          "id": "A",
+          "text": "can lower variable costs because cloud providers aggregate usage from many customers"
+        },
+        {
+          "id": "B",
+          "text": "can translate aggregated usage into lower pay-as-you-go prices"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Cloud Concepts",
+      "topic": "Cloud benefits",
+      "difficulty": "medium",
+      "source_module": "Module 1"
+    },
+    {
+      "id": "SET07-Q047",
+      "type": "multi_select",
+      "question": "Which TWO statements correctly describe AWS global footprint?",
+      "options": [
+        {
+          "id": "B",
+          "text": "can help organizations serve customers around the world with lower latency"
+        },
+        {
+          "id": "D",
+          "text": "helps deliver content closer to customers around the world"
+        },
+        {
+          "id": "C",
+          "text": "is a single data center or a group of data centers within an AWS Region"
+        },
+        {
+          "id": "A",
+          "text": "enables applications to be deployed in multiple geographic areas"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Cloud Concepts",
+      "topic": "Global infrastructure",
+      "difficulty": "medium",
+      "source_module": "Module 3"
+    },
+    {
+      "id": "SET07-Q048",
+      "type": "single_select",
+      "question": "A team needs a capability that supports several database engines including Aurora, PostgreSQL, MySQL, MariaDB, Oracle Database, and Microsoft SQL Server. Which option is the most appropriate choice?",
+      "options": [
+        {
+          "id": "C",
+          "text": "S3 versus EBS"
+        },
+        {
+          "id": "A",
+          "text": "Amazon RDS"
+        },
+        {
+          "id": "D",
+          "text": "S3 Glacier"
+        },
+        {
+          "id": "B",
+          "text": "Amazon Aurora"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "Managed databases",
+      "difficulty": "medium",
+      "source_module": "Module 5"
+    },
+    {
+      "id": "SET07-Q049",
+      "type": "single_select",
+      "question": "A team needs a capability that lets organizations consume computing resources without making large upfront investments in physical infrastructure. Which option is the most appropriate choice?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Cloud computing"
+        },
+        {
+          "id": "D",
+          "text": "On-premises deployment"
+        },
+        {
+          "id": "C",
+          "text": "Client-server model"
+        },
+        {
+          "id": "B",
+          "text": "Hybrid deployment"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Cloud Concepts",
+      "topic": "Cloud computing",
+      "difficulty": "medium",
+      "source_module": "Module 1"
+    },
+    {
+      "id": "SET07-Q050",
+      "type": "multi_select",
+      "question": "Select TWO characteristics that apply to Elastic Load Balancing.",
+      "options": [
+        {
+          "id": "D",
+          "text": "provides a managed message queue for sending, storing, and receiving messages"
+        },
+        {
+          "id": "B",
+          "text": "can help improve application availability by distributing requests"
+        },
+        {
+          "id": "A",
+          "text": "distributes incoming application traffic across multiple resources"
+        },
+        {
+          "id": "C",
+          "text": "can deliver notifications to subscribers such as web servers, email addresses, or Lambda functions"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Technology",
+      "topic": "Load balancing",
+      "difficulty": "hard",
+      "source_module": "Module 2"
+    },
+    {
+      "id": "SET07-Q051",
+      "type": "single_select",
+      "question": "Which statement is accurate about Three-tier architecture?",
+      "options": [
+        {
+          "id": "A",
+          "text": "can use components such as a load balancer, application servers, and a backend database"
+        },
+        {
+          "id": "B",
+          "text": "focuses on running and monitoring systems to deliver business value and continually improve processes"
+        },
+        {
+          "id": "D",
+          "text": "focuses on protecting information, systems, and assets"
+        },
+        {
+          "id": "C",
+          "text": "focuses on delivering business value at the lowest price point"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "Architecture",
+      "difficulty": "medium",
+      "source_module": "Module 10"
+    },
+    {
+      "id": "SET07-Q052",
+      "type": "multi_select",
+      "question": "Select TWO characteristics that apply to Cloud-based deployment.",
+      "options": [
+        {
+          "id": "A",
+          "text": "runs all parts of an application in the cloud"
+        },
+        {
+          "id": "B",
+          "text": "can involve migrating existing applications or designing new applications in the cloud"
+        },
+        {
+          "id": "D",
+          "text": "delivers IT resources and applications on demand through the internet with pay-as-you-go pricing"
+        },
+        {
+          "id": "C",
+          "text": "has a server evaluate a request and return information to the client"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Cloud Concepts",
+      "topic": "Deployment models",
+      "difficulty": "medium",
+      "source_module": "Module 1"
+    },
+    {
+      "id": "SET07-Q053",
+      "type": "multi_select",
+      "question": "Which TWO statements correctly describe Amazon EKS?",
+      "options": [
+        {
+          "id": "B",
+          "text": "helps customers run Kubernetes-based container workloads on AWS"
+        },
+        {
+          "id": "D",
+          "text": "helps decouple application components"
+        },
+        {
+          "id": "A",
+          "text": "is a managed Kubernetes service"
+        },
+        {
+          "id": "C",
+          "text": "are designed for a balance of compute, memory, and networking resources"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Technology",
+      "topic": "Containers",
+      "difficulty": "medium",
+      "source_module": "Module 2"
+    },
+    {
+      "id": "SET07-Q054",
+      "type": "single_select",
+      "question": "Which statement is accurate about IAM policy?",
+      "options": [
+        {
+          "id": "B",
+          "text": "is a deliberate attempt to make a website or application unavailable"
+        },
+        {
+          "id": "A",
+          "text": "should follow least-privilege principles when permissions are granted"
+        },
+        {
+          "id": "C",
+          "text": "groups AWS accounts hierarchically"
+        },
+        {
+          "id": "D",
+          "text": "is an identity created in AWS to represent a person or application"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Security and Compliance",
+      "topic": "IAM policies",
+      "difficulty": "medium",
+      "source_module": "Module 6"
+    },
+    {
+      "id": "SET07-Q055",
+      "type": "single_select",
+      "question": "A team needs a capability that can be used to back up EBS data. Which option is the most appropriate choice?",
+      "options": [
+        {
+          "id": "D",
+          "text": "S3 Intelligent-Tiering"
+        },
+        {
+          "id": "C",
+          "text": "Amazon S3"
+        },
+        {
+          "id": "A",
+          "text": "EBS snapshot"
+        },
+        {
+          "id": "B",
+          "text": "EBS versus EFS"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "Backup",
+      "difficulty": "medium",
+      "source_module": "Module 5"
+    },
+    {
+      "id": "SET07-Q056",
+      "type": "single_select",
+      "question": "Which AWS concept or service is best described as one that is a managed Kubernetes service?",
+      "options": [
+        {
+          "id": "D",
+          "text": "AWS Fargate"
+        },
+        {
+          "id": "B",
+          "text": "General purpose instances"
+        },
+        {
+          "id": "A",
+          "text": "Amazon EKS"
+        },
+        {
+          "id": "C",
+          "text": "Amazon SQS"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "Containers",
+      "difficulty": "medium",
+      "source_module": "Module 2"
+    },
+    {
+      "id": "SET07-Q057",
+      "type": "single_select",
+      "question": "Which statement is accurate about Amazon ECS?",
+      "options": [
+        {
+          "id": "D",
+          "text": "let customers pay for compute capacity without requiring a long-term commitment"
+        },
+        {
+          "id": "C",
+          "text": "provides virtual servers in the AWS Cloud"
+        },
+        {
+          "id": "B",
+          "text": "automatically adds or removes EC2 instances based on demand or configured conditions"
+        },
+        {
+          "id": "A",
+          "text": "can be used to run and manage containerized applications"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "Containers",
+      "difficulty": "medium",
+      "source_module": "Module 2"
+    },
+    {
+      "id": "SET07-Q058",
+      "type": "multi_select",
+      "question": "Which TWO statements correctly describe Governance Perspective?",
+      "options": [
+        {
+          "id": "D",
+          "text": "focuses on people, skills, and organizational change during cloud adoption"
+        },
+        {
+          "id": "A",
+          "text": "focuses on aligning IT strategy with business outcomes"
+        },
+        {
+          "id": "C",
+          "text": "focuses on operating cloud environments"
+        },
+        {
+          "id": "B",
+          "text": "addresses skills and processes needed for governance during cloud adoption"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Cloud Concepts",
+      "topic": "AWS CAF",
+      "difficulty": "medium",
+      "source_module": "Module 9"
+    },
+    {
+      "id": "SET07-Q059",
+      "type": "multi_select",
+      "question": "Which TWO statements correctly describe Amazon DynamoDB?",
+      "options": [
+        {
+          "id": "A",
+          "text": "is a key-value database service"
+        },
+        {
+          "id": "C",
+          "text": "is intended for data with unknown or changing access patterns"
+        },
+        {
+          "id": "D",
+          "text": "the choice depends on the workload's data model and access requirements"
+        },
+        {
+          "id": "B",
+          "text": "provides single-digit millisecond performance and manages the underlying storage"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Technology",
+      "topic": "NoSQL databases",
+      "difficulty": "medium",
+      "source_module": "Module 5"
+    },
+    {
+      "id": "SET07-Q060",
+      "type": "multi_select",
+      "question": "Which TWO statements correctly describe AWS Region?",
+      "options": [
+        {
+          "id": "A",
+          "text": "is a geographic area where AWS operates cloud infrastructure"
+        },
+        {
+          "id": "B",
+          "text": "can be selected based on factors such as data governance, customer proximity, available services, and pricing"
+        },
+        {
+          "id": "D",
+          "text": "helps automate consistent provisioning of infrastructure"
+        },
+        {
+          "id": "C",
+          "text": "lets users make AWS API calls from a terminal"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Cloud Concepts",
+      "topic": "AWS Regions",
+      "difficulty": "medium",
+      "source_module": "Module 3"
+    },
+    {
+      "id": "SET07-Q061",
+      "type": "single_select",
+      "question": "A team needs a capability that can be used to create a business case for cloud adoption. Which option is the most appropriate choice?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Business Perspective"
+        },
+        {
+          "id": "D",
+          "text": "Replatforming"
+        },
+        {
+          "id": "C",
+          "text": "Security Perspective"
+        },
+        {
+          "id": "B",
+          "text": "AWS Snowcone"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Cloud Concepts",
+      "topic": "AWS CAF",
+      "difficulty": "medium",
+      "source_module": "Module 9"
+    },
+    {
+      "id": "SET07-Q062",
+      "type": "single_select",
+      "question": "Which statement is accurate about Cloud computing?",
+      "options": [
+        {
+          "id": "D",
+          "text": "uses a client such as a web browser or desktop application to make requests to a server"
+        },
+        {
+          "id": "C",
+          "text": "connects cloud-based resources to on-premises infrastructure"
+        },
+        {
+          "id": "A",
+          "text": "lets organizations consume computing resources without making large upfront investments in physical infrastructure"
+        },
+        {
+          "id": "B",
+          "text": "runs all parts of an application in the cloud"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Cloud Concepts",
+      "topic": "Cloud computing",
+      "difficulty": "medium",
+      "source_module": "Module 1"
+    },
+    {
+      "id": "SET07-Q063",
+      "type": "single_select",
+      "question": "Which AWS concept or service is best described as one that can separate an application into presentation, application, and database layers?",
+      "options": [
+        {
+          "id": "D",
+          "text": "Security pillar"
+        },
+        {
+          "id": "A",
+          "text": "Three-tier architecture"
+        },
+        {
+          "id": "C",
+          "text": "Cost optimization pillar"
+        },
+        {
+          "id": "B",
+          "text": "Operational excellence"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "Architecture",
+      "difficulty": "medium",
+      "source_module": "Module 10"
+    },
+    {
+      "id": "SET07-Q064",
+      "type": "single_select",
+      "question": "Which AWS concept or service is best described as one that is a virtual firewall that controls inbound and outbound traffic at the subnet level?",
+      "options": [
+        {
+          "id": "C",
+          "text": "Amazon VPC"
+        },
+        {
+          "id": "B",
+          "text": "VPC boundaries"
+        },
+        {
+          "id": "A",
+          "text": "Network ACL"
+        },
+        {
+          "id": "D",
+          "text": "Route table"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "Traffic control",
+      "difficulty": "medium",
+      "source_module": "Module 4"
+    },
+    {
+      "id": "SET07-Q065",
+      "type": "multi_select",
+      "question": "Which TWO statements correctly describe AWS Database Migration Service?",
+      "options": [
+        {
+          "id": "D",
+          "text": "the choice depends on the workload's data model and access requirements"
+        },
+        {
+          "id": "B",
+          "text": "is designed to support database migration activities"
+        },
+        {
+          "id": "A",
+          "text": "helps migrate databases to AWS"
+        },
+        {
+          "id": "C",
+          "text": "is a scalable file system for AWS workloads"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Technology",
+      "topic": "Database migration",
+      "difficulty": "medium",
+      "source_module": "Module 5"
+    },
+    {
+      "id": "SET07-Q066",
+      "type": "single_select",
+      "question": "Which AWS concept or service is best described as one that requires more than one authentication factor?",
+      "options": [
+        {
+          "id": "D",
+          "text": "AWS WAF"
+        },
+        {
+          "id": "A",
+          "text": "Multi-factor authentication"
+        },
+        {
+          "id": "B",
+          "text": "IAM group"
+        },
+        {
+          "id": "C",
+          "text": "AWS shared responsibility model"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Security and Compliance",
+      "topic": "Authentication",
+      "difficulty": "easy",
+      "source_module": "Module 6"
+    },
+    {
+      "id": "SET07-Q067",
+      "type": "single_select",
+      "question": "A team needs a capability that can make new resources available within minutes rather than waiting weeks for data-center resources. Which option is the most appropriate choice?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Increase speed and agility"
+        },
+        {
+          "id": "D",
+          "text": "Client-server model"
+        },
+        {
+          "id": "C",
+          "text": "Hybrid deployment"
+        },
+        {
+          "id": "B",
+          "text": "On-premises deployment"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Cloud Concepts",
+      "topic": "Cloud benefits",
+      "difficulty": "medium",
+      "source_module": "Module 1"
+    },
+    {
+      "id": "SET07-Q068",
+      "type": "single_select",
+      "question": "Which AWS concept or service is best described as one that means applying security controls throughout the architecture?",
+      "options": [
+        {
+          "id": "B",
+          "text": "Security pillar"
+        },
+        {
+          "id": "A",
+          "text": "Security at all layers"
+        },
+        {
+          "id": "C",
+          "text": "Elasticity"
+        },
+        {
+          "id": "D",
+          "text": "Three-tier architecture"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Security and Compliance",
+      "topic": "Security",
+      "difficulty": "medium",
+      "source_module": "Module 10"
+    },
+    {
+      "id": "SET07-Q069",
+      "type": "single_select",
+      "question": "Which AWS concept or service is best described as one that are short-term free offers that start when a particular service is activated?",
+      "options": [
+        {
+          "id": "B",
+          "text": "AWS Free Tier"
+        },
+        {
+          "id": "A",
+          "text": "Free Tier trials"
+        },
+        {
+          "id": "D",
+          "text": "AWS Marketplace"
+        },
+        {
+          "id": "C",
+          "text": "12 Months Free"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Billing and Pricing",
+      "topic": "Free Tier",
+      "difficulty": "easy",
+      "source_module": "Module 8"
+    },
+    {
+      "id": "SET07-Q070",
+      "type": "multi_select",
+      "question": "Select TWO characteristics that apply to RDS versus DynamoDB.",
+      "options": [
+        {
+          "id": "A",
+          "text": "RDS is relational while DynamoDB is a nonrelational key-value database"
+        },
+        {
+          "id": "D",
+          "text": "S3 stores objects in buckets while EBS provides block-level storage"
+        },
+        {
+          "id": "C",
+          "text": "stores objects in buckets"
+        },
+        {
+          "id": "B",
+          "text": "the choice depends on the workload's data model and access requirements"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Technology",
+      "topic": "Database selection",
+      "difficulty": "medium",
+      "source_module": "Module 5"
+    },
+    {
+      "id": "SET07-Q071",
+      "type": "single_select",
+      "question": "Which statement is accurate about Messaging and queuing?",
+      "options": [
+        {
+          "id": "A",
+          "text": "can support loosely coupled application architectures"
+        },
+        {
+          "id": "C",
+          "text": "can provide discounted pricing in exchange for a commitment compared with On-Demand pricing"
+        },
+        {
+          "id": "D",
+          "text": "lets code run on servers without customers provisioning or managing the underlying servers"
+        },
+        {
+          "id": "B",
+          "text": "is an AWS container orchestration service"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "Messaging",
+      "difficulty": "medium",
+      "source_module": "Module 2"
+    },
+    {
+      "id": "SET07-Q072",
+      "type": "multi_select",
+      "question": "Which TWO statements correctly describe AWS Command Line Interface?",
+      "options": [
+        {
+          "id": "D",
+          "text": "can reduce latency by serving content from locations closer to users"
+        },
+        {
+          "id": "B",
+          "text": "can be used to automate repeatable AWS management operations through commands"
+        },
+        {
+          "id": "C",
+          "text": "can influence AWS Region selection because organizations may have legal or governance requirements about where data resides"
+        },
+        {
+          "id": "A",
+          "text": "lets users make AWS API calls from a terminal"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Technology",
+      "topic": "AWS CLI",
+      "difficulty": "medium",
+      "source_module": "Module 3"
+    },
+    {
+      "id": "SET07-Q073",
+      "type": "single_select",
+      "question": "A team needs a capability that has a server evaluate a request and return information to the client. Which option is the most appropriate choice?",
+      "options": [
+        {
+          "id": "C",
+          "text": "Hybrid deployment"
+        },
+        {
+          "id": "A",
+          "text": "Client-server model"
+        },
+        {
+          "id": "B",
+          "text": "Increase speed and agility"
+        },
+        {
+          "id": "D",
+          "text": "Stop guessing capacity"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Cloud Concepts",
+      "topic": "Client-server model",
+      "difficulty": "medium",
+      "source_module": "Module 1"
+    },
+    {
+      "id": "SET07-Q074",
+      "type": "single_select",
+      "question": "Which statement is accurate about AWS Developer Support?",
+      "options": [
+        {
+          "id": "B",
+          "text": "provides AWS expertise across the range of AWS services"
+        },
+        {
+          "id": "C",
+          "text": "lets customers use certain AWS services within specified free usage offers"
+        },
+        {
+          "id": "D",
+          "text": "can reduce the unit price when usage increases for eligible services"
+        },
+        {
+          "id": "A",
+          "text": "includes client-side diagnostic tools"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Billing and Pricing",
+      "topic": "Support",
+      "difficulty": "medium",
+      "source_module": "Module 8"
+    },
+    {
+      "id": "SET07-Q075",
+      "type": "multi_select",
+      "question": "Which TWO statements correctly describe Increase speed and agility?",
+      "options": [
+        {
+          "id": "A",
+          "text": "makes it easier to develop and deploy applications"
+        },
+        {
+          "id": "C",
+          "text": "allows organizations to access only the capacity they need"
+        },
+        {
+          "id": "B",
+          "text": "can make new resources available within minutes rather than waiting weeks for data-center resources"
+        },
+        {
+          "id": "D",
+          "text": "is also described in the module as a private cloud deployment"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Cloud Concepts",
+      "topic": "Cloud benefits",
+      "difficulty": "medium",
+      "source_module": "Module 1"
+    },
+    {
+      "id": "SET07-Q076",
+      "type": "single_select",
+      "question": "Which statement is accurate about Amazon DynamoDB?",
+      "options": [
+        {
+          "id": "C",
+          "text": "RDS is relational while DynamoDB is a nonrelational key-value database"
+        },
+        {
+          "id": "A",
+          "text": "provides single-digit millisecond performance and manages the underlying storage"
+        },
+        {
+          "id": "D",
+          "text": "EBS volumes are attached to EC2 instances and are Availability Zone-level resources"
+        },
+        {
+          "id": "B",
+          "text": "is intended for data with unknown or changing access patterns"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "NoSQL databases",
+      "difficulty": "medium",
+      "source_module": "Module 5"
+    },
+    {
+      "id": "SET07-Q077",
+      "type": "single_select",
+      "question": "Which AWS concept or service is best described as one that can influence Region selection because placing workloads closer to customers can reduce latency?",
+      "options": [
+        {
+          "id": "D",
+          "text": "AWS Command Line Interface"
+        },
+        {
+          "id": "A",
+          "text": "Customer proximity"
+        },
+        {
+          "id": "B",
+          "text": "Edge location"
+        },
+        {
+          "id": "C",
+          "text": "Multi-AZ architecture"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Cloud Concepts",
+      "topic": "Region selection",
+      "difficulty": "medium",
+      "source_module": "Module 3"
+    },
+    {
+      "id": "SET07-Q078",
+      "type": "single_select",
+      "question": "Which AWS concept or service is best described as one that is an enterprise-class relational database compatible with MySQL and PostgreSQL?",
+      "options": [
+        {
+          "id": "D",
+          "text": "Instance store"
+        },
+        {
+          "id": "C",
+          "text": "S3 Standard"
+        },
+        {
+          "id": "B",
+          "text": "Amazon EFS"
+        },
+        {
+          "id": "A",
+          "text": "Amazon Aurora"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "Relational databases",
+      "difficulty": "medium",
+      "source_module": "Module 5"
+    },
+    {
+      "id": "SET07-Q079",
+      "type": "single_select",
+      "question": "Which statement is accurate about Operations Perspective?",
+      "options": [
+        {
+          "id": "C",
+          "text": "is a compact Snow Family device for data transfer"
+        },
+        {
+          "id": "B",
+          "text": "supports organization-wide change"
+        },
+        {
+          "id": "A",
+          "text": "supports the processes needed to run and maintain cloud workloads"
+        },
+        {
+          "id": "D",
+          "text": "moves from a traditional license to a software-as-a-service model"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "AWS CAF",
+      "difficulty": "medium",
+      "source_module": "Module 9"
+    },
+    {
+      "id": "SET07-Q080",
+      "type": "single_select",
+      "question": "Which statement is accurate about Domain Name System?",
+      "options": [
+        {
+          "id": "D",
+          "text": "can encrypt traffic between an organization and AWS over a network path"
+        },
+        {
+          "id": "A",
+          "text": "is commonly described as the phone book of the internet"
+        },
+        {
+          "id": "B",
+          "text": "does not remember previous traffic decisions"
+        },
+        {
+          "id": "C",
+          "text": "remembers previous traffic decisions for the connection"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "DNS",
+      "difficulty": "medium",
+      "source_module": "Module 4"
+    },
+    {
+      "id": "SET07-Q081",
+      "type": "single_select",
+      "question": "Which AWS concept or service is best described as one that is a section of a VPC used to group resources?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Subnet"
+        },
+        {
+          "id": "D",
+          "text": "Amazon Route 53"
+        },
+        {
+          "id": "C",
+          "text": "Domain Name System"
+        },
+        {
+          "id": "B",
+          "text": "Public subnet"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "Subnets",
+      "difficulty": "easy",
+      "source_module": "Module 4"
+    },
+    {
+      "id": "SET07-Q082",
+      "type": "multi_select",
+      "question": "Select TWO characteristics that apply to Route 53 DNS records.",
+      "options": [
+        {
+          "id": "B",
+          "text": "can be managed using Amazon Route 53"
+        },
+        {
+          "id": "A",
+          "text": "store information used to map domain names to destinations"
+        },
+        {
+          "id": "D",
+          "text": "help isolate AWS resources within a virtual network"
+        },
+        {
+          "id": "C",
+          "text": "can use a virtual private gateway as the AWS-side connection component"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Technology",
+      "topic": "DNS records",
+      "difficulty": "medium",
+      "source_module": "Module 4"
+    },
+    {
+      "id": "SET07-Q083",
+      "type": "single_select",
+      "question": "Which AWS concept or service is best described as one that helps create and manage cryptographic keys?",
+      "options": [
+        {
+          "id": "C",
+          "text": "Service control policy"
+        },
+        {
+          "id": "D",
+          "text": "Amazon Inspector"
+        },
+        {
+          "id": "B",
+          "text": "IAM policy"
+        },
+        {
+          "id": "A",
+          "text": "AWS Key Management Service"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Security and Compliance",
+      "topic": "Encryption",
+      "difficulty": "medium",
+      "source_module": "Module 6"
+    },
+    {
+      "id": "SET07-Q084",
+      "type": "single_select",
+      "question": "A team needs a capability that includes experimenting, using serverless architectures, and designing systems to go global in minutes. Which option is the most appropriate choice?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Performance efficiency"
+        },
+        {
+          "id": "B",
+          "text": "Small reversible changes"
+        },
+        {
+          "id": "C",
+          "text": "Security at all layers"
+        },
+        {
+          "id": "D",
+          "text": "Multi-AZ resilience"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "Well-Architected pillars",
+      "difficulty": "medium",
+      "source_module": "Module 10"
+    },
+    {
+      "id": "SET07-Q085",
+      "type": "single_select",
+      "question": "Which statement is accurate about AWS Shield Standard?",
+      "options": [
+        {
+          "id": "C",
+          "text": "is a threat detection service"
+        },
+        {
+          "id": "B",
+          "text": "provide agreements related to an organization's use of AWS"
+        },
+        {
+          "id": "A",
+          "text": "is provided at no additional charge"
+        },
+        {
+          "id": "D",
+          "text": "uses multiple machines to attack a target"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Security and Compliance",
+      "topic": "DDoS protection",
+      "difficulty": "medium",
+      "source_module": "Module 6"
+    },
+    {
+      "id": "SET07-Q086",
+      "type": "single_select",
+      "question": "Which statement is accurate about On-Demand Instances?",
+      "options": [
+        {
+          "id": "C",
+          "text": "automatically adds or removes EC2 instances based on demand or configured conditions"
+        },
+        {
+          "id": "D",
+          "text": "use spare AWS compute capacity and can offer significant discounts"
+        },
+        {
+          "id": "B",
+          "text": "lets code run on servers without customers provisioning or managing the underlying servers"
+        },
+        {
+          "id": "A",
+          "text": "are useful when workloads have uncertain usage or need flexible capacity"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "EC2 pricing",
+      "difficulty": "medium",
+      "source_module": "Module 2"
+    },
+    {
+      "id": "SET07-Q087",
+      "type": "multi_select",
+      "question": "Select TWO characteristics that apply to Customer proximity.",
+      "options": [
+        {
+          "id": "C",
+          "text": "can be used to automate repeatable AWS management operations through commands"
+        },
+        {
+          "id": "A",
+          "text": "can influence Region selection because placing workloads closer to customers can reduce latency"
+        },
+        {
+          "id": "D",
+          "text": "is a single data center or a group of data centers within an AWS Region"
+        },
+        {
+          "id": "B",
+          "text": "is a factor to consider when choosing where to deploy an application"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Cloud Concepts",
+      "topic": "Region selection",
+      "difficulty": "hard",
+      "source_module": "Module 3"
+    },
+    {
+      "id": "SET07-Q088",
+      "type": "multi_select",
+      "question": "Which TWO statements correctly describe S3 Standard-IA?",
+      "options": [
+        {
+          "id": "D",
+          "text": "has a lower storage price than S3 Standard-IA"
+        },
+        {
+          "id": "A",
+          "text": "is designed for infrequently accessed data that still requires high availability"
+        },
+        {
+          "id": "B",
+          "text": "has a lower storage price and higher retrieval price than S3 Standard"
+        },
+        {
+          "id": "C",
+          "text": "is a data warehousing service"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Technology",
+      "topic": "S3 storage classes",
+      "difficulty": "medium",
+      "source_module": "Module 5"
+    },
+    {
+      "id": "SET07-Q089",
+      "type": "single_select",
+      "question": "Which statement is accurate about Amazon EC2?",
+      "options": [
+        {
+          "id": "D",
+          "text": "provides serverless compute for containers"
+        },
+        {
+          "id": "C",
+          "text": "are designed for a balance of compute, memory, and networking resources"
+        },
+        {
+          "id": "A",
+          "text": "requires customers to manage the instances they provision, including ongoing maintenance responsibilities"
+        },
+        {
+          "id": "B",
+          "text": "can provide discounted pricing in exchange for a commitment compared with On-Demand pricing"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "EC2",
+      "difficulty": "medium",
+      "source_module": "Module 2"
+    },
+    {
+      "id": "SET07-Q090",
+      "type": "single_select",
+      "question": "A team needs a capability that can produce recommendations represented with status indicators. Which option is the most appropriate choice?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Trusted Advisor checks"
+        },
+        {
+          "id": "D",
+          "text": "CloudWatch alarm"
+        },
+        {
+          "id": "C",
+          "text": "AWS CloudTrail"
+        },
+        {
+          "id": "B",
+          "text": "AWS Trusted Advisor"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Security and Compliance",
+      "topic": "Trusted Advisor",
+      "difficulty": "medium",
+      "source_module": "Module 7"
+    },
+    {
+      "id": "SET07-Q091",
+      "type": "multi_select",
+      "question": "Select TWO characteristics that apply to Network ACL.",
+      "options": [
+        {
+          "id": "C",
+          "text": "is associated with subnets to control routing decisions"
+        },
+        {
+          "id": "A",
+          "text": "is a virtual firewall that controls inbound and outbound traffic at the subnet level"
+        },
+        {
+          "id": "D",
+          "text": "can encrypt traffic between an organization and AWS over a network path"
+        },
+        {
+          "id": "B",
+          "text": "uses stateless packet filtering"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Technology",
+      "topic": "Traffic control",
+      "difficulty": "medium",
+      "source_module": "Module 4"
+    },
+    {
+      "id": "SET07-Q092",
+      "type": "single_select",
+      "question": "A team needs a capability that has a lower storage price and higher retrieval price than S3 Standard. Which option is the most appropriate choice?",
+      "options": [
+        {
+          "id": "B",
+          "text": "S3 One Zone-IA"
+        },
+        {
+          "id": "D",
+          "text": "Relational database"
+        },
+        {
+          "id": "A",
+          "text": "S3 Standard-IA"
+        },
+        {
+          "id": "C",
+          "text": "EBS snapshot"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "S3 storage classes",
+      "difficulty": "medium",
+      "source_module": "Module 5"
+    },
+    {
+      "id": "SET07-Q093",
+      "type": "multi_select",
+      "question": "Select TWO characteristics that apply to Multi-factor authentication.",
+      "options": [
+        {
+          "id": "B",
+          "text": "adds an additional security layer beyond a password"
+        },
+        {
+          "id": "D",
+          "text": "is a threat detection service"
+        },
+        {
+          "id": "A",
+          "text": "requires more than one authentication factor"
+        },
+        {
+          "id": "C",
+          "text": "can be used as a web application firewall"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Security and Compliance",
+      "topic": "Authentication",
+      "difficulty": "medium",
+      "source_module": "Module 6"
+    },
+    {
+      "id": "SET07-Q094",
+      "type": "multi_select",
+      "question": "Which TWO statements correctly describe Consolidated billing?",
+      "options": [
+        {
+          "id": "B",
+          "text": "is available through AWS Organizations"
+        },
+        {
+          "id": "A",
+          "text": "combines charges from AWS member accounts into a single bill"
+        },
+        {
+          "id": "D",
+          "text": "helps customers find and acquire software solutions for AWS"
+        },
+        {
+          "id": "C",
+          "text": "can reduce the unit price when usage increases for eligible services"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Billing and Pricing",
+      "topic": "Organizations",
+      "difficulty": "medium",
+      "source_module": "Module 8"
+    },
+    {
+      "id": "SET07-Q095",
+      "type": "single_select",
+      "question": "Which AWS concept or service is best described as one that contains rules that determine where network traffic is directed?",
+      "options": [
+        {
+          "id": "C",
+          "text": "Route 53 DNS records"
+        },
+        {
+          "id": "A",
+          "text": "Route table"
+        },
+        {
+          "id": "B",
+          "text": "Domain Name System"
+        },
+        {
+          "id": "D",
+          "text": "Private subnet"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "Routing",
+      "difficulty": "easy",
+      "source_module": "Module 4"
+    },
+    {
+      "id": "SET07-Q096",
+      "type": "single_select",
+      "question": "Which AWS concept or service is best described as one that is a VPC component used with protected connectivity such as a VPN?",
+      "options": [
+        {
+          "id": "D",
+          "text": "Domain Name System"
+        },
+        {
+          "id": "B",
+          "text": "Route 53 DNS records"
+        },
+        {
+          "id": "C",
+          "text": "Amazon Route 53"
+        },
+        {
+          "id": "A",
+          "text": "Virtual private gateway"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "Private connectivity",
+      "difficulty": "medium",
+      "source_module": "Module 4"
+    },
+    {
+      "id": "SET07-Q097",
+      "type": "single_select",
+      "question": "Which AWS concept or service is best described as one that controls access to AWS resources?",
+      "options": [
+        {
+          "id": "D",
+          "text": "AWS Organizations"
+        },
+        {
+          "id": "B",
+          "text": "IAM role"
+        },
+        {
+          "id": "C",
+          "text": "AWS Artifact Agreements"
+        },
+        {
+          "id": "A",
+          "text": "AWS IAM"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Security and Compliance",
+      "topic": "IAM",
+      "difficulty": "medium",
+      "source_module": "Module 6"
+    },
+    {
+      "id": "SET07-Q098",
+      "type": "multi_select",
+      "question": "Which TWO statements correctly describe EBS snapshot?",
+      "options": [
+        {
+          "id": "B",
+          "text": "can be used to back up EBS data"
+        },
+        {
+          "id": "A",
+          "text": "is an incremental backup of an EBS volume after the first snapshot"
+        },
+        {
+          "id": "C",
+          "text": "is an enterprise-class relational database compatible with MySQL and PostgreSQL"
+        },
+        {
+          "id": "D",
+          "text": "EFS is a regional file system designed for access across multiple Availability Zones"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Technology",
+      "topic": "Backup",
+      "difficulty": "medium",
+      "source_module": "Module 5"
+    },
+    {
+      "id": "SET07-Q099",
+      "type": "multi_select",
+      "question": "Which TWO statements correctly describe AWS Management Console?",
+      "options": [
+        {
+          "id": "A",
+          "text": "is a web-based interface for accessing and managing AWS services"
+        },
+        {
+          "id": "C",
+          "text": "lets users make AWS API calls from a terminal"
+        },
+        {
+          "id": "B",
+          "text": "allows users to perform AWS management tasks through a graphical interface"
+        },
+        {
+          "id": "D",
+          "text": "reduces the amount of infrastructure management needed to deploy supported applications"
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "domain": "Technology",
+      "topic": "AWS Management Console",
+      "difficulty": "medium",
+      "source_module": "Module 3"
+    },
+    {
+      "id": "SET07-Q100",
+      "type": "single_select",
+      "question": "A team needs a capability that S3 objects are web-enabled resources while EBS volumes are attached to compute resources. Which option is the most appropriate choice?",
+      "options": [
+        {
+          "id": "A",
+          "text": "S3 versus EBS"
+        },
+        {
+          "id": "D",
+          "text": "EBS versus EFS"
+        },
+        {
+          "id": "C",
+          "text": "S3 Standard"
+        },
+        {
+          "id": "B",
+          "text": "RDS versus DynamoDB"
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "domain": "Technology",
+      "topic": "Storage comparison",
+      "difficulty": "medium",
+      "source_module": "Module 5"
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Question {
+  id                      String           @id @default(cuid())
+  questionCode            String           @unique
+  questionText            String
+  type                    String           // SINGLE_SELECT, MULTI_SELECT
+  requiredSelections      Int              @default(1)
+  domain                  String           // Cloud Concepts, Security and Compliance, Cloud Technology and Services, Billing, Pricing and Support
+  domainId                Int              // 1, 2, 3, 4
+  topic                   String           // EC2, S3, IAM, VPC, etc.
+  difficulty              String           // EASY, MEDIUM, HARD
+  explanation             String
+  tags                    String           // JSON string of tags
+  sourceModule            String           // Reference module name
+  source                  String           @default("JSON Set 01") // "JSON Set 01".."JSON Set 08", "Module 01".."Module 12"
+  sourceType              String           @default("json") // "json" | "pdf_generated"
+  status                  String           @default("active") // "active", "draft", "review", "rejected", "retired"
+  concept                 String?          // Core tested concept
+  rejectionReason         String?          // e.g. "semantic_duplicate: High similarity with SET03-Q042"
+  conflictingQuestionCode String?          // Reference to the conflicting question
+  semanticFingerprint     String?          // Normalized tokens / hash
+  createdAt               DateTime         @default(now())
+  updatedAt               DateTime         @updatedAt
+
+  options                 QuestionOption[]
+  attemptQuestions        AttemptQuestion[]
+  bookmarks               Bookmark[]
+}
+
+model QuestionOption {
+  id          String    @id @default(cuid())
+  questionId  String
+  label       String    // A, B, C, D, E
+  text        String
+  isCorrect   Boolean   @default(false)
+  question    Question  @relation(fields: [questionId], references: [id], onDelete: Cascade)
+}
+
+model ExamAttempt {
+  id                 String           @id @default(cuid())
+  userId             String           @default("candidate_default")
+  mode               String           // FULL_MOCK, FOUNDATION, SECURITY_CHALLENGE, etc.
+  status             String           @default("READY") // NOT_STARTED, READY, IN_PROGRESS, WARNING, SUBMITTED, AUTO_SUBMITTED, TERMINATED, EXPIRED
+  startedAt          DateTime         @default(now())
+  expiresAt          DateTime
+  submittedAt        DateTime?
+  totalQuestions     Int              @default(65)
+  scoredQuestions    Int              @default(50)
+  unscoredQuestions  Int              @default(15)
+  scoredCorrect      Int              @default(0)
+  scoredIncorrect    Int              @default(0)
+  unscoredCorrect    Int              @default(0)
+  unscoredIncorrect  Int              @default(0)
+  totalCorrect       Int              @default(0)
+  passed             Boolean          @default(false)
+  scorePercentage    Float            @default(0.0)
+  timeSpentSeconds   Int              @default(0)
+  proctoringClean    Boolean          @default(true)
+  violationCount     Int              @default(0)
+  terminationReason  String?
+  createdAt          DateTime         @default(now())
+  updatedAt          DateTime         @updatedAt
+
+  questions          AttemptQuestion[]
+  proctorEvents      ProctorEvent[]
+}
+
+model AttemptQuestion {
+  id              String       @id @default(cuid())
+  attemptId       String
+  questionId      String
+  position        Int
+  isScored        Boolean      @default(true)
+  isFlagged       Boolean      @default(false)
+  selectedOptions String?      // JSON string of selected option labels (e.g. ["B"] or ["A","C"])
+  isCorrect       Boolean?
+  optionsOrder    String?      // JSON string of option IDs in randomized order
+  
+  attempt         ExamAttempt  @relation(fields: [attemptId], references: [id], onDelete: Cascade)
+  question        Question     @relation(fields: [questionId], references: [id], onDelete: Cascade)
+
+  @@unique([attemptId, position])
+}
+
+model ProctorEvent {
+  id              String       @id @default(cuid())
+  attemptId       String
+  eventType       String       // FACE_NOT_DETECTED, MULTIPLE_FACES_DETECTED, FACE_OUT_OF_FRAME, CAMERA_DISCONNECTED, TAB_HIDDEN, WINDOW_BLUR, FULLSCREEN_EXITED
+  timestamp       DateTime     @default(now())
+  severity        String       // INFO, WARNING, CRITICAL, TERMINATION
+  durationSeconds Float?
+  actionTaken     String?
+  metadata        String?      // JSON details
+
+  attempt         ExamAttempt  @relation(fields: [attemptId], references: [id], onDelete: Cascade)
+}
+
+model Bookmark {
+  id          String    @id @default(cuid())
+  userId      String    @default("candidate_default")
+  questionId  String
+  notes       String?
+  createdAt   DateTime  @default(now())
+
+  question    Question  @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  @@unique([userId, questionId])
+}
+
+model SystemSetting {
+  id          String    @id @default(cuid())
+  key         String    @unique
+  value       String
+  description String?
+  updatedAt   DateTime  @updatedAt
+}
