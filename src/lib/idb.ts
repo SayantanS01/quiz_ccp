@@ -58,6 +58,7 @@ export interface LocalAttempt {
   attemptId: string;
   username: string;
   candidateName: string;
+  mode?: string;
   startedAt: string;
   submittedAt: string | null;
   status: 'in_progress' | 'completed';

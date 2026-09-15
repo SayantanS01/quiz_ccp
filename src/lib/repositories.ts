@@ -388,7 +388,7 @@ export class ApiAttemptRepository {
     });
     const data = await res.json();
     if (!data.success) return null;
-    return this.getAttempt(attemptId) || null;
+    return (await this.getAttempt(attemptId)) ?? null;
   }
 }
 

@@ -116,7 +116,7 @@ export default function ExamSetupPage() {
       const { ApiAttemptRepository } = await import('@/lib/repositories');
       
       // Use candidate name or default username
-      const activeName = session?.candidateName || session?.username || 'Test User';
+      const activeName = session?.username || 'Test User';
       const activeUsername = session?.username || 'testuser';
 
       const attempt = await ApiAttemptRepository.startExam(
