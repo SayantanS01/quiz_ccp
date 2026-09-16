@@ -390,7 +390,7 @@ export default function ExamResultPage() {
               return (
                 <div
                   key={q.aqId}
-                  className={`rounded-xl border transition-all ${
+                  className={`rounded-xl border transition-all print:break-inside-avoid print:mb-6 ${
                     q.isCorrect
                       ? 'bg-slate-950/40 border-slate-800 hover:border-emerald-500/40'
                       : 'bg-rose-950/10 border-rose-500/20 hover:border-rose-500/40'

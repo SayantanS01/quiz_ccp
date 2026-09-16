@@ -420,7 +420,25 @@ export default function AdminPage() {
                           </div>
                           
                           <button
-                            onClick={() => alert('User deletion is managed via database admin.')}
+                            onClick={async () => {
+                              if (!confirm(`Are you sure you want to permanently delete user ${u.name || u.email}? This will wipe ALL their history, attempts, and mistakes.`)) return;
+                              try {
+                                const res = await fetch('/api/admin/users/manage', {
+                                  method: 'DELETE',
+                                  headers: { 'Content-Type': 'application/json' },
+                                  body: JSON.stringify({ userId: u.id })
+                                });
+                                const data = await res.json();
+                                if (data.success) {
+                                  alert('User successfully deleted.');
+                                  loadData();
+                                } else {
+                                  alert('Error deleting user: ' + data.error);
+                                }
+                              } catch (err) {
+                                alert('Failed to delete user.');
+                              }
+                            }}
                             className="shrink-0 flex items-center gap-2 px-4 py-2 rounded-lg bg-rose-500/10 hover:bg-rose-500/20 text-rose-500 text-sm font-semibold transition-colors border border-rose-500/20"
                           >
                             <Trash2 className="w-4 h-4" />
