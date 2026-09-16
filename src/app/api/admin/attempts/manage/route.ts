@@ -13,7 +13,7 @@ export async function DELETE(req: Request) {
     // Delete related records first (cascade)
     await prisma.proctorEvent.deleteMany({ where: { attemptId } });
     await prisma.attemptQuestion.deleteMany({ where: { attemptId } });
-    await prisma.examAttempt.delete({ where: { id: attemptId } });
+    await prisma.examAttempt.deleteMany({ where: { id: attemptId } });
 
     return NextResponse.json({ success: true });
   } catch (error: any) {
@@ -65,7 +65,7 @@ export async function POST(req: Request) {
       // Clean up old attempt
       await prisma.proctorEvent.deleteMany({ where: { attemptId } });
       await prisma.attemptQuestion.deleteMany({ where: { attemptId } });
-      await prisma.examAttempt.delete({ where: { id: attemptId } });
+      await prisma.examAttempt.deleteMany({ where: { id: attemptId } });
 
       // Return the info needed to start a new exam
       return NextResponse.json({ 
