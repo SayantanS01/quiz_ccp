@@ -138,7 +138,15 @@ export default function ExamResultPage() {
     );
   }
 
-  const { attempt, summary, questions } = data;
+  const { attempt, summary: apiSummary, questions } = data;
+  const summary = {
+    ...apiSummary,
+    scoredScore: apiSummary.scoredCorrect,
+    totalScored: apiSummary.scoredQuestions,
+    unscoredScore: apiSummary.unscoredCorrect,
+    totalUnscored: apiSummary.unscoredQuestions,
+    percentage: apiSummary.scoredAccuracyPercent,
+  };
 
   const filteredQuestions = questions.filter((q: QuestionReview) => {
     if (filterType === 'correct') return q.isCorrect;
