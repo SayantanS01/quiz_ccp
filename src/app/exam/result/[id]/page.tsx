@@ -25,7 +25,7 @@ import {
   X
 } from 'lucide-react';
 import { Navbar } from '@/components/Navbar';
-import { PDFReportView } from '@/components/PDFReportView';
+
 import { useAuth } from '@/components/AuthProvider';
 
 interface OptionReview {
@@ -96,6 +96,29 @@ export default function ExamResultPage() {
     }
   }, [attemptId, session]);
 
+  // DRM Protection: block right-click, shortcuts
+  useEffect(() => {
+    const handleContextMenu = (e: MouseEvent) => e.preventDefault();
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (
+        (e.ctrlKey && ['p', 's', 'c'].includes(e.key.toLowerCase())) ||
+        (e.metaKey && ['p', 's', 'c'].includes(e.key.toLowerCase())) ||
+        e.key === 'F12'
+      ) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    };
+
+    document.addEventListener('contextmenu', handleContextMenu);
+    document.addEventListener('keydown', handleKeyDown, { capture: true });
+
+    return () => {
+      document.removeEventListener('contextmenu', handleContextMenu);
+      document.removeEventListener('keydown', handleKeyDown, { capture: true });
+    };
+  }, []);
+
   const toggleQuestionExpand = (pos: number) => {
     setExpandedQuestions((prev) => ({
       ...prev,
@@ -157,7 +180,12 @@ export default function ExamResultPage() {
   });
 
   return (
-    <div className="min-h-screen bg-[#0B0F19] text-slate-100 selection:bg-amber-500 selection:text-black">
+    <div className="min-h-screen bg-[#0B0F19] text-slate-100 selection:bg-transparent selection:text-slate-100 select-none print:hidden">
+      <style dangerouslySetInnerHTML={{__html: `
+        @media print {
+          body { display: none !important; }
+        }
+      `}} />
       <Navbar />
 
       <main className="max-w-6xl mx-auto px-4 sm:px-6 py-10">
@@ -217,13 +245,7 @@ export default function ExamResultPage() {
           </div>
 
           {/* Action Bar inside Banner */}
-          <div className="mt-8 pt-6 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-4">
-            <PDFReportView
-              attempt={attempt}
-              summary={summary}
-              questions={questions}
-            />
-
+          <div className="mt-8 pt-6 border-t border-slate-800/80 flex flex-wrap items-center justify-end gap-4">
             <div className="flex items-center gap-3">
               <Link
                 href="/exam/setup/FULL_MOCK"
