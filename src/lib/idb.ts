@@ -40,6 +40,8 @@ export interface IDBQuestionResponse {
   questionId: string;
   displayNumber: number;
   originalQuestionId: string;
+  type?: string;
+  requiredSelections?: number;
   displayedOptions: { id: string; label: string; text: string; isCorrect: boolean }[];
   selectedAnswers: string[];
   correctAnswers: string[];

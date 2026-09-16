@@ -125,6 +125,8 @@ export class LocalAttemptRepository {
         questionId: q.id,
         displayNumber: index + 1,
         originalQuestionId: q.id,
+        type: q.type,
+        requiredSelections: q.requiredSelections,
         displayedOptions: mappedOptions,
         selectedAnswers: [],
         correctAnswers,
@@ -265,6 +267,8 @@ export class ApiAttemptRepository {
       return {
         questionId: q.id, // API returns id instead of questionId
         displayNumber: q.position,
+        type: q.type,
+        requiredSelections: q.requiredSelections,
         isScored: q.isScored ?? true, // Default to true if not provided by API
         selectedAnswers: q.selectedOptions || [],
         flagged: q.isFlagged || false,
@@ -318,6 +322,8 @@ export class ApiAttemptRepository {
         displayNumber: q.position,
         questionCode: q.questionCode || '',
         questionText: q.questionText || '',
+        type: q.type,
+        requiredSelections: q.requiredSelections,
         domain: q.domain || '',
         topic: q.topic || '',
         difficulty: q.difficulty || '',
