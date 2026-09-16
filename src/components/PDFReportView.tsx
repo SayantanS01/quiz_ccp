@@ -321,36 +321,74 @@ export function PDFReportView({ attempt, summary, questions }: PDFReportViewProp
         const userSelected = q.selectedOptions || [];
         const correctAns = q.correctAnswers || [];
 
-        // Check if question header + question text fits on page, else break before question
-        const questionTextLines = doc.splitTextToSize(q.questionText || '(No question text)', contentWidth - 4);
-        const qHeaderAndTextHeight = 8 + 3 + (questionTextLines.length * 4.5) + 3;
-        checkNewPage(qHeaderAndTextHeight + 12); // ensure header and at least first option can fit
+        // 1. Prepare question text with exact font/size active
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(8.5);
+        const questionTextLines = doc.splitTextToSize(q.questionText || '(No question text)', contentWidth - 6);
+        const qTextHeight = questionTextLines.length * 4.5;
+
+        // 2. Prepare options with exact font/size active
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(7.8);
+        const opts = q.options || correctAns.map(l => ({ label: l, text: l, isCorrect: true }));
+        let totalOptsHeight = 0;
+        const preparedOpts = opts.map(opt => {
+          const isUserChoice = userSelected.includes(opt.label);
+          const isCorrectOpt = q.correctAnswers.includes(opt.label);
+          const hasLabel = isCorrectOpt || isUserChoice;
+          const labelReserve = hasLabel ? 32 : 6;
+          const optTextWidth = contentWidth - 18 - labelReserve;
+          const lines = doc.splitTextToSize(opt.text || '', optTextWidth);
+          const height = Math.max(8, lines.length * 4 + 4);
+          totalOptsHeight += height + 1.8;
+          return { opt, lines, height, isUserChoice, isCorrectOpt };
+        });
+
+        // 3. Note box height
+        const hasNote = !isCorrect && userSelected.length > 0;
+        const noteBoxHeight = hasNote ? 10.5 : 0;
+
+        // 4. Explanation height
+        const hasExp = q.explanation && q.explanation !== 'No explanation provided.';
+        doc.setFont('helvetica', 'italic');
+        doc.setFontSize(7.5);
+        const expLines = hasExp ? doc.splitTextToSize(`Explanation: ${q.explanation}`, contentWidth - 12) : [];
+        const expBoxHeight = hasExp ? expLines.length * 4.2 + 8 : 0;
+
+        // Complete block height: badge(7.5) + gap(4) + text + gap(4) + opts + note + exp + divider(6)
+        const totalQuestionHeight = 7.5 + 4 + qTextHeight + 4 + totalOptsHeight + noteBoxHeight + expBoxHeight + 6;
+
+        // Keep entire question intact on current page; if it doesn't fit, start fresh page
+        if (y > 25 && y + totalQuestionHeight > pageHeight - 14) {
+          addPageFooter(doc, pageNum);
+          doc.addPage();
+          pageNum++;
+          addPageHeader(doc, pageNum);
+          y = 20;
+        }
 
         // Question number badge + status bar
         const badgeColor: [number, number, number] = isCorrect ? [16, 185, 129] : (userSelected.length === 0 ? [100, 116, 139] : [239, 68, 68]);
+        const badgeHeight = 7.5;
         doc.setFillColor(...badgeColor);
-        doc.roundedRect(marginL, y, contentWidth, 7, 1.2, 1.2, 'F');
+        doc.roundedRect(marginL, y, contentWidth, badgeHeight, 1.2, 1.2, 'F');
 
         doc.setFont('helvetica', 'bold');
         doc.setFontSize(8);
         doc.setTextColor(255, 255, 255);
         const statusLabel = userSelected.length === 0 ? 'SKIPPED' : (isCorrect ? 'CORRECT' : 'INCORRECT');
-        doc.text(`Q${q.position}  •  ${statusLabel}  •  ${q.domain || ''}  •  ${q.isScored ? 'Scored' : 'Unscored'}`, marginL + 3, y + 4.8);
-        y += 9;
+        doc.text(`Q${q.position}  •  ${statusLabel}  •  ${q.domain || ''}  •  ${q.isScored ? 'Scored' : 'Unscored'}`, marginL + 3, y + 5.2);
+        y += badgeHeight + 4.5; // Clear 4.5mm air gap below badge so text never overlaps color block
 
         // Question text
         doc.setFont('helvetica', 'bold');
         doc.setFontSize(8.5);
         doc.setTextColor(15, 23, 42);
         doc.text(questionTextLines, marginL + 2, y);
-        y += questionTextLines.length * 4.5 + 3;
+        y += qTextHeight + 3.5;
 
         // Options
-        const opts = q.options || correctAns.map(l => ({ label: l, text: l, isCorrect: true }));
-        opts.forEach((opt) => {
-          const isUserChoice = userSelected.includes(opt.label);
-          const isCorrectOpt = q.correctAnswers.includes(opt.label);
-
+        preparedOpts.forEach(({ opt, lines, height, isUserChoice, isCorrectOpt }) => {
           let bgR = 248, bgG = 250, bgB = 252;
           let borderR = 226, borderG = 232, borderB = 240;
           let textR = 51, textG = 65, textB = 85;
@@ -366,39 +404,30 @@ export function PDFReportView({ attempt, summary, questions }: PDFReportViewProp
             textR = 153; textG = 27; textB = 27;
           }
 
-          // Reserve 30mm on right for labels if present, 16mm left for circle
-          const hasLabel = isCorrectOpt || isUserChoice;
-          const labelReserve = hasLabel ? 32 : 6;
-          const optTextWidth = contentWidth - 16 - labelReserve;
-          doc.setFontSize(8);
-          const optLines = doc.splitTextToSize(opt.text || '', optTextWidth);
-          const optHeight = Math.max(7.5, optLines.length * 4 + 3.5);
-          checkNewPage(optHeight + 1.5);
-
           doc.setFillColor(bgR, bgG, bgB);
           doc.setDrawColor(borderR, borderG, borderB);
           doc.setLineWidth(0.35);
-          doc.roundedRect(marginL + 2, y, contentWidth - 4, optHeight, 1, 1, 'FD');
+          doc.roundedRect(marginL + 2, y, contentWidth - 4, height, 1, 1, 'FD');
           doc.setLineWidth(0.2);
 
           // Letter bubble
           doc.setFillColor(borderR, borderG, borderB);
-          doc.circle(marginL + 6.5, y + optHeight / 2, 2.8, 'F');
+          doc.circle(marginL + 6.5, y + height / 2, 2.8, 'F');
           doc.setFont('helvetica', 'bold');
           doc.setFontSize(7);
           doc.setTextColor(255, 255, 255);
-          doc.text(opt.label, marginL + 5.3, y + optHeight / 2 + 2);
+          doc.text(opt.label, marginL + 5.3, y + height / 2 + 1.2);
 
           // Option text
           doc.setFont('helvetica', isUserChoice || isCorrectOpt ? 'bold' : 'normal');
           doc.setFontSize(7.8);
           doc.setTextColor(textR, textG, textB);
-          const textStartY = y + 3.5;
-          doc.text(optLines, marginL + 12, textStartY);
+          const textStartY = lines.length === 1 ? (y + height / 2 + 1.2) : (y + 3.8);
+          doc.text(lines, marginL + 12, textStartY);
 
           // Right-side label
           const rightX = marginR - 4;
-          const midY = y + optHeight / 2 + 1.8;
+          const midY = y + height / 2 + 1.2;
           if (isCorrectOpt && isUserChoice) {
             doc.setFont('helvetica', 'bold');
             doc.setFontSize(6.5);
@@ -416,12 +445,11 @@ export function PDFReportView({ attempt, summary, questions }: PDFReportViewProp
             doc.text('✗ YOUR ANSWER', rightX, midY, { align: 'right' });
           }
 
-          y += optHeight + 1.5;
+          y += height + 1.8;
         });
 
         // Summary annotation for wrong answers
-        if (!isCorrect && userSelected.length > 0) {
-          checkNewPage(9);
+        if (hasNote) {
           doc.setFillColor(255, 251, 235);
           doc.setDrawColor(245, 158, 11);
           doc.roundedRect(marginL + 2, y, contentWidth - 4, 7.5, 1, 1, 'FD');
@@ -429,28 +457,26 @@ export function PDFReportView({ attempt, summary, questions }: PDFReportViewProp
           doc.setFontSize(7.5);
           doc.setTextColor(92, 53, 0);
           doc.text(`You answered: ${userSelected.join(', ')}   |   Correct answer: ${correctAns.join(', ')}`, marginL + 5, y + 5);
-          y += 9.5;
+          y += 10;
         }
 
         // Explanation
-        if (q.explanation && q.explanation !== 'No explanation provided.') {
-          const expLines = doc.splitTextToSize(`Explanation: ${q.explanation}`, contentWidth - 10);
-          checkNewPage(expLines.length * 4.5 + 6);
+        if (hasExp) {
+          const expBoxH = expLines.length * 4.2 + 5;
           doc.setFillColor(239, 246, 255);
           doc.setDrawColor(99, 102, 241);
-          doc.roundedRect(marginL + 2, y, contentWidth - 4, expLines.length * 4.5 + 4, 1, 1, 'FD');
+          doc.roundedRect(marginL + 2, y, contentWidth - 4, expBoxH, 1, 1, 'FD');
           doc.setFont('helvetica', 'italic');
           doc.setFontSize(7.5);
           doc.setTextColor(55, 48, 163);
-          doc.text(expLines, marginL + 5, y + 4);
-          y += expLines.length * 4.5 + 6;
+          doc.text(expLines, marginL + 5, y + 4.2);
+          y += expBoxH + 4;
         }
 
-        y += 6;
+        y += 3;
 
         // Divider
         if (idx < questions.length - 1) {
-          checkNewPage(4);
           doc.setDrawColor(226, 232, 240);
           doc.setLineWidth(0.3);
           doc.line(marginL, y, marginR, y);
