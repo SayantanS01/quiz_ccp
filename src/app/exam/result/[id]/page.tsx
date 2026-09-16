@@ -228,6 +228,13 @@ export default function ExamResultPage() {
 
             <div className="flex items-center gap-3">
               <Link
+                href={session?.isAdmin ? "/admin" : "/"}
+                className="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-semibold text-xs transition-colors"
+              >
+                {session?.isAdmin ? "Admin Portal" : "Dashboard"}
+              </Link>
+
+              <Link
                 href="/exam/setup/FULL_MOCK"
                 className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-semibold text-xs border border-slate-700 transition-all hover:scale-105"
               >

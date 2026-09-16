@@ -64,7 +64,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         }
       } else if (isAdminRoute && !session.isAdmin) {
         router.replace('/');
-      } else if (!isAdminRoute && session.isAdmin) {
+      } else if (!isAdminRoute && !pathname.startsWith('/exam/result') && session.isAdmin) {
         router.replace('/admin');
       }
     }
