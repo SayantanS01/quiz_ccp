@@ -486,8 +486,58 @@ export default function AdminPage() {
                   <Database className="w-12 h-12 text-purple-500 mx-auto mb-4" />
                   <h2 className="text-xl font-bold text-white mb-2">Master Question Repository</h2>
                   <p className="text-slate-400 mb-6">
-                    The backend API currently hosts <strong className="text-white">{bankStats.total}</strong> active questions. For deep auditing, duplicate management, and full JSON exports, please use the API directly or a database client (SQLite) as the Admin Portal UI is optimized for User and Attempt Management in this local-auth build.
+                    The backend API currently hosts <strong className="text-white">{bankStats.total}</strong> active questions.
                   </p>
+
+                  <div className="p-6 bg-slate-950/50 rounded-xl border border-slate-800/80 max-w-md mx-auto">
+                    <h3 className="text-sm font-bold text-slate-300 mb-4">Bulk Import via JSON</h3>
+                    <input
+                      type="file"
+                      accept=".json"
+                      id="jsonUpload"
+                      className="hidden"
+                      onChange={async (e) => {
+                        const file = e.target.files?.[0];
+                        if (!file) return;
+
+                        const reader = new FileReader();
+                        reader.onload = async (event) => {
+                          try {
+                            const json = JSON.parse(event.target?.result as string);
+                            const res = await fetch('/api/admin/questions/import', {
+                              method: 'POST',
+                              headers: { 'Content-Type': 'application/json' },
+                              body: JSON.stringify(json)
+                            });
+                            const data = await res.json();
+                            if (data.success) {
+                              alert(data.message);
+                              // Refresh stats
+                              fetch('/api/admin/questions?limit=1')
+                                .then(r => r.json())
+                                .then(d => { if (d.success) setBankStats({ total: d.total }); });
+                            } else {
+                              alert('Import failed: ' + data.error);
+                            }
+                          } catch (err) {
+                            alert('Invalid JSON file.');
+                          }
+                        };
+                        reader.readAsText(file);
+                        e.target.value = ''; // reset input
+                      }}
+                    />
+                    <label 
+                      htmlFor="jsonUpload" 
+                      className="flex items-center justify-center gap-2 w-full py-3 px-4 rounded-xl bg-purple-500/10 hover:bg-purple-500/20 text-purple-400 font-bold border border-purple-500/30 cursor-pointer transition-colors"
+                    >
+                      <Download className="w-5 h-5 rotate-180" />
+                      Select JSON File
+                    </label>
+                    <p className="text-[10px] text-slate-500 mt-3 text-left">
+                      Must be an array of questions. Now supports <code>explanation</code> strings inside individual option objects.
+                    </p>
+                  </div>
                 </div>
               </div>
             )}

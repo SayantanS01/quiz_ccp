@@ -1,0 +1,18 @@
+{
+  "total_new_questions": 800,
+  "sets": 4,
+  "questions_per_set": 200,
+  "target_mix": {
+    "scenario_based": "70%",
+    "normal": "30%"
+  },
+  "question_types": "single-select and multi-select",
+  "exam_engine": {
+    "master_pool": "existing questions + these 800 + approved PDF-generated questions",
+    "questions_per_attempt": 65,
+    "scored": 50,
+    "unscored": 15,
+    "evaluation": "50 scored questions only",
+    "simulator_pass_rule": "35/50 scored correct"
+  }
+}

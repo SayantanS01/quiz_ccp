@@ -49,6 +49,7 @@ export async function GET(
           label,
           text: opt ? opt.text : '',
           isCorrect: opt ? opt.isCorrect : false,
+          explanation: opt ? opt.explanation : null,
         };
       });
 

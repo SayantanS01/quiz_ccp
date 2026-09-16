@@ -52,6 +52,7 @@ model QuestionOption {
   label       String    // A, B, C, D, E
   text        String
   isCorrect   Boolean   @default(false)
+  explanation String?
   question    Question  @relation(fields: [questionId], references: [id], onDelete: Cascade)
 }
 

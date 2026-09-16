@@ -499,7 +499,13 @@ export default function ExamResultPage() {
                               </div>
 
                               <div className="flex-1 text-xs sm:text-sm">
-                                {opt.text}
+                                <p>{opt.text}</p>
+                                {(opt as any).explanation && (
+                                  <div className="mt-2 p-2 rounded-lg bg-indigo-500/10 border border-indigo-500/20 text-indigo-200/80 text-[11px] leading-relaxed">
+                                    <span className="font-bold text-indigo-400 mr-1">Explanation:</span>
+                                    {(opt as any).explanation}
+                                  </div>
+                                )}
                               </div>
 
                               <div className="flex-shrink-0 text-[11px] font-bold">
