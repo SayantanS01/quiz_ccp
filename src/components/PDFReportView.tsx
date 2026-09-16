@@ -336,10 +336,10 @@ export function PDFReportView({ attempt, summary, questions }: PDFReportViewProp
           const isUserChoice = userSelected.includes(opt.label);
           const isCorrectOpt = q.correctAnswers.includes(opt.label);
           const hasLabel = isCorrectOpt || isUserChoice;
-          const labelReserve = hasLabel ? 32 : 6;
+          const labelReserve = hasLabel ? 42 : 6;
           const optTextWidth = contentWidth - 18 - labelReserve;
           const lines = doc.splitTextToSize(opt.text || '', optTextWidth);
-          const height = Math.max(8, lines.length * 4 + 4);
+          const height = Math.max(8.5, lines.length * 4 + 4.5);
           totalOptsHeight += height + 1.8;
           return { opt, lines, height, isUserChoice, isCorrectOpt };
         });
@@ -425,24 +425,37 @@ export function PDFReportView({ attempt, summary, questions }: PDFReportViewProp
           const textStartY = lines.length === 1 ? (y + height / 2 + 1.2) : (y + 3.8);
           doc.text(lines, marginL + 12, textStartY);
 
-          // Right-side label
-          const rightX = marginR - 4;
-          const midY = y + height / 2 + 1.2;
-          if (isCorrectOpt && isUserChoice) {
+          // Right-side badge (strictly inside box with 3mm margin from right border)
+          if (isCorrectOpt || isUserChoice) {
+            let labelText = '';
+            let badgeWidth = 20;
+            let badgeR = 16, badgeG = 185, badgeB = 129;
+
+            if (isCorrectOpt && isUserChoice) {
+              labelText = 'CORRECT • YOUR ANSWER';
+              badgeWidth = 35;
+              badgeR = 16; badgeG = 185; badgeB = 129;
+            } else if (isCorrectOpt) {
+              labelText = 'CORRECT';
+              badgeWidth = 19;
+              badgeR = 16; badgeG = 185; badgeB = 129;
+            } else if (isUserChoice) {
+              labelText = 'YOUR ANSWER';
+              badgeWidth = 24;
+              badgeR = 239; badgeG = 68; badgeB = 68;
+            }
+
+            const badgeH = 4.8;
+            const badgeX = marginR - 5 - badgeWidth; // 3mm inside box right edge (marginR - 2)
+            const badgeY = y + (height - badgeH) / 2;
+
+            doc.setFillColor(badgeR, badgeG, badgeB);
+            doc.roundedRect(badgeX, badgeY, badgeWidth, badgeH, 1, 1, 'F');
+
             doc.setFont('helvetica', 'bold');
-            doc.setFontSize(6.5);
-            doc.setTextColor(16, 185, 129);
-            doc.text('✓ YOUR ANSWER', rightX, midY, { align: 'right' });
-          } else if (isCorrectOpt) {
-            doc.setFont('helvetica', 'bold');
-            doc.setFontSize(6.5);
-            doc.setTextColor(16, 185, 129);
-            doc.text('✓ CORRECT', rightX, midY, { align: 'right' });
-          } else if (isUserChoice) {
-            doc.setFont('helvetica', 'bold');
-            doc.setFontSize(6.5);
-            doc.setTextColor(239, 68, 68);
-            doc.text('✗ YOUR ANSWER', rightX, midY, { align: 'right' });
+            doc.setFontSize(6.2);
+            doc.setTextColor(255, 255, 255);
+            doc.text(labelText, badgeX + badgeWidth / 2, badgeY + 3.3, { align: 'center' });
           }
 
           y += height + 1.8;
