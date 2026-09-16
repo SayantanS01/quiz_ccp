@@ -279,7 +279,7 @@ export class ApiAttemptRepository {
     });
 
     return {
-      attemptId: attempt.id,
+      attemptId: attempt.attemptId || attempt.id,
       username,
       candidateName,
       mode: attempt.mode,
