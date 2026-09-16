@@ -105,41 +105,46 @@ export async function POST(req: Request) {
       Math.floor((now.getTime() - attempt.startedAt.getTime()) / 1000)
     );
 
-    // Update individual attempt questions and track user mistakes concurrently
-    const updatePromises = questionEvaluations.map(async (q) => {
-      const p1 = prisma.attemptQuestion.update({
-        where: { id: q.aqId },
-        data: { isCorrect: q.isCorrect },
+    // Update individual attempt questions and track user mistakes in chunks to respect Vercel pool limits (13)
+    const chunkSize = 5;
+    for (let i = 0; i < questionEvaluations.length; i += chunkSize) {
+      const chunk = questionEvaluations.slice(i, i + chunkSize);
+      
+      const updatePromises = chunk.map(async (q) => {
+        const p1 = prisma.attemptQuestion.update({
+          where: { id: q.aqId },
+          data: { isCorrect: q.isCorrect },
+        });
+
+        if (!q.isCorrect && attempt.userId !== 'candidate_default') {
+          const p2 = prisma.userMistake.upsert({
+            where: {
+              userId_questionId: {
+                userId: attempt.userId,
+                questionId: q.questionId
+              }
+            },
+            update: {
+              mistakeCount: { increment: 1 },
+              lastAttempted: new Date(),
+              domain: q.domain
+            },
+            create: {
+              userId: attempt.userId,
+              questionId: q.questionId,
+              domain: q.domain,
+              mistakeCount: 1,
+              lastAttempted: new Date()
+            }
+          });
+          return Promise.all([p1, p2]);
+        }
+        
+        return p1;
       });
 
-      if (!q.isCorrect && attempt.userId !== 'candidate_default') {
-        const p2 = prisma.userMistake.upsert({
-          where: {
-            userId_questionId: {
-              userId: attempt.userId,
-              questionId: q.questionId
-            }
-          },
-          update: {
-            mistakeCount: { increment: 1 },
-            lastAttempted: new Date(),
-            domain: q.domain
-          },
-          create: {
-            userId: attempt.userId,
-            questionId: q.questionId,
-            domain: q.domain,
-            mistakeCount: 1,
-            lastAttempted: new Date()
-          }
-        });
-        return Promise.all([p1, p2]);
-      }
-      
-      return p1;
-    });
-
-    await Promise.all(updatePromises);
+      await Promise.all(updatePromises);
+    }
 
     // Update ExamAttempt record
     const updatedAttempt = await prisma.examAttempt.update({
