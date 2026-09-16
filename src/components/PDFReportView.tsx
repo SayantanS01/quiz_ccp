@@ -342,15 +342,14 @@ export function PDFReportView({ attempt, summary, questions }: PDFReportViewProp
         // Question text
         const questionTextLines = doc.splitTextToSize(q.questionText || '(No question text)', contentWidth - 4);
         doc.setFont('helvetica', 'bold');
-        doc.setFontSize(9);
+        doc.setFontSize(9.5);
         doc.setTextColor(15, 23, 42);
         doc.text(questionTextLines, marginL + 2, y);
-        y += questionTextLines.length * 5 + 3;
+        y += questionTextLines.length * 5.5 + 5;
 
         // Options
         const opts = q.options || correctAns.map(l => ({ label: l, text: l, isCorrect: true }));
         opts.forEach((opt) => {
-          checkNewPage(10);
           const isUserChoice = userSelected.includes(opt.label);
           const isCorrectOpt = q.correctAnswers.includes(opt.label);
 
@@ -369,49 +368,56 @@ export function PDFReportView({ attempt, summary, questions }: PDFReportViewProp
             textR = 153; textG = 27; textB = 27;
           }
 
-          const optLines = doc.splitTextToSize(`${opt.label}.  ${opt.text || ''}`, contentWidth - 22);
-          const optHeight = Math.max(8, optLines.length * 4.5 + 3);
-          checkNewPage(optHeight);
+          // Reserve 32mm on right for labels, leave 14mm left for bubble + padding
+          const labelReserve = (isCorrectOpt || isUserChoice) ? 34 : 0;
+          const optTextWidth = contentWidth - 18 - labelReserve;
+          doc.setFontSize(8);
+          const optLines = doc.splitTextToSize(opt.text || '', optTextWidth);
+          // 5mm per line + 5mm top/bottom padding
+          const optHeight = Math.max(9, optLines.length * 5 + 5);
+          checkNewPage(optHeight + 2);
 
           doc.setFillColor(bgR, bgG, bgB);
           doc.setDrawColor(borderR, borderG, borderB);
+          doc.setLineWidth(0.4);
           doc.roundedRect(marginL + 2, y, contentWidth - 4, optHeight, 1, 1, 'FD');
+          doc.setLineWidth(0.2);
 
-          // Label bubble
+          // Letter bubble
           doc.setFillColor(borderR, borderG, borderB);
-          doc.circle(marginL + 6.5, y + optHeight / 2, 3, 'F');
+          doc.circle(marginL + 7, y + optHeight / 2, 3.2, 'F');
           doc.setFont('helvetica', 'bold');
           doc.setFontSize(7);
           doc.setTextColor(255, 255, 255);
-          doc.text(opt.label, marginL + 5.2, y + optHeight / 2 + 2.2);
+          doc.text(opt.label, marginL + 5.7, y + optHeight / 2 + 2.3);
 
-          // Option text
+          // Option text — starts at marginL+13, stays within reserved width
           doc.setFont('helvetica', isUserChoice || isCorrectOpt ? 'bold' : 'normal');
           doc.setFontSize(8);
           doc.setTextColor(textR, textG, textB);
-          doc.text(optLines, marginL + 12, y + 4.5);
+          doc.text(optLines, marginL + 13, y + optHeight / 2 - (optLines.length - 1) * 2.5 + 2);
 
-          // Markers on right
-          if (isCorrectOpt) {
+          // Right-side label — fixed to right edge, never overlapping text
+          const rightX = marginR - 3;
+          const midY = y + optHeight / 2 + 2.2;
+          if (isCorrectOpt && isUserChoice) {
             doc.setFont('helvetica', 'bold');
-            doc.setFontSize(7);
+            doc.setFontSize(6.5);
             doc.setTextColor(16, 185, 129);
-            doc.text('✓ CORRECT', marginR - 20, y + optHeight / 2 + 2);
-          }
-          if (isUserChoice && !isCorrectOpt) {
+            doc.text('✓ YOUR ANSWER', rightX, midY, { align: 'right' });
+          } else if (isCorrectOpt) {
             doc.setFont('helvetica', 'bold');
-            doc.setFontSize(7);
+            doc.setFontSize(6.5);
+            doc.setTextColor(16, 185, 129);
+            doc.text('✓ CORRECT', rightX, midY, { align: 'right' });
+          } else if (isUserChoice) {
+            doc.setFont('helvetica', 'bold');
+            doc.setFontSize(6.5);
             doc.setTextColor(239, 68, 68);
-            doc.text('✗ YOUR CHOICE', marginR - 25, y + optHeight / 2 + 2);
-          }
-          if (isUserChoice && isCorrectOpt) {
-            doc.setFont('helvetica', 'bold');
-            doc.setFontSize(7);
-            doc.setTextColor(16, 185, 129);
-            doc.text('✓ YOUR CHOICE', marginR - 25, y + optHeight / 2 + 2);
+            doc.text('✗ YOUR ANSWER', rightX, midY, { align: 'right' });
           }
 
-          y += optHeight + 1.5;
+          y += optHeight + 2;
         });
 
         // Summary annotation for wrong answers
