@@ -265,6 +265,7 @@ export default function AdminPage() {
                         <thead className="bg-slate-900 border-b border-slate-800 text-slate-400">
                           <tr>
                             <th className="px-6 py-4 font-semibold">Candidate</th>
+                            <th className="px-6 py-4 font-semibold">Type</th>
                             <th className="px-6 py-4 font-semibold">Attempt ID</th>
                             <th className="px-6 py-4 font-semibold">Date</th>
                             <th className="px-6 py-4 font-semibold">Score</th>
@@ -276,7 +277,7 @@ export default function AdminPage() {
                         <tbody className="divide-y divide-slate-800/50">
                           {attempts.length === 0 ? (
                             <tr>
-                              <td colSpan={7} className="px-6 py-8 text-center text-slate-500">
+                              <td colSpan={8} className="px-6 py-8 text-center text-slate-500">
                                 No attempts found.
                               </td>
                             </tr>
@@ -284,6 +285,11 @@ export default function AdminPage() {
                             attempts.map((att) => (
                               <tr key={att.attemptId} className="hover:bg-slate-800/30 transition-colors">
                                 <td className="px-6 py-4 font-medium text-white">{att.candidateName}</td>
+                                <td className="px-6 py-4">
+                                  <span className="px-2.5 py-1 rounded-md text-xs font-bold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+                                    {att.mode.replace(/_/g, ' ')}
+                                  </span>
+                                </td>
                                 <td className="px-6 py-4 text-slate-400 font-mono text-xs">{att.attemptId.split('-').pop()}</td>
                                 <td className="px-6 py-4 text-slate-300">{new Date(att.startedAt).toLocaleString()}</td>
                                 <td className="px-6 py-4">
