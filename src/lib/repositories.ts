@@ -316,6 +316,11 @@ export class ApiAttemptRepository {
       return {
         questionId: q.id,
         displayNumber: q.position,
+        questionCode: q.questionCode || '',
+        questionText: q.questionText || '',
+        domain: q.domain || '',
+        topic: q.topic || '',
+        difficulty: q.difficulty || '',
         isScored: q.isScored ?? true,
         selectedAnswers: q.selectedOptions || [],
         flagged: q.isFlagged || false,

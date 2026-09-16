@@ -15,6 +15,7 @@ export default function ProctorCamera({
 }: ProctorCameraProps) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const streamRef = useRef<MediaStream | null>(null);
   const [streamActive, setStreamActive] = useState(false);
   const [cameraError, setCameraError] = useState<string | null>(null);
   const [violationsCount, setViolationsCount] = useState(0);
@@ -78,15 +79,13 @@ export default function ProctorCamera({
 
   // Initialize webcam
   useEffect(() => {
-    let currentStream: MediaStream | null = null;
-
     async function setupCamera() {
       try {
         const stream = await navigator.mediaDevices.getUserMedia({
           video: { width: 320, height: 240, facingMode: 'user' },
           audio: false,
         });
-        currentStream = stream;
+        streamRef.current = stream;
         if (videoRef.current) {
           videoRef.current.srcObject = stream;
           videoRef.current.onloadedmetadata = () => {
@@ -103,11 +102,19 @@ export default function ProctorCamera({
     setupCamera();
 
     return () => {
-      if (currentStream) {
-        currentStream.getTracks().forEach((track) => track.stop());
+      if (streamRef.current) {
+        streamRef.current.getTracks().forEach((track) => track.stop());
       }
     };
   }, []);
+
+  // Re-attach stream when expanding
+  useEffect(() => {
+    if (!isMinimized && videoRef.current && streamRef.current) {
+      videoRef.current.srcObject = streamRef.current;
+      videoRef.current.play().catch(() => {});
+    }
+  }, [isMinimized]);
 
   // Event listeners for window blur, tab hidden, and fullscreen exit
   useEffect(() => {

@@ -25,7 +25,7 @@ import {
   X
 } from 'lucide-react';
 import { Navbar } from '@/components/Navbar';
-
+import { PDFReportView } from '@/components/PDFReportView';
 import { useAuth } from '@/components/AuthProvider';
 
 interface OptionReview {
@@ -245,7 +245,13 @@ export default function ExamResultPage() {
           </div>
 
           {/* Action Bar inside Banner */}
-          <div className="mt-8 pt-6 border-t border-slate-800/80 flex flex-wrap items-center justify-end gap-4">
+          <div className="mt-8 pt-6 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-4">
+            <PDFReportView
+              attempt={attempt}
+              summary={summary}
+              questions={questions}
+            />
+
             <div className="flex items-center gap-3">
               <Link
                 href="/exam/setup/FULL_MOCK"

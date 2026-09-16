@@ -74,17 +74,17 @@ export default function ExamSessionPage() {
         }
 
         // Map IDB format to UI format
-        const uiQuestions = data.questions.map(q => ({
+        const uiQuestions = data.questions.map((q: any) => ({
           position: q.displayNumber,
           id: q.questionId,
-          questionCode: '', // Not strictly needed for UI if missing
-          questionText: '', 
+          questionCode: q.questionCode || '',
+          questionText: q.questionText || '',
           type: q.correctAnswers.length > 1 ? 'MULTI_SELECT' : 'SINGLE_SELECT',
           requiredSelections: q.correctAnswers.length,
-          domain: '',
-          topic: '',
-          difficulty: '',
-          options: q.displayedOptions.map(o => ({ id: o.id, label: o.label, text: o.text })),
+          domain: q.domain || '',
+          topic: q.topic || '',
+          difficulty: q.difficulty || '',
+          options: q.displayedOptions.map((o: any) => ({ id: o.id, label: o.label, text: o.text })),
           selectedOptions: q.selectedAnswers,
           isFlagged: q.flagged,
         }));
