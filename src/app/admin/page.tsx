@@ -22,7 +22,8 @@ import {
   X
 } from 'lucide-react';
 import { Navbar } from '@/components/Navbar';
-import { LocalAttempt, User } from '@/lib/idb';
+import { LocalAttempt } from '@/lib/idb';
+import { User } from '@prisma/client';
 
 export default function AdminPage() {
   const [activeTab, setActiveTab] = useState<'dashboard' | 'users' | 'question_bank'>('dashboard');
@@ -395,7 +396,7 @@ export default function AdminPage() {
                         <div key={u.username} className="bg-[#111827] border border-slate-800 rounded-xl p-5 flex flex-col lg:flex-row gap-6 justify-between items-start lg:items-center hover:border-slate-700 transition-colors">
                           <div className="flex-1 flex flex-col sm:flex-row items-start sm:items-center gap-6 w-full">
                             <div>
-                              <h3 className="text-lg font-bold text-white">{(u as any).name || u.displayName}</h3>
+                              <h3 className="text-lg font-bold text-white">{u.name || 'Unknown User'}</h3>
                               <p className="text-sm text-slate-400 font-mono">@{u.username}</p>
                             </div>
                             
@@ -418,32 +419,59 @@ export default function AdminPage() {
                               </div>
                             </div>
                           </div>
-                          
-                          <button
-                            onClick={async () => {
-                              if (!confirm(`Are you sure you want to permanently delete user ${u.name || u.email}? This will wipe ALL their history, attempts, and mistakes.`)) return;
-                              try {
-                                const res = await fetch('/api/admin/users/manage', {
-                                  method: 'DELETE',
-                                  headers: { 'Content-Type': 'application/json' },
-                                  body: JSON.stringify({ userId: u.id })
-                                });
-                                const data = await res.json();
-                                if (data.success) {
-                                  alert('User successfully deleted.');
-                                  loadData();
-                                } else {
-                                  alert('Error deleting user: ' + data.error);
+                          <div className="flex flex-col gap-2 shrink-0">
+                            <button
+                              onClick={async () => {
+                                if (!confirm(`Are you sure you want to RESET progress for ${u.username}? This wipes all history and attempts, giving them a fresh start without deleting their account.`)) return;
+                                try {
+                                  const res = await fetch('/api/admin/users/manage', {
+                                    method: 'DELETE',
+                                    headers: { 'Content-Type': 'application/json' },
+                                    body: JSON.stringify({ userId: u.id, action: 'reset' })
+                                  });
+                                  const data = await res.json();
+                                  if (data.success) {
+                                    alert('User progress successfully reset.');
+                                    loadLocalData();
+                                  } else {
+                                    alert('Error resetting user: ' + data.error);
+                                  }
+                                } catch (err) {
+                                  alert('Failed to reset user.');
                                 }
-                              } catch (err) {
-                                alert('Failed to delete user.');
-                              }
-                            }}
-                            className="shrink-0 flex items-center gap-2 px-4 py-2 rounded-lg bg-rose-500/10 hover:bg-rose-500/20 text-rose-500 text-sm font-semibold transition-colors border border-rose-500/20"
-                          >
-                            <Trash2 className="w-4 h-4" />
-                            Delete
-                          </button>
+                              }}
+                              className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-amber-500/10 hover:bg-amber-500/20 text-amber-500 text-sm font-semibold transition-colors border border-amber-500/20"
+                            >
+                              <RotateCcw className="w-4 h-4" />
+                              Reset
+                            </button>
+                            
+                            <button
+                              onClick={async () => {
+                                if (!confirm(`Are you sure you want to permanently delete user ${u.username}? This will wipe ALL their history, attempts, and mistakes.`)) return;
+                                try {
+                                  const res = await fetch('/api/admin/users/manage', {
+                                    method: 'DELETE',
+                                    headers: { 'Content-Type': 'application/json' },
+                                    body: JSON.stringify({ userId: u.id, action: 'delete' })
+                                  });
+                                  const data = await res.json();
+                                  if (data.success) {
+                                    alert('User successfully deleted.');
+                                    loadLocalData();
+                                  } else {
+                                    alert('Error deleting user: ' + data.error);
+                                  }
+                                } catch (err) {
+                                  alert('Failed to delete user.');
+                                }
+                              }}
+                              className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-rose-500/10 hover:bg-rose-500/20 text-rose-500 text-sm font-semibold transition-colors border border-rose-500/20"
+                            >
+                              <Trash2 className="w-4 h-4" />
+                              Delete
+                            </button>
+                          </div>
                         </div>
                       );
                     })
