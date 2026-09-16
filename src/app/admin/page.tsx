@@ -287,7 +287,7 @@ export default function AdminPage() {
                                 <td className="px-6 py-4 font-medium text-white">{att.candidateName}</td>
                                 <td className="px-6 py-4">
                                   <span className="px-2.5 py-1 rounded-md text-xs font-bold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
-                                    {att.mode.replace(/_/g, ' ')}
+                                    {(att.mode || 'UNKNOWN').replace(/_/g, ' ')}
                                   </span>
                                 </td>
                                 <td className="px-6 py-4 text-slate-400 font-mono text-xs">{att.attemptId.split('-').pop()}</td>
