@@ -241,12 +241,12 @@ export function PDFReportView({ attempt, summary, questions }: PDFReportViewProp
       let pageNum = 1;
 
       const checkNewPage = (neededHeight: number) => {
-        if (y + neededHeight > pageHeight - 18) {
+        if (y + neededHeight > pageHeight - 14) {
           addPageFooter(doc, pageNum);
           doc.addPage();
           pageNum++;
           addPageHeader(doc, pageNum);
-          y = 20;
+          y = 20; // below top header banner (height 12mm + gap)
         }
       };
 
@@ -302,7 +302,7 @@ export function PDFReportView({ attempt, summary, questions }: PDFReportViewProp
       doc.addPage();
       pageNum++;
       addPageHeader(doc, pageNum);
-      y = 22;
+      y = 20;
 
       // Section header
       doc.setFont('helvetica', 'bold');
@@ -314,38 +314,36 @@ export function PDFReportView({ attempt, summary, questions }: PDFReportViewProp
       doc.setLineWidth(0.8);
       doc.line(marginL, y, marginL + 60, y);
       doc.setLineWidth(0.2);
-      y += 8;
+      y += 6;
 
       questions.forEach((q, idx) => {
         const isCorrect = q.isCorrect;
         const userSelected = q.selectedOptions || [];
         const correctAns = q.correctAnswers || [];
 
-        // Estimate height needed for this question
-        const questionLines = doc.splitTextToSize(q.questionText || '', contentWidth - 16);
-        const estimatedHeight = 14 + (questionLines.length * 5) + ((q.options?.length || 4) * 10) + 16;
-
-        checkNewPage(estimatedHeight);
+        // Check if question header + question text fits on page, else break before question
+        const questionTextLines = doc.splitTextToSize(q.questionText || '(No question text)', contentWidth - 4);
+        const qHeaderAndTextHeight = 8 + 3 + (questionTextLines.length * 4.5) + 3;
+        checkNewPage(qHeaderAndTextHeight + 12); // ensure header and at least first option can fit
 
         // Question number badge + status bar
         const badgeColor: [number, number, number] = isCorrect ? [16, 185, 129] : (userSelected.length === 0 ? [100, 116, 139] : [239, 68, 68]);
         doc.setFillColor(...badgeColor);
-        doc.roundedRect(marginL, y, contentWidth, 8, 1.5, 1.5, 'F');
+        doc.roundedRect(marginL, y, contentWidth, 7, 1.2, 1.2, 'F');
 
         doc.setFont('helvetica', 'bold');
         doc.setFontSize(8);
         doc.setTextColor(255, 255, 255);
         const statusLabel = userSelected.length === 0 ? 'SKIPPED' : (isCorrect ? 'CORRECT' : 'INCORRECT');
-        doc.text(`Q${q.position}  •  ${statusLabel}  •  ${q.domain || ''}  •  ${q.isScored ? 'Scored' : 'Unscored'}`, marginL + 3, y + 5.5);
-        y += 10;
+        doc.text(`Q${q.position}  •  ${statusLabel}  •  ${q.domain || ''}  •  ${q.isScored ? 'Scored' : 'Unscored'}`, marginL + 3, y + 4.8);
+        y += 9;
 
         // Question text
-        const questionTextLines = doc.splitTextToSize(q.questionText || '(No question text)', contentWidth - 4);
         doc.setFont('helvetica', 'bold');
-        doc.setFontSize(9.5);
+        doc.setFontSize(8.5);
         doc.setTextColor(15, 23, 42);
         doc.text(questionTextLines, marginL + 2, y);
-        y += questionTextLines.length * 5.5 + 5;
+        y += questionTextLines.length * 4.5 + 3;
 
         // Options
         const opts = q.options || correctAns.map(l => ({ label: l, text: l, isCorrect: true }));
@@ -368,38 +366,39 @@ export function PDFReportView({ attempt, summary, questions }: PDFReportViewProp
             textR = 153; textG = 27; textB = 27;
           }
 
-          // Reserve 32mm on right for labels, leave 14mm left for bubble + padding
-          const labelReserve = (isCorrectOpt || isUserChoice) ? 34 : 0;
-          const optTextWidth = contentWidth - 18 - labelReserve;
+          // Reserve 30mm on right for labels if present, 16mm left for circle
+          const hasLabel = isCorrectOpt || isUserChoice;
+          const labelReserve = hasLabel ? 32 : 6;
+          const optTextWidth = contentWidth - 16 - labelReserve;
           doc.setFontSize(8);
           const optLines = doc.splitTextToSize(opt.text || '', optTextWidth);
-          // 5mm per line + 5mm top/bottom padding
-          const optHeight = Math.max(9, optLines.length * 5 + 5);
-          checkNewPage(optHeight + 2);
+          const optHeight = Math.max(7.5, optLines.length * 4 + 3.5);
+          checkNewPage(optHeight + 1.5);
 
           doc.setFillColor(bgR, bgG, bgB);
           doc.setDrawColor(borderR, borderG, borderB);
-          doc.setLineWidth(0.4);
+          doc.setLineWidth(0.35);
           doc.roundedRect(marginL + 2, y, contentWidth - 4, optHeight, 1, 1, 'FD');
           doc.setLineWidth(0.2);
 
           // Letter bubble
           doc.setFillColor(borderR, borderG, borderB);
-          doc.circle(marginL + 7, y + optHeight / 2, 3.2, 'F');
+          doc.circle(marginL + 6.5, y + optHeight / 2, 2.8, 'F');
           doc.setFont('helvetica', 'bold');
           doc.setFontSize(7);
           doc.setTextColor(255, 255, 255);
-          doc.text(opt.label, marginL + 5.7, y + optHeight / 2 + 2.3);
+          doc.text(opt.label, marginL + 5.3, y + optHeight / 2 + 2);
 
-          // Option text — starts at marginL+13, stays within reserved width
+          // Option text
           doc.setFont('helvetica', isUserChoice || isCorrectOpt ? 'bold' : 'normal');
-          doc.setFontSize(8);
+          doc.setFontSize(7.8);
           doc.setTextColor(textR, textG, textB);
-          doc.text(optLines, marginL + 13, y + optHeight / 2 - (optLines.length - 1) * 2.5 + 2);
+          const textStartY = y + 3.5;
+          doc.text(optLines, marginL + 12, textStartY);
 
-          // Right-side label — fixed to right edge, never overlapping text
-          const rightX = marginR - 3;
-          const midY = y + optHeight / 2 + 2.2;
+          // Right-side label
+          const rightX = marginR - 4;
+          const midY = y + optHeight / 2 + 1.8;
           if (isCorrectOpt && isUserChoice) {
             doc.setFont('helvetica', 'bold');
             doc.setFontSize(6.5);
@@ -417,20 +416,20 @@ export function PDFReportView({ attempt, summary, questions }: PDFReportViewProp
             doc.text('✗ YOUR ANSWER', rightX, midY, { align: 'right' });
           }
 
-          y += optHeight + 2;
+          y += optHeight + 1.5;
         });
 
         // Summary annotation for wrong answers
         if (!isCorrect && userSelected.length > 0) {
-          checkNewPage(12);
+          checkNewPage(9);
           doc.setFillColor(255, 251, 235);
           doc.setDrawColor(245, 158, 11);
-          doc.roundedRect(marginL + 2, y, contentWidth - 4, 10, 1, 1, 'FD');
+          doc.roundedRect(marginL + 2, y, contentWidth - 4, 7.5, 1, 1, 'FD');
           doc.setFont('helvetica', 'bold');
           doc.setFontSize(7.5);
           doc.setTextColor(92, 53, 0);
-          doc.text(`You answered: ${userSelected.join(', ')}   |   Correct answer: ${correctAns.join(', ')}`, marginL + 5, y + 6.5);
-          y += 12;
+          doc.text(`You answered: ${userSelected.join(', ')}   |   Correct answer: ${correctAns.join(', ')}`, marginL + 5, y + 5);
+          y += 9.5;
         }
 
         // Explanation
