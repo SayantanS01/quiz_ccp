@@ -38,13 +38,29 @@ export default function AdminPage() {
   const [reconnectLink, setReconnectLink] = useState<string | null>(null);
   const [actionLoading, setActionLoading] = useState<string | null>(null);
 
-  useEffect(() => {
-    loadLocalData();
+  const [lastUpdated, setLastUpdated] = useState<Date>(new Date());
+
+  const loadBankStats = () => {
     fetch('/api/admin/questions?limit=1')
       .then(res => res.json())
       .then(data => {
         if (data.success) setBankStats({ total: data.total });
       }).catch(console.error);
+  };
+
+  useEffect(() => {
+    loadLocalData();
+    loadBankStats();
+    setLastUpdated(new Date());
+
+    // Real-time: refresh every 15 seconds
+    const interval = setInterval(() => {
+      loadLocalData();
+      loadBankStats();
+      setLastUpdated(new Date());
+    }, 15000);
+
+    return () => clearInterval(interval);
   }, []);
 
   const loadLocalData = async () => {
@@ -162,8 +178,15 @@ export default function AdminPage() {
               <Sliders className="w-6 h-6 text-white" />
             </div>
             <h1 className="text-3xl font-bold text-white">CloudPrep Admin Portal</h1>
+            <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[11px] font-bold uppercase tracking-wider ml-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              Live
+            </span>
           </div>
-          <p className="text-slate-400">Manage user accounts, monitor exam attempts, and audit the question pool.</p>
+          <div className="flex items-center justify-between">
+            <p className="text-slate-400">Manage user accounts, monitor exam attempts, and audit the question pool.</p>
+            <p className="text-slate-600 text-xs">Last updated: {lastUpdated.toLocaleTimeString()} — auto-refreshes every 15s</p>
+          </div>
 
           <div className="flex items-center gap-2 mt-6 border-b border-slate-800 pb-px overflow-x-auto hide-scrollbar">
             {[

@@ -91,33 +91,12 @@ export default function ExamResultPage() {
       }
     }
 
-    if (attemptId && session) {
+    if (attemptId) {
       loadResult();
     }
-  }, [attemptId, session]);
+  }, [attemptId]);
 
-  // DRM Protection: block right-click, shortcuts
-  useEffect(() => {
-    const handleContextMenu = (e: MouseEvent) => e.preventDefault();
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (
-        (e.ctrlKey && ['p', 's', 'c'].includes(e.key.toLowerCase())) ||
-        (e.metaKey && ['p', 's', 'c'].includes(e.key.toLowerCase())) ||
-        e.key === 'F12'
-      ) {
-        e.preventDefault();
-        e.stopPropagation();
-      }
-    };
 
-    document.addEventListener('contextmenu', handleContextMenu);
-    document.addEventListener('keydown', handleKeyDown, { capture: true });
-
-    return () => {
-      document.removeEventListener('contextmenu', handleContextMenu);
-      document.removeEventListener('keydown', handleKeyDown, { capture: true });
-    };
-  }, []);
 
   const toggleQuestionExpand = (pos: number) => {
     setExpandedQuestions((prev) => ({
@@ -180,12 +159,7 @@ export default function ExamResultPage() {
   });
 
   return (
-    <div className="min-h-screen bg-[#0B0F19] text-slate-100 selection:bg-transparent selection:text-slate-100 select-none print:hidden">
-      <style dangerouslySetInnerHTML={{__html: `
-        @media print {
-          body { display: none !important; }
-        }
-      `}} />
+    <div className="min-h-screen bg-[#0B0F19] text-slate-100">
       <Navbar />
 
       <main className="max-w-6xl mx-auto px-4 sm:px-6 py-10">
