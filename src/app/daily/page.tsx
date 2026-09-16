@@ -13,8 +13,10 @@ import {
   RotateCcw
 } from 'lucide-react';
 import { Navbar } from '@/components/Navbar';
+import { useAuth } from '@/components/AuthProvider';
 
 export default function DailyChallengePage() {
+  const { session } = useAuth();
   const [loading, setLoading] = useState(true);
   const [streak, setStreak] = useState(0);
   const [questions, setQuestions] = useState<any[]>([]);
@@ -26,7 +28,8 @@ export default function DailyChallengePage() {
     async function loadDaily() {
       try {
         setLoading(true);
-        const res = await fetch('/api/daily');
+        const username = session?.username || 'candidate_default';
+        const res = await fetch(`/api/daily?userId=${encodeURIComponent(username)}`);
         const data = await res.json();
         if (data.success) {
           setStreak(data.streak || 0);
@@ -40,7 +43,7 @@ export default function DailyChallengePage() {
       }
     }
     loadDaily();
-  }, []);
+  }, [session?.username]);
 
   const handleSelectOption = (qId: string, type: string, required: number, label: string) => {
     if (evalResults[qId]) return;
@@ -70,14 +73,33 @@ export default function DailyChallengePage() {
       });
       const data = await res.json();
       if (data.success) {
-        setEvalResults((prev) => ({
-          ...prev,
-          [qId]: {
-            isCorrect: data.isCorrect,
-            correctAnswers: data.correctAnswers,
-            explanation: data.explanation,
-          },
-        }));
+        setEvalResults((prev) => {
+          const updated = {
+            ...prev,
+            [qId]: {
+              isCorrect: data.isCorrect,
+              correctAnswers: data.correctAnswers,
+              explanation: data.explanation,
+            },
+          };
+
+          // If all questions are now answered, record attempt for streak
+          if (questions.length > 0 && Object.keys(updated).length === questions.length) {
+            const finalCorrect = Object.values(updated).filter((r: any) => r.isCorrect).length;
+            const username = session?.username || 'candidate_default';
+            fetch('/api/daily', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                userId: username,
+                totalCorrect: finalCorrect,
+                totalQuestions: questions.length
+              })
+            }).catch(console.error);
+          }
+
+          return updated;
+        });
       }
     } catch (err) {
       console.error('Failed to verify answer:', err);
