@@ -68,10 +68,11 @@ export function scoreExamAttempt(
     topic: string;
   }[]
 ): ExamScoreSummary {
-  const TOTAL_QUESTIONS = 65;
-  const SCORED_QUESTIONS = 50;
-  const UNSCORED_QUESTIONS = 15;
-  const PASSING_CORRECT = 35;
+  const totalQuestions = questions.length;
+  const SCORED_QUESTIONS = questions.filter(q => q.isScored).length;
+  const UNSCORED_QUESTIONS = questions.filter(q => !q.isScored).length;
+  // Standard passing threshold is 70% of scored questions
+  const PASSING_CORRECT = Math.ceil(SCORED_QUESTIONS * 0.7);
 
   let scoredCorrect = 0;
   let scoredIncorrect = 0;

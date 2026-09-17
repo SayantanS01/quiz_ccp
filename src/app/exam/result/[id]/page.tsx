@@ -158,6 +158,8 @@ export default function ExamResultPage() {
     return true;
   });
 
+  const isCustom = attempt.mode === 'CUSTOM_QUIZ';
+
   return (
     <div className="min-h-screen bg-[#0B0F19] text-slate-100">
       <Navbar />
@@ -192,12 +194,20 @@ export default function ExamResultPage() {
               </h1>
 
               {/* 35/50 Scored Rule Explanation */}
-              <p className="text-sm text-slate-300 max-w-2xl leading-relaxed">
-                You scored <strong className="text-white font-bold">{summary.scoredScore} out of {summary.totalScored}</strong> on the scored examination items ({summary.percentage}%). Under the official CLF-C02 specification, a minimum of <strong className="text-amber-400">35 / 50 (70%)</strong> is required to pass.
-              </p>
-              <p className="text-xs text-slate-400">
-                The additional 15 questions were unscored pretest items (you answered {summary.unscoredScore} of 15 correctly). Overall total: {summary.totalCorrect} / {summary.totalQuestions} correct.
-              </p>
+              {isCustom ? (
+                <p className="text-sm text-slate-300 max-w-2xl leading-relaxed">
+                  You scored <strong className="text-white font-bold">{summary.scoredScore} out of {summary.totalScored}</strong> on your custom practice quiz ({summary.percentage}%). Overall total: {summary.totalCorrect} / {summary.totalQuestions} correct.
+                </p>
+              ) : (
+                <>
+                  <p className="text-sm text-slate-300 max-w-2xl leading-relaxed">
+                    You scored <strong className="text-white font-bold">{summary.scoredScore} out of {summary.totalScored}</strong> on the scored examination items ({summary.percentage}%). Under the official CLF-C02 specification, a minimum of <strong className="text-amber-400">35 / 50 (70%)</strong> is required to pass.
+                  </p>
+                  <p className="text-xs text-slate-400">
+                    The additional {summary.totalUnscored} questions were unscored pretest items (you answered {summary.unscoredScore} of {summary.totalUnscored} correctly). Overall total: {summary.totalCorrect} / {summary.totalQuestions} correct.
+                  </p>
+                </>
+              )}
             </div>
 
             {/* Score Wheel / Big Stat */}
@@ -210,7 +220,7 @@ export default function ExamResultPage() {
                   summary.passed ? 'text-emerald-400' : 'text-rose-400'
                 }`}
               >
-                {summary.scoredScore} <span className="text-xl font-normal text-slate-500">/ 50</span>
+                {summary.scoredScore} <span className="text-xl font-normal text-slate-500">/ {isCustom ? summary.totalQuestions : 50}</span>
               </div>
               <div className="mt-2 text-xs font-semibold text-slate-300">
                 {summary.percentage}% Final Score
@@ -263,7 +273,7 @@ export default function ExamResultPage() {
             <div className="text-xl font-bold text-white">
               {formatDuration(attempt.timeSpentSeconds || 0)}
             </div>
-            <p className="text-[11px] text-slate-500 mt-1">90m allotted time</p>
+            <p className="text-[11px] text-slate-500 mt-1">{isCustom ? summary.totalQuestions * 2 : 90}m allotted time</p>
           </div>
 
           <div className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800">
@@ -272,7 +282,7 @@ export default function ExamResultPage() {
               <Layers className="w-4 h-4 text-blue-400" />
             </div>
             <div className="text-xl font-bold text-white">
-              {summary.unscoredScore} <span className="text-xs text-slate-400">/ 15</span>
+              {summary.unscoredScore} <span className="text-xs text-slate-400">/ {isCustom ? summary.totalUnscored : 15}</span>
             </div>
             <p className="text-[11px] text-slate-500 mt-1">AWS evaluation items</p>
           </div>
@@ -283,7 +293,7 @@ export default function ExamResultPage() {
               <Award className="w-4 h-4 text-emerald-400" />
             </div>
             <div className="text-xl font-bold text-white">
-              {summary.totalCorrect} <span className="text-xs text-slate-400">/ 65</span>
+              {summary.totalCorrect} <span className="text-xs text-slate-400">/ {summary.totalQuestions}</span>
             </div>
             <p className="text-[11px] text-slate-500 mt-1">Combined accuracy</p>
           </div>
@@ -359,13 +369,13 @@ export default function ExamResultPage() {
           </div>
         </div>
 
-        {/* Detailed 65-Question Review */}
+        {/* Detailed Review */}
         <div className="rounded-2xl bg-slate-900/60 border border-slate-800 p-6 sm:p-8">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
             <div>
               <h2 className="text-lg font-bold text-white flex items-center gap-2">
                 <FileText className="w-5 h-5 text-amber-400" />
-                <span>Comprehensive Question-by-Question Audit</span>
+                <span>Comprehensive {summary.totalQuestions}-Question Audit</span>
               </h2>
               <p className="text-xs text-slate-400 mt-0.5">
                 Review your selections, official answers, and in-depth AWS architecture explanations.

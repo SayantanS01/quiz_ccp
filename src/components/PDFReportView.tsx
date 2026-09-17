@@ -115,6 +115,8 @@ export function PDFReportView({ attempt, summary, questions }: PDFReportViewProp
       doc.text(`Exam ID: ${attemptIdStr.substring(0, 16)}... | Date: ${examDate} | Time: ${formatDuration(duration)}`, 14, 31);
       y = 48;
 
+      const isCustom = attempt.mode === 'CUSTOM_QUIZ';
+
       // Result Status
       doc.setFont('helvetica', 'bold');
       doc.setFontSize(14);
@@ -127,7 +129,7 @@ export function PDFReportView({ attempt, summary, questions }: PDFReportViewProp
         doc.setFontSize(10);
         doc.setFont('helvetica', 'normal');
         doc.setTextColor(30, 41, 59);
-        doc.text(`Scored: ${summary.scoredScore} / ${summary.totalScored} (${summary.percentage}%) — Minimum 35/50 (70%) to pass.`, 20, y + 18);
+        doc.text(`Scored: ${summary.scoredScore} / ${summary.totalScored} (${summary.percentage}%)` + (isCustom ? '' : ` — Minimum 35/50 (70%) to pass.`), 20, y + 18);
       } else {
         doc.setFillColor(239, 68, 68, 0.15);
         doc.setDrawColor(239, 68, 68);
@@ -137,7 +139,7 @@ export function PDFReportView({ attempt, summary, questions }: PDFReportViewProp
         doc.setFontSize(10);
         doc.setFont('helvetica', 'normal');
         doc.setTextColor(30, 41, 59);
-        doc.text(`Scored: ${summary.scoredScore} / ${summary.totalScored} (${summary.percentage}%) — Minimum 35/50 (70%) to pass.`, 20, y + 18);
+        doc.text(`Scored: ${summary.scoredScore} / ${summary.totalScored} (${summary.percentage}%)` + (isCustom ? '' : ` — Minimum 35/50 (70%) to pass.`), 20, y + 18);
       }
       y += 32;
 
