@@ -222,7 +222,7 @@ export default function StudyPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {MODULES.map((mod) => {
             const Icon = mod.icon;
-            const isAdmin = session?.role === 'admin' || session?.isAdmin;
+            const isAdmin = session?.isAdmin;
             const status = isAdmin ? 'GRANTED' : (accessMap[mod.id] || 'LOCKED');
             const isGranted = status === 'GRANTED';
             const isPending = status === 'PENDING';
