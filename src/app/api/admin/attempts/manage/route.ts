@@ -10,10 +10,43 @@ export async function DELETE(req: Request) {
       return NextResponse.json({ success: false, error: 'Missing attemptId' }, { status: 400 });
     }
 
-    // Delete related records first (cascade)
+    const attempt = await prisma.examAttempt.findUnique({
+      where: { id: attemptId },
+      include: { questions: true }
+    });
+
+    if (!attempt) {
+      return NextResponse.json({ success: false, error: 'Attempt not found' }, { status: 404 });
+    }
+
+    // Decrement UserMistakes for incorrect answers
+    const incorrectQuestions = attempt.questions.filter(q => q.isCorrect === false);
+    for (const q of incorrectQuestions) {
+      await prisma.userMistake.updateMany({
+        where: {
+          userId: attempt.userId,
+          questionId: q.questionId,
+        },
+        data: {
+          mistakeCount: {
+            decrement: 1,
+          }
+        }
+      });
+    }
+
+    // Clean up UserMistakes that hit 0 or below
+    await prisma.userMistake.deleteMany({
+      where: {
+        userId: attempt.userId,
+        mistakeCount: { lte: 0 }
+      }
+    });
+
+    // Delete related records
     await prisma.proctorEvent.deleteMany({ where: { attemptId } });
     await prisma.attemptQuestion.deleteMany({ where: { attemptId } });
-    await prisma.examAttempt.deleteMany({ where: { id: attemptId } });
+    await prisma.examAttempt.delete({ where: { id: attemptId } });
 
     return NextResponse.json({ success: true });
   } catch (error: any) {
@@ -33,6 +66,7 @@ export async function POST(req: Request) {
 
     const attempt = await prisma.examAttempt.findUnique({
       where: { id: attemptId },
+      include: { questions: true }
     });
 
     if (!attempt) {
@@ -62,10 +96,34 @@ export async function POST(req: Request) {
       const userId = attempt.userId;
       const mode = attempt.mode;
 
+      // Decrement UserMistakes for incorrect answers
+      const incorrectQuestions = attempt.questions.filter(q => q.isCorrect === false);
+      for (const q of incorrectQuestions) {
+        await prisma.userMistake.updateMany({
+          where: {
+            userId,
+            questionId: q.questionId,
+          },
+          data: {
+            mistakeCount: {
+              decrement: 1,
+            }
+          }
+        });
+      }
+
+      // Clean up UserMistakes that hit 0 or below
+      await prisma.userMistake.deleteMany({
+        where: {
+          userId,
+          mistakeCount: { lte: 0 }
+        }
+      });
+
       // Clean up old attempt
       await prisma.proctorEvent.deleteMany({ where: { attemptId } });
       await prisma.attemptQuestion.deleteMany({ where: { attemptId } });
-      await prisma.examAttempt.deleteMany({ where: { id: attemptId } });
+      await prisma.examAttempt.delete({ where: { id: attemptId } });
 
       // Return the info needed to start a new exam
       return NextResponse.json({ 
