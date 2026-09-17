@@ -308,6 +308,62 @@ export class ApiAttemptRepository {
     };
   }
 
+  static async startCustomExam(username: string, candidateName: string, modulePrefixes: string[], numQuestions: number): Promise<LocalAttempt | null> {
+    const res = await fetch('/api/exam/custom', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ userId: username, modulePrefixes, numQuestions })
+    });
+    const data = await res.json();
+    if (!data.success) return null;
+    
+    const attempt = data;
+    const questions = (attempt.questions || []).map((q: any) => {
+      let options = q.options || [];
+      return {
+        questionId: q.id,
+        displayNumber: q.position,
+        type: q.type,
+        requiredSelections: q.requiredSelections,
+        isScored: q.isScored ?? true,
+        selectedAnswers: q.selectedOptions || [],
+        flagged: q.isFlagged || false,
+        displayedOptions: options.map((o: any) => ({
+          id: o.id,
+          label: o.label,
+          text: o.text,
+          isCorrect: o.isCorrect
+        })),
+        correctAnswers: options.filter((o: any) => o.isCorrect).map((o: any) => o.id)
+      };
+    });
+
+    return {
+      attemptId: attempt.attemptId || attempt.id,
+      username,
+      candidateName,
+      mode: attempt.mode,
+      startedAt: attempt.startedAt,
+      submittedAt: attempt.submittedAt,
+      status: attempt.status === 'READY' || attempt.status === 'IN_PROGRESS' ? 'in_progress' : 'completed',
+      durationSeconds: attempt.durationMinutes * 60,
+      questionCount: attempt.totalQuestions,
+      scoredQuestionCount: attempt.totalQuestions, // all scored in custom
+      unscoredQuestionCount: 0,
+      questions,
+      incidents: attempt.proctorEvents?.map((e: any) => ({
+        timestamp: e.timestamp,
+        type: e.eventType,
+        details: e.metadata
+      })) || [],
+      score: attempt.scoredCorrect || null,
+      totalScored: attempt.totalQuestions,
+      percentage: attempt.scorePercentage || null,
+      passed: attempt.passed || null,
+      expiresAt: attempt.expiresAt
+    };
+  }
+
   static async getAttempt(attemptId: string): Promise<LocalAttempt | undefined> {
     const res = await fetch(`/api/exam/${attemptId}`);
     const data = await res.json();

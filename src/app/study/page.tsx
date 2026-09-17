@@ -1,7 +1,10 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useAuth } from '@/components/AuthProvider';
+import { ApiAttemptRepository } from '@/lib/repositories';
 import { 
   BookOpen, 
   FileText,
@@ -117,6 +120,46 @@ const MODULES = [
 ];
 
 export default function StudyPage() {
+  const router = useRouter();
+  const { session } = useAuth();
+  
+  const [selectedModules, setSelectedModules] = useState<number[]>([]);
+  const [numQuestions, setNumQuestions] = useState<number>(10);
+  const [isStarting, setIsStarting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const handleModuleToggle = (id: number) => {
+    setSelectedModules(prev => 
+      prev.includes(id) ? prev.filter(m => m !== id) : [...prev, id]
+    );
+  };
+
+  const handleStartCustomQuiz = async () => {
+    if (selectedModules.length === 0) {
+      setError('Please select at least one module.');
+      return;
+    }
+    try {
+      setIsStarting(true);
+      setError(null);
+      const username = session?.username || 'candidate_default';
+      const candidateName = session?.username || username;
+      const prefixes = selectedModules.map(id => `Module ${id}`);
+      
+      const attempt = await ApiAttemptRepository.startCustomExam(username, candidateName, prefixes, numQuestions);
+      
+      if (attempt) {
+        router.push(`/exam/session/${attempt.attemptId}`);
+      } else {
+        throw new Error('Failed to create custom exam attempt. Ensure questions are available for the selected modules.');
+      }
+    } catch (e: any) {
+      console.error(e);
+      setError(e.message || 'An error occurred while starting the custom quiz');
+      setIsStarting(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-[#0B0F19] text-slate-100 selection:bg-amber-500 selection:text-black">
       <Navbar />
@@ -171,6 +214,72 @@ export default function StudyPage() {
               </a>
             );
           })}
+        </div>
+
+        {/* Custom Quiz Builder Section */}
+        <div className="mt-16 bg-slate-900/60 border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-xl">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="w-10 h-10 rounded-xl bg-amber-500/20 flex items-center justify-center">
+              <ShieldCheck className="w-5 h-5 text-amber-400" />
+            </div>
+            <div>
+              <h2 className="text-xl font-bold text-white">Custom Practice Quiz</h2>
+              <p className="text-sm text-slate-400">Build a custom quiz from selected modules</p>
+            </div>
+          </div>
+
+          <div className="space-y-6">
+            <div>
+              <label className="block text-sm font-bold text-slate-300 mb-3">
+                Select Modules (Multiple)
+              </label>
+              <div className="flex flex-wrap gap-2">
+                {MODULES.map(mod => {
+                  const isSelected = selectedModules.includes(mod.id);
+                  return (
+                    <button
+                      key={mod.id}
+                      onClick={() => handleModuleToggle(mod.id)}
+                      className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all ${
+                        isSelected 
+                          ? 'bg-amber-500/20 border-amber-500/50 text-amber-400' 
+                          : 'bg-slate-800/50 border-slate-700/50 text-slate-400 hover:bg-slate-800'
+                      }`}
+                    >
+                      Module {mod.id}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div>
+              <label className="block text-sm font-bold text-slate-300 mb-3">
+                Number of Questions: {numQuestions}
+              </label>
+              <input 
+                type="range" 
+                min="5" 
+                max="50" 
+                step="5"
+                value={numQuestions}
+                onChange={(e) => setNumQuestions(Number(e.target.value))}
+                className="w-full max-w-md accent-amber-500"
+              />
+            </div>
+
+            {error && (
+              <p className="text-rose-400 text-sm font-semibold">{error}</p>
+            )}
+
+            <button
+              onClick={handleStartCustomQuiz}
+              disabled={isStarting || selectedModules.length === 0}
+              className="px-6 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {isStarting ? 'Preparing Quiz...' : 'Start Custom Quiz'}
+            </button>
+          </div>
         </div>
       </main>
     </div>
