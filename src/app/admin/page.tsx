@@ -19,14 +19,17 @@ import {
   Link2,
   RotateCcw,
   Copy,
-  X
+  X,
+  Lock,
+  Unlock,
+  Check
 } from 'lucide-react';
 import { Navbar } from '@/components/Navbar';
 import { LocalAttempt } from '@/lib/idb';
 import { User } from '@prisma/client';
 
 export default function AdminPage() {
-  const [activeTab, setActiveTab] = useState<'dashboard' | 'users' | 'question_bank'>('dashboard');
+  const [activeTab, setActiveTab] = useState<'dashboard' | 'users' | 'question_bank' | 'module_access'>('dashboard');
   
   const [users, setUsers] = useState<User[]>([]);
   const [attempts, setAttempts] = useState<LocalAttempt[]>([]);
@@ -38,6 +41,8 @@ export default function AdminPage() {
   const [reconnectLink, setReconnectLink] = useState<string | null>(null);
   const [actionLoading, setActionLoading] = useState<string | null>(null);
 
+  const [pendingRequests, setPendingRequests] = useState<any[]>([]);
+
   const [lastUpdated, setLastUpdated] = useState<Date>(new Date());
 
   const loadBankStats = () => {
@@ -48,15 +53,75 @@ export default function AdminPage() {
       }).catch(console.error);
   };
 
+  const loadUsers = async () => {
+    try {
+      const res = await fetch('/api/admin/users');
+      const data = await res.json();
+      if (data.success) setUsers(data.users);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const loadAttempts = async () => {
+    try {
+      const res = await fetch('/api/admin/attempts');
+      const data = await res.json();
+      if (data.success) setAttempts(data.attempts);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const loadPendingRequests = async () => {
+    try {
+      const res = await fetch('/api/admin/module-access');
+      const data = await res.json();
+      if (data.success) {
+        setPendingRequests(data.requests);
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const handleAccessAction = async (id: string, action: 'GRANT' | 'DENY') => {
+    try {
+      setActionLoading(`access_${id}`);
+      const res = await fetch('/api/admin/module-access', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id, action })
+      });
+      if (res.ok) {
+        await loadPendingRequests();
+      }
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setActionLoading(null);
+    }
+  };
+
   useEffect(() => {
-    loadLocalData();
-    loadBankStats();
-    setLastUpdated(new Date());
+    const loadAll = async () => {
+      setLoading(true);
+      await Promise.all([
+        loadUsers(),
+        loadAttempts(),
+        loadBankStats(),
+        loadPendingRequests()
+      ]);
+      setLastUpdated(new Date());
+      setLoading(false);
+    };
+
+    loadAll();
 
     // Real-time: refresh every 15 seconds
     const interval = setInterval(() => {
-      loadLocalData();
-      loadBankStats();
+      loadAttempts();
+      loadPendingRequests();
       setLastUpdated(new Date());
     }, 15000);
 
@@ -66,14 +131,10 @@ export default function AdminPage() {
   const loadLocalData = async () => {
     setLoading(true);
     try {
-      const [uRes, aRes] = await Promise.all([
-        fetch('/api/admin/users'),
-        fetch('/api/admin/attempts')
+      await Promise.all([
+        loadUsers(),
+        loadAttempts()
       ]);
-      const uData = await uRes.json();
-      const aData = await aRes.json();
-      if (uData.success) setUsers(uData.users);
-      if (aData.success) setAttempts(aData.attempts);
     } catch (err) {
       console.error(err);
     } finally {
@@ -193,6 +254,7 @@ export default function AdminPage() {
               { id: 'dashboard', label: 'Dashboard', icon: Sliders },
               { id: 'users', label: 'Users', icon: Users },
               { id: 'question_bank', label: 'Question Bank', icon: Database },
+              { id: 'module_access', label: 'Module Access', icon: Lock },
             ].map((tab) => {
               const Icon = tab.icon;
               const isActive = activeTab === tab.id;
@@ -562,6 +624,77 @@ export default function AdminPage() {
                     <p className="text-[10px] text-slate-500 mt-3 text-left">
                       Must be an array of questions. Now supports <code>explanation</code> strings inside individual option objects.
                     </p>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {activeTab === 'module_access' && (
+              <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h2 className="text-xl font-bold text-white">Pending Module Access Requests</h2>
+                    <p className="text-sm text-slate-400">Review and approve access to locked study materials.</p>
+                  </div>
+                </div>
+
+                <div className="rounded-xl border border-slate-800/60 bg-slate-900/40 overflow-hidden">
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-left text-sm text-slate-300">
+                      <thead className="text-xs uppercase bg-slate-800/50 text-slate-400 border-b border-slate-700">
+                        <tr>
+                          <th className="px-6 py-4 font-semibold">User</th>
+                          <th className="px-6 py-4 font-semibold">Module</th>
+                          <th className="px-6 py-4 font-semibold">Requested At</th>
+                          <th className="px-6 py-4 font-semibold text-right">Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-slate-800/60">
+                        {pendingRequests.map((req) => (
+                          <tr key={req.id} className="hover:bg-slate-800/30 transition-colors">
+                            <td className="px-6 py-4">
+                              <div className="font-bold text-white">{req.user?.name || req.user?.username || 'Unknown'}</div>
+                              <div className="text-xs text-slate-500">@{req.userId}</div>
+                            </td>
+                            <td className="px-6 py-4">
+                              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-amber-500/10 text-amber-400 text-xs font-bold border border-amber-500/20">
+                                Module {req.moduleId}
+                              </div>
+                            </td>
+                            <td className="px-6 py-4 text-xs">
+                              {new Date(req.createdAt).toLocaleString()}
+                            </td>
+                            <td className="px-6 py-4 text-right">
+                              <div className="flex items-center justify-end gap-2">
+                                <button
+                                  onClick={() => handleAccessAction(req.id, 'GRANT')}
+                                  disabled={actionLoading === `access_${req.id}`}
+                                  className="p-2 rounded-lg bg-emerald-500/10 text-emerald-400 hover:bg-emerald-500 hover:text-white transition-colors"
+                                  title="Grant Access"
+                                >
+                                  <Check className="w-4 h-4" />
+                                </button>
+                                <button
+                                  onClick={() => handleAccessAction(req.id, 'DENY')}
+                                  disabled={actionLoading === `access_${req.id}`}
+                                  className="p-2 rounded-lg bg-rose-500/10 text-rose-400 hover:bg-rose-500 hover:text-white transition-colors"
+                                  title="Deny Access"
+                                >
+                                  <X className="w-4 h-4" />
+                                </button>
+                              </div>
+                            </td>
+                          </tr>
+                        ))}
+                        {pendingRequests.length === 0 && (
+                          <tr>
+                            <td colSpan={4} className="px-6 py-12 text-center text-slate-500">
+                              No pending module access requests.
+                            </td>
+                          </tr>
+                        )}
+                      </tbody>
+                    </table>
                   </div>
                 </div>
               </div>
